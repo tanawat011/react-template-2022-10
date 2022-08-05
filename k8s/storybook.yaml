@@ -1,0 +1,46 @@
+### Application deployment ###
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fixtab-storybook-configmap
+  namespace: fixtab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fixtab-storybook
+  template:
+    metadata:
+      labels:
+        app: fixtab-storybook
+    spec:
+      containers:
+      - name: fixtab-storybook
+        envFrom:
+          - configMapRef:
+              name: fixtab-storybook-configmap
+        image: <TAG_IMAGE>
+        ports:
+          - containerPort: 80
+        resources:
+          limits:
+            cpu: 100m
+            memory: 200Mi
+          requests:
+              cpu: 50m
+              memory: 50Mi
+
+---
+### Map api Pods TO Open World ###
+apiVersion: v1
+kind: Service
+metadata:
+  name: fixtab-storybook-network
+  namespace: fixtab
+spec:
+  type: NodePort
+  ports:
+  - name: tcp
+    port: 80
+  selector:
+    app: fixtab-storybook

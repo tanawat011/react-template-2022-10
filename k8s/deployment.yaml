@@ -1,0 +1,93 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: <APP_NAME>-configmap
+  namespace: <NAMESPACE>
+data:
+  NODE_ENV: '<NODE_ENV>'
+  SKIP_PREFLIGHT_CHECK: '<SKIP_PREFLIGHT_CHECK>'
+  GENERATE_SOURCEMAP: '<GENERATE_SOURCEMAP>'
+  REACT_APP_API_URL: '<REACT_APP_API_URL>'
+  REACT_APP_KEYCLOAK_URL: '<REACT_APP_KEYCLOAK_URL>'
+  REACT_APP_KEYCLOAK_REALM: '<REACT_APP_KEYCLOAK_REALM>'
+  REACT_APP_KEYCLOAK_CLIENT_ID: '<REACT_APP_KEYCLOAK_CLIENT_ID>'
+  REACT_APP_KEYCLOAK_REDIRECT_URL: '<REACT_APP_KEYCLOAK_REDIRECT_URL>'
+  REACT_APP_SENTRY_DSN: '<REACT_APP_SENTRY_DSN>'
+  REACT_APP_SENTRY_RELEASE: '<REACT_APP_SENTRY_RELEASE>'
+  REACT_APP_TRACES_SAMPLE_RATE: '<REACT_APP_TRACES_SAMPLE_RATE>'
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <APP_NAME>
+  namespace: <NAMESPACE>
+spec:
+  replicas: <REPLICAS>
+  selector:
+    matchLabels:
+      app: <APP_NAME>
+  template:
+    metadata:
+      labels:
+        app: <APP_NAME>
+    spec:
+      containers:
+        - name: <APP_NAME>
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: <APP_NAME>-configmap
+          image: <IMAGE>:<IMAGE_TAG>
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: <CPU_LIMIT>
+              memory: <MEMORY_LIMIT>
+            requests:
+              cpu: <CPU_REQUEST>
+              memory: <MEMORY_REQUEST>
+      imagePullSecrets:
+        - name: image-pull-secret-mbs-git
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: <APP_NAME>-network
+  namespace: <NAMESPACE>
+spec:
+  type: ClusterIP
+  ports:
+    - name: tcp
+      port: 80
+  selector:
+    app: <APP_NAME>
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: <APP_NAME>-ingress
+  namespace: <NAMESPACE>
+  annotations:
+    kubernetes.io/ingress.class: 'nginx'
+    nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'false'
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: <DOMAIN_NAME>
+      http:
+        paths:
+          - path: /(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: <APP_NAME>-network
+                port:
+                  number: 80

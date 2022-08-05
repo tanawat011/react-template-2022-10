@@ -9,7 +9,11 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "yarn lint --fix",
-    "format": "prettier --write 'src/**/*.{ts,tsx}' --config ./.prettierrc"
+    "format": "prettier --write 'src/**/*.{ts,tsx}' --config ./.prettierrc",
+    "pre:commit": "yarn lint && yarn build",
+    "pre:push": "yarn test:cv",
+    "husky:install": "husky install",
+    "husky:add": "husky add"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -36,6 +40,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.1",
     "prettier": "^2.7.1"
   },
   "browserslist": {

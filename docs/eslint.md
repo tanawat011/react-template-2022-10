@@ -1,7 +1,7 @@
 # ESLint for Typescript
 
 ```text
-ESLint is a tool that helps you detect errors and potential problems in your code.
+`ESLint` is a linter for JavaScript, linters are tools that will help you set up rules to follow as you write your code and they ensure that you follow your rules.
 ```
 
 ## Install and Configuration
@@ -88,7 +88,7 @@ yarn add -D eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest @
 
 #### Right now you will got a [`.eslintrc.json`](../.eslintrc.json) file in your project
 
-## Set up the ESLint script in your package.json file
+## Set up the ESLint script in your [`package.json`](../package.json) file
 
 ```diff
 {

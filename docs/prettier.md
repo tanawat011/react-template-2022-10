@@ -1,7 +1,7 @@
 # Prettier for Typescript
 
 ```text
-Prettier is a tool that helps you format code, clean up your code, and fix your code.
+`Prettier` Is a code formatter that automatically formats your code to look cleaner and easier to read there are several code formatter but prettier is the most popular one.
 ```
 
 ## Install and Configuration

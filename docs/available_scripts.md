@@ -46,3 +46,19 @@ will search and try to fix the problems.
 ## `yarn format`
 
 will call prettier to fix the code style.
+
+## `yarn pre:commit`
+
+will auto run when you commit your code.
+
+## `yarn pre:push`
+
+will auto run when you push your code.
+
+## `yarn husky:install`
+
+Use this command to install the husky hooks.
+
+## `yarn husky:add`
+
+Use this command to add the husky hooks.

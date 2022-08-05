@@ -46,4 +46,4 @@ A Frontend Backoffice Project for Fixtab project.
 - [x] Prettier (for formatting)
 - [ ] Stylelint (for linting)
 - [ ] i18n (for internationalization)
-- [ ] Husky (for linting)
+- [x] Husky (for linting)

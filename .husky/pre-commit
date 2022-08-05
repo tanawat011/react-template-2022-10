@@ -16,8 +16,6 @@ echo "${YELLOW}If had a new env, don't forget to add it to the ${bold}.env.examp
 exec </dev/tty
 read -p "Do you had a new env and add it to that file right? (yes[y]/no[n]) " yn
 
-echo $yn
-
 case $yn in
 y) echo ${GREEN}Good job! ${WHITE} ;;
 n)

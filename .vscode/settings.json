@@ -34,6 +34,7 @@
     "fixtab",
     "Keycloak",
     "microsite",
-    "middlewares"
+    "middlewares",
+    "SILOM"
   ]
 }

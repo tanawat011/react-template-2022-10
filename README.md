@@ -17,18 +17,18 @@ A Frontend Backoffice Project for Fixtab project.
 
 ⚠ Before develop features please create `.env` file contain these variables.
 
-| ENV VARIABLES                       | VALUE                   | type      | REMARK                                          |
-| ----------------------------------- | ----------------------- | --------- | ----------------------------------------------- |
-| **SKIP_PREFLIGHT_CHECK**            | true                    | `public`  |                                                 |
-| **GENERATE_SOURCEMAP**              | false                   | `public`  |                                                 |
-| **REACT_APP_API_URL**               | `http://localhost:8001` | `public`  | Your BFF URL                                    |
-| **REACT_APP_KEYCLOAK_URL**          |                         | `private` | Please contact MBS API Team or related person   |
-| **REACT_APP_KEYCLOAK_REALM**        |                         | `private` | Please contact MBS API Team or related person   |
-| **REACT_APP_KEYCLOAK_CLIENT_ID**    |                         | `private` | Please contact MBS API Team or related person   |
-| **REACT_APP_KEYCLOAK_REDIRECT_URL** |                         | `private` | Please contact MBS API Team or related person   |
-| **REACT_APP_SENTRY_DSN**            |                         | `private` | Please contact Technical lead or related person |
-| **REACT_APP_SENTRY_RELEASE**        |                         | `private` | Please contact Technical lead or related person |
-| **REACT_APP_TRACES_SAMPLE_RATE**    |                         | `private` | Please contact Technical lead or related person |
+| ENV VARIABLES                       | VALUE                   | type      | REMARK                              |
+| ----------------------------------- | ----------------------- | --------- | ----------------------------------- |
+| **SKIP_PREFLIGHT_CHECK**            | true                    | `public`  |                                     |
+| **GENERATE_SOURCEMAP**              | false                   | `public`  |                                     |
+| **REACT_APP_API_URL**               | `http://localhost:8001` | `public`  |                                     |
+| **REACT_APP_KEYCLOAK_URL**          |                         | `private` | Please contact someone in your team |
+| **REACT_APP_KEYCLOAK_REALM**        |                         | `private` | Please contact someone in your team |
+| **REACT_APP_KEYCLOAK_CLIENT_ID**    |                         | `private` | Please contact someone in your team |
+| **REACT_APP_KEYCLOAK_REDIRECT_URL** |                         | `private` | Please contact someone in your team |
+| **REACT_APP_SENTRY_DSN**            |                         | `private` | Please contact team lead            |
+| **REACT_APP_SENTRY_RELEASE**        |                         | `private` | Please contact team lead            |
+| **REACT_APP_TRACES_SAMPLE_RATE**    |                         | `private` | Please contact team lead            |
 
 ## Learn More
 

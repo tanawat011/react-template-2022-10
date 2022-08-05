@@ -7,7 +7,7 @@ import { setupLocales } from 'locales/i18n'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
-import './index.css'
+import './styles/styles.scss'
 
 setupEnv()
 setupLocales()

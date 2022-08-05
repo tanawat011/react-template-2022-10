@@ -11,7 +11,7 @@
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "yarn lint --fix",
     "format": "prettier --write 'src/**/*.{ts,tsx}' --config ./.prettierrc",
-    "pre:commit": "yarn lint && yarn build",
+    "pre:commit": "yarn lint && yarn build && yarn build:css",
     "pre:push": "yarn test:cv",
     "husky:install": "husky install",
     "husky:add": "husky add"

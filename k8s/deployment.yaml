@@ -3,21 +3,9 @@ kind: ConfigMap
 metadata:
   name: <APP_NAME>-configmap
   namespace: <NAMESPACE>
-data:
-  NODE_ENV: '<NODE_ENV>'
-  SKIP_PREFLIGHT_CHECK: '<SKIP_PREFLIGHT_CHECK>'
-  GENERATE_SOURCEMAP: '<GENERATE_SOURCEMAP>'
-  REACT_APP_API_URL: '<REACT_APP_API_URL>'
-  REACT_APP_KEYCLOAK_URL: '<REACT_APP_KEYCLOAK_URL>'
-  REACT_APP_KEYCLOAK_REALM: '<REACT_APP_KEYCLOAK_REALM>'
-  REACT_APP_KEYCLOAK_CLIENT_ID: '<REACT_APP_KEYCLOAK_CLIENT_ID>'
-  REACT_APP_KEYCLOAK_REDIRECT_URL: '<REACT_APP_KEYCLOAK_REDIRECT_URL>'
-  REACT_APP_SENTRY_DSN: '<REACT_APP_SENTRY_DSN>'
-  REACT_APP_SENTRY_RELEASE: '<REACT_APP_SENTRY_RELEASE>'
-  REACT_APP_TRACES_SAMPLE_RATE: '<REACT_APP_TRACES_SAMPLE_RATE>'
+data: <NEW_ENV>
 
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -53,7 +41,6 @@ spec:
         - name: image-pull-secret-mbs-git
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -68,7 +55,6 @@ spec:
     app: <APP_NAME>
 
 ---
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:

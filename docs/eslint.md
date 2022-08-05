@@ -101,3 +101,24 @@ yarn add -D eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest @
   ...
 }
 ```
+
+## Setup the ESLint for JSON files
+
+### Install ESLint for JSON files
+
+```sh
+yarn add -D eslint-plugin-json
+```
+
+### Set up JSON plugin
+
+```diff
+{
+  ...
+  "extends": [
++    "plugin:json/recommended",
+    ...
+  ],
+  ...
+}
+```

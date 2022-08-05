@@ -38,6 +38,7 @@ A Frontend Backoffice Project for Fixtab project.
 ## Project Features
 
 - [x] Typescript support
+- [ ] SCSS support
 - [ ] Tailwind CSS (with Tailwind preset)
 - [ ] Jest (for unit testing)
 - [ ] Storybook (for component documentation)
@@ -45,5 +46,5 @@ A Frontend Backoffice Project for Fixtab project.
 - [x] ESLint (for linting)
 - [x] Prettier (for formatting)
 - [ ] Stylelint (for linting)
-- [ ] i18n (for internationalization)
+- [x] i18n (for internationalization)
 - [x] Husky (for linting)

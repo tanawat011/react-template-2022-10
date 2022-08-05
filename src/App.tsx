@@ -1,14 +1,18 @@
-import React from 'react'
+import { useTranslation } from 'react-i18next'
+
 import logo from './logo.svg'
+
 import './App.css'
 
-function App() {
+const App = () => {
+  const [t, i18n] = useTranslation()
+
   return (
     <div className='App'>
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          {t('common:edit')} <code>src/App.tsx</code> and save to reload.
         </p>
         <a
           className='App-link'
@@ -18,6 +22,8 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={() => i18n.changeLanguage('th')}>Toggle Lang TH</button>
+        <button onClick={() => i18n.changeLanguage('en')}>Toggle Lang EN</button>
       </header>
     </div>
   )

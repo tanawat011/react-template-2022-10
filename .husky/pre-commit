@@ -14,7 +14,23 @@ normal=$(tput sgr0)
 
 echo "${YELLOW}If had a new env, don't forget to add it to the ${bold}.env.example${normal}${YELLOW} file and in the ${bold}README.md${normal}${YELLOW} file for explain"
 exec </dev/tty
-read -p "Do you had a new env and add it to that file right? (yes[y]/no[n]) " yn
+read -p "Do you had a new ${bold}env${normal}${YELLOW} and add it to that file or no new ${bold}env${normal}${YELLOW} right? (yes[y]/no[n]) " yn
+
+case $yn in
+y) echo ${GREEN}Good job! ${WHITE} ;;
+n)
+  echo ${RED}Please add the new env to that file!!! ${WHITE}
+  exit 1
+  ;;
+*)
+  echo ${RED}invalid response!! ${WHITE}
+  exit 1
+  ;;
+esac
+
+echo "${YELLOW}Don't forget to update the ${bold}CHANGELOG.md${normal}${YELLOW} file"
+exec </dev/tty
+read -p "Do you updated the ${bold}CHANGELOG.md${normal}${YELLOW} file right? (yes[y]/no[n]) " yn
 
 case $yn in
 y) echo ${GREEN}Good job! ${WHITE} ;;

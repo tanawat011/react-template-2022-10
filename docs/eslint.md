@@ -122,3 +122,25 @@ yarn add -D eslint-plugin-json
   ...
 }
 ```
+
+### Override the default rules
+
+```diff
+{
+  ...
++  "overrides": [
++    {
++      "files": ["*.ts", "*.tsx"],
++      "parser": "@typescript-eslint/parser",
++      "parserOptions": {
++        "project": "./tsconfig.json"
++      },
++      "plugins": ["@typescript-eslint"],
++      "rules": {
++        "@typescript-eslint/no-explicit-any": "error" <= this is the rules for override default rules
++      }
++    }
++  ]
+  ...
+}
+```

@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next'
 
+import { Button } from 'components/Button'
+
 import logo from './logo.svg'
 
 const App = () => {
@@ -20,8 +22,8 @@ const App = () => {
         >
           Learn React
         </a>
-        <button onClick={() => i18n.changeLanguage('th')}>Toggle Lang TH</button>
-        <button onClick={() => i18n.changeLanguage('en')}>Toggle Lang EN</button>
+        <Button onClick={() => i18n.changeLanguage('th')}>Toggle Lang TH</Button>
+        <Button onClick={() => i18n.changeLanguage('en')}>Toggle Lang EN</Button>
       </header>
     </div>
   )

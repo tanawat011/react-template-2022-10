@@ -10,11 +10,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-## `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ## `yarn build`
 
 Builds the app for production to the `build` folder.\
@@ -46,6 +41,30 @@ will search and try to fix the problems.
 ## `yarn format`
 
 will call prettier to fix the code style.
+
+## `yarn test`
+
+Launches the test runner in the interactive without watch mode.
+
+## `yarn test:w`
+
+Launches the test runner in the interactive with watch mode.
+
+## `yarn test:cv`
+
+Launches the test runner in the interactive without watch mode together with collect coverage result.
+
+## `yarn test:cv:msg`
+
+Launches the test runner in the interactive without watch mode together with collect coverage result and message description.
+
+## `yarn test:cv:w`
+
+Launches the test runner in the interactive with watch mode together with collect coverage result.
+
+## `yarn test:cv:msg:w`
+
+Launches the test runner in the interactive with watch mode together with collect coverage result and message description.
 
 ## `yarn pre:commit`
 

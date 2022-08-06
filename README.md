@@ -40,7 +40,7 @@ A Frontend Backoffice Project for Fixtab project.
 - [x] Typescript support
 - [x] SCSS support
 - [x] Tailwind CSS (with Tailwind preset)
-- [ ] Jest (for unit testing)
+- [x] Jest (for unit testing)
 - [ ] Storybook (for component documentation)
 - [ ] Cypress (for E2E testing)
 - [x] ESLint (for linting)

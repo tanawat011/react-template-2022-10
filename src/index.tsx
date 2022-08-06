@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { setupEnv } from 'configs/environment'
+import { setupEnv } from 'configs/env'
 import { setupLocales } from 'locales/i18n'
 
 import App from './App'

@@ -4,6 +4,10 @@
 `Tailwindcss` is a utility that helps you create stylesheets with a clean, modern, and accessible look.
 ```
 
+## Documentation => [Click](https://tailwindcss.com/docs/installation)
+
+---
+
 ## Install and Configuration
 
 ### Install Tailwindcss
@@ -42,6 +46,8 @@ module.exports = {
 }
 ```
 
+---
+
 ## Set up the postcss script in your [`package.json`](../package.json) file
 
 ```diff
@@ -55,6 +61,8 @@ module.exports = {
 }
 ```
 
+---
+
 ## Set up the stylesheet from tailwind in the [`styles.scss`](../src/styles/styles.scss) file
 
 ```scss
@@ -63,6 +71,8 @@ module.exports = {
 @import 'tailwindcss/utilities';
 ...
 ```
+
+---
 
 ## Set up the IntelliSense when use with styled-components in the [`.vscode`](../.vscode/settings.json) file
 

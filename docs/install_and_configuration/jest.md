@@ -4,6 +4,13 @@
 `Jest` is a test runner.
 ```
 
+## Documentation
+
+- [Jest.io](https://jestjs.io/docs/getting-started)
+- [testing-library](https://testing-library.com/docs/)
+
+---
+
 ## Install and Configuration
 
 ### Install Jest for typescript

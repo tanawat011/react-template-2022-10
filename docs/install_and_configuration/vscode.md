@@ -4,6 +4,8 @@
 VSCode is a setting up for your project for `eslint` & `prettier` and format your code
 ```
 
+---
+
 ## Set up the VSCode configuration file([`.vscode/settings.json`](../.vscode/settings.json))
 
 ```diff

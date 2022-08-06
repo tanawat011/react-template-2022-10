@@ -4,6 +4,10 @@
 `Prettier` Is a code formatter that automatically formats your code to look cleaner and easier to read there are several code formatter but prettier is the most popular one.
 ```
 
+## Documentation => [Click](https://prettier.io/docs/en/index.html)
+
+---
+
 ## Install and Configuration
 
 ### Install Prettier
@@ -12,6 +16,8 @@
 yarn add -D prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react-hooks
 touch .prettierrc
 ```
+
+---
 
 ## Set up the Prettier in the ESLint configuration file([`.eslintrc.json`](../.eslintrc.json))
 
@@ -35,6 +41,8 @@ touch .prettierrc
 }
 ```
 
+---
+
 ## Set up the Prettier configuration file([`.prettierrc`](../.prettierrc))
 
 ```diff
@@ -48,6 +56,8 @@ touch .prettierrc
 +  "bracketSpacing": true
 +}
 ```
+
+---
 
 ## Set up the Prettier script in your package.json file
 

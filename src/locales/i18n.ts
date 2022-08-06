@@ -1,11 +1,11 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
-import { LANG } from 'constants/language'
-import { isDevelopmentMode } from 'utils/envMode'
-
 import enCommon from './en/common.json'
 import thCommon from './th/common.json'
+
+import { LANG } from 'constants/language'
+import { isDevelopmentMode } from 'utils/envMode'
 
 export const defaultNs = ['common']
 export const resources = {

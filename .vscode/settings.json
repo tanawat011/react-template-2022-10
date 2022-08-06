@@ -33,11 +33,13 @@
     "camelcase",
     "fixtab",
     "Keycloak",
+    "lcov",
     "microsite",
     "middlewares",
     "SILOM"
   ],
   "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
     "typescript": "javascript", // if you are using typescript
     "typescriptreact": "javascript" // if you are using typescript with react
   },
@@ -47,6 +49,7 @@
   "tailwindCSS.experimental.classRegex": [
     "tw`([^`]*)", // tw`...`
     "tw\\.[^`]+`([^`]*)`", // tw.xxx<xxx>`...`
-    "tw\\(.*?\\).*?`([^`]*)" // tw(Component)<xxx>`...`
+    "tw\\(.*?\\).*?`([^`]*)", // tw(Component)<xxx>`...`
+    "return\\ '([^']*)'" // return '...'
   ]
 }

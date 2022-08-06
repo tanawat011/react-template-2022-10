@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 
-import { Button } from 'components/Button'
-
 import logo from './logo.svg'
+
+import { Button } from 'components/Button'
 
 const App = () => {
   const [t, i18n] = useTranslation()

@@ -2,7 +2,7 @@
 // import the original type declarations
 import 'react-i18next'
 // import all namespaces (for the default language, only)
-import { defaultNs, resources } from '../locales/i18n'
+import type { defaultNs, resources } from '../locales/i18n'
 
 // react-i18next versions lower than 11.11.0
 declare module 'react-i18next' {

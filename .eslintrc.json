@@ -21,7 +21,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier", "import"],
   "settings": {
     "import/resolver": {
       "typescript": {}
@@ -45,7 +45,22 @@
       },
       "plugins": ["@typescript-eslint"],
       "rules": {
-        "@typescript-eslint/no-explicit-any": "error"
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/consistent-type-imports": "error",
+        "import/order": [
+          "error",
+          {
+            "newlines-between": "always",
+            "pathGroups": [
+              {
+                "pattern": "react",
+                "group": "builtin",
+                "position": "before"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["react"]
+          }
+        ]
       }
     }
   ]

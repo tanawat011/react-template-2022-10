@@ -1,11 +1,12 @@
 import { StrictMode } from 'react'
-import ReactDOM from 'react-dom/client'
 
-import { setupEnv } from 'configs/env'
-import { setupLocales } from 'locales/i18n'
+import ReactDOM from 'react-dom/client'
 
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+
+import { setupEnv } from 'configs/env'
+import { setupLocales } from 'locales/i18n'
 
 import './styles/styles.scss'
 

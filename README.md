@@ -35,7 +35,13 @@ A Frontend Backoffice Project for Fixtab project.
 - You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 - To learn React, check out the [React documentation](https://reactjs.org/).
 
-## Project Features
+## 📚 Private Package Dependencies
+
+- [ ] @fixtab/common-types
+- [ ] @fixtab/helpers
+- [ ] @fixtab/lint-config
+
+## Code Features
 
 - [x] Typescript support
 - [x] SCSS support

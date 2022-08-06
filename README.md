@@ -49,3 +49,7 @@ A Frontend Backoffice Project for Fixtab project.
 - [ ] Stylelint (for linting)
 - [x] i18n (for internationalization)
 - [x] Husky (for linting)
+- [ ] React Hook Form (for form validation)
+- [ ] Axios (for HTTP requests)
+- [ ] Sentry (for error reporting)
+- [ ] Recoil (for state management)

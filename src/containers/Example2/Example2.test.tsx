@@ -1,9 +1,10 @@
+import type { ButtonProps } from 'components/Button'
+
 import { screen, fireEvent, act } from '@testing-library/react'
 
-import { Example2 } from './Example2'
-
-import type { ButtonProps } from 'components/Button'
 import { renderWithRouter } from 'helpers/testUtils'
+
+import { Example2 } from './Example2'
 
 jest.mock('components/Button', () => ({
   Button: (props: ButtonProps) => <button {...props} data-testid={props.label || props.children} />,

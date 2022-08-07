@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useRecoilState } from 'recoil'
+
+import { exampleState } from 'recoils/example'
 
 import logo from '../../logo.svg'
 
 export const Example = () => {
+  const [recoilState] = useRecoilState(exampleState)
+
   return (
     <div className='App'>
       <header className='App-header'>
@@ -19,6 +24,10 @@ export const Example = () => {
           learn react
         </a>
         <Link to='/about'>About</Link>
+
+        <code style={{ background: 'green' }}>
+          <>{JSON.stringify(recoilState)}</>
+        </code>
       </header>
     </div>
   )

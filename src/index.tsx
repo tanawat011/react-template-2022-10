@@ -1,12 +1,13 @@
 import { StrictMode } from 'react'
 
 import ReactDOM from 'react-dom/client'
-
-import { AppRoutes } from './Routes'
-import reportWebVitals from './reportWebVitals'
+import { RecoilRoot } from 'recoil'
 
 import { setupEnv } from 'configs/env'
 import { setupLocales } from 'locales/i18n'
+
+import { AppRoutes } from './Routes'
+import reportWebVitals from './reportWebVitals'
 
 import './styles/styles.scss'
 
@@ -16,7 +17,9 @@ setupLocales()
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <StrictMode>
-    <AppRoutes />
+    <RecoilRoot>
+      <AppRoutes />
+    </RecoilRoot>
   </StrictMode>,
 )
 

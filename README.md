@@ -60,7 +60,7 @@ A Frontend Backoffice Project for Fixtab project.
 - [x] React Router (for routing)
 - [ ] Axios (for HTTP requests)
 - [ ] Sentry (for error reporting)
-- [ ] Recoil (for state management)
+- [x] Recoil (for state management)
 
 ## Utilities Support
 

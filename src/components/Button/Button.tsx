@@ -1,6 +1,6 @@
-import tw from 'tailwind-styled-components'
-
 import type { Color, Props } from 'types/common'
+
+import tw from 'tailwind-styled-components'
 
 export interface ButtonProps {
   label?: string

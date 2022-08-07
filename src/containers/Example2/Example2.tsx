@@ -1,10 +1,14 @@
+import type { Example } from 'recoils/example'
+
 import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-
-import logo from '../../logo.svg'
+import { useRecoilState } from 'recoil'
 
 import { Button } from 'components/Button'
+import { exampleState } from 'recoils/example'
+
+import logo from '../../logo.svg'
 
 export const Example2 = () => {
   const [t, i18n] = useTranslation()
@@ -12,10 +16,11 @@ export const Example2 = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+  } = useForm<Example>()
+  const [recoilState, setRecoilState] = useRecoilState(exampleState)
 
-  const doSubmit = () => {
-    // console.log(data)
+  const doSubmit = (data: Example) => {
+    setRecoilState(data)
   }
 
   return (
@@ -36,6 +41,10 @@ export const Example2 = () => {
         <Link to='/'>Home</Link>
         <Button onClick={() => i18n.changeLanguage('th')}>Toggle Lang TH</Button>
         <Button onClick={() => i18n.changeLanguage('en')}>Toggle Lang EN</Button>
+
+        <code>
+          <>{JSON.stringify(recoilState)}</>
+        </code>
 
         <form onSubmit={handleSubmit(doSubmit)}>
           <div>

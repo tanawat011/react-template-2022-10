@@ -45,7 +45,11 @@ const TwButton = tw.button`
 `
 
 export const Button: FcButtonProps = (props: ButtonProps) => {
-  const { children, label = '' } = props
+  const { children, label = '', onClick } = props
 
-  return <TwButton $props={props}>{children ? children : <span>{label}</span>}</TwButton>
+  return (
+    <TwButton $props={props} onClick={onClick}>
+      {children ? children : <span>{label}</span>}
+    </TwButton>
+  )
 }

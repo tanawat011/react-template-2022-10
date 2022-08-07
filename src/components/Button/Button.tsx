@@ -28,8 +28,9 @@ const TwButton: FcButtonProps = tw.button`
   font-sans
   font-bold
   text-xs
+  text-white
   leading-6
-  min-w-[160px]
+  min-w-[156px]
   cursor-pointer
 `
 

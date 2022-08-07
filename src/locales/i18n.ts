@@ -5,7 +5,7 @@ import enCommon from './en/common.json'
 import thCommon from './th/common.json'
 
 import { LANG } from 'constants/language'
-import { isDevelopmentMode } from 'utils/envMode'
+import { isDevelopmentMode } from '้helpers/envMode'
 
 export const defaultNs = ['common']
 export const resources = {

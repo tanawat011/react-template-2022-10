@@ -35,6 +35,11 @@ exports[`<Example /> match snapshot 1`] = `
       >
         About
       </a>
+      <code
+        style="background: green;"
+      >
+        {"name":"","age":0}
+      </code>
     </header>
   </div>
 </DocumentFragment>

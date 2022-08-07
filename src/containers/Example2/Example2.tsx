@@ -49,11 +49,11 @@ export const Example2 = () => {
         <form onSubmit={handleSubmit(doSubmit)}>
           <div>
             <label>Name</label>
-            <input {...register('name')} defaultValue='' />
+            <input {...register('name')} data-testid='name' defaultValue='' />
           </div>
           <div>
             <label>Age</label>
-            <input {...register('age', { required: true })} defaultValue='' />
+            <input {...register('age', { required: true })} data-testid='age' defaultValue='' />
           </div>
           <div style={{ color: 'red' }}>{errors?.age && 'input is required'}</div>
           <Button type='submit' color='primary' label='Submit' />

@@ -120,7 +120,8 @@
       "src/constants",
       "src/locales",
       "src/types",
-      "Routes.tsx"
+      "Routes.tsx",
+      "src/helpers/testUtils"
     ]
   }
 }

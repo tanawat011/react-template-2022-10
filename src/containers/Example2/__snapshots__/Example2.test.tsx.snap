@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Example /> match snapshot 1`] = `
+exports[`<Example2 /> match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="App"
@@ -45,12 +45,16 @@ exports[`<Example /> match snapshot 1`] = `
       >
         Toggle Lang EN
       </button>
+      <code>
+        {"name":"","age":0}
+      </code>
       <form>
         <div>
           <label>
             Name
           </label>
           <input
+            data-testid="name"
             name="name"
             value=""
           />
@@ -60,6 +64,7 @@ exports[`<Example /> match snapshot 1`] = `
             Age
           </label>
           <input
+            data-testid="age"
             name="age"
             value=""
           />

@@ -2,7 +2,7 @@ import type { ButtonProps } from 'components/Button'
 
 import { screen } from '@testing-library/react'
 
-import { renderWithRouter } from 'helpers/testUtils'
+import { renderWithProviders } from 'helpers/testUtils'
 
 import { Example } from './Example'
 
@@ -12,13 +12,13 @@ jest.mock('components/Button', () => ({
 
 describe('<Example />', () => {
   test('should render', () => {
-    renderWithRouter(<Example />)
+    renderWithProviders(<Example />)
     const el = screen.getByText(/learn react/i)
     expect(el).toBeInTheDocument()
   })
 
   test('match snapshot', () => {
-    const { asFragment } = renderWithRouter(<Example />)
+    const { asFragment } = renderWithProviders(<Example />)
     expect(asFragment()).toMatchSnapshot()
   })
 })

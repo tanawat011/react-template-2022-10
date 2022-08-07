@@ -1,23 +1,22 @@
-import type { ButtonHTMLAttributes } from 'react'
-
-import clsx from 'clsx'
 import tw from 'tailwind-styled-components'
 
-import type { COLOR } from 'types/common'
+import type { Color, Props } from 'types/common'
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps {
   label?: string
   size?: 'sm' | 'md' | 'lg'
-  color?: COLOR
+  color?: Color
+  type?: 'button' | 'submit' | 'reset'
   icon?: React.ReactNode
   children?: React.ReactNode
   isLoading?: boolean
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  className?: string
 }
 
 type FcButtonProps = React.FC<ButtonProps>
 
-const TwButton: FcButtonProps = tw.button`
+const TwButton = tw.button`
   flex
   justify-center
   items-center
@@ -32,13 +31,8 @@ const TwButton: FcButtonProps = tw.button`
   leading-6
   min-w-[156px]
   cursor-pointer
-`
-
-export const Button: FcButtonProps = (props: ButtonProps) => {
-  const { children, color, label = '', onClick } = props
-
-  const getColor = (_color?: COLOR) => {
-    switch (_color) {
+  ${(p: Props<ButtonProps>) => {
+    switch (p.$props.color) {
       case 'secondary':
         return 'bg-gray-500'
       case 'ternary':
@@ -47,11 +41,11 @@ export const Button: FcButtonProps = (props: ButtonProps) => {
       default:
         return 'bg-blue-500'
     }
-  }
+  }}
+`
 
-  return (
-    <TwButton className={clsx(getColor(color))} onClick={onClick}>
-      {children ? children : <span>{label}</span>}
-    </TwButton>
-  )
+export const Button: FcButtonProps = (props: ButtonProps) => {
+  const { children, label = '' } = props
+
+  return <TwButton $props={props}>{children ? children : <span>{label}</span>}</TwButton>
 }

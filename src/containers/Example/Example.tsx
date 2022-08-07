@@ -1,11 +1,21 @@
 import { useTranslation } from 'react-i18next'
+import { useForm } from 'react-hook-form'
 
-import logo from './logo.svg'
+import logo from '../../logo.svg'
 
 import { Button } from 'components/Button'
 
-const App = () => {
+export const Example = () => {
   const [t, i18n] = useTranslation()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const doSubmit = (data: unknown) => {
+    console.log(data)
+  }
 
   return (
     <div className='App'>
@@ -24,9 +34,20 @@ const App = () => {
         </a>
         <Button onClick={() => i18n.changeLanguage('th')}>Toggle Lang TH</Button>
         <Button onClick={() => i18n.changeLanguage('en')}>Toggle Lang EN</Button>
+
+        <form onSubmit={handleSubmit(doSubmit)}>
+          <div>
+            <label>Name</label>
+            <input {...register('name')} defaultValue='' />
+          </div>
+          <div>
+            <label>Age</label>
+            <input {...register('age', { required: true })} defaultValue='' />
+          </div>
+          <div style={{ color: 'red' }}>{errors?.age && 'input is required'}</div>
+          <Button type='submit' color='primary' label='Submit' />
+        </form>
       </header>
     </div>
   )
 }
-
-export default App

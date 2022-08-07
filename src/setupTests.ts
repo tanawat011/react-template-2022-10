@@ -7,10 +7,10 @@ import '@testing-library/jest-dom'
 jest.mock('react-i18next', () => ({
   useTranslation: () => {
     return [
-      (str: string) => str,
+      (str: string) => str, // t
       {
         changeLanguage: (lang: string) => new Promise(() => lang),
       },
-    ]
+    ] // [t, i18n] = useTranslation()
   },
 }))

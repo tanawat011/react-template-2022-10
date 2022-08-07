@@ -105,27 +105,19 @@
         "lines": 40
       }
     },
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.stories.tsx",
+      "!src/**/*.d.ts"
+    ],
     "coveragePathIgnorePatterns": [
-      "src/pages/*",
-      "src/types/*",
       "index.tsx",
       "index.ts",
       "src/reportWebVitals.ts",
       "src/configs",
       "src/constants",
-      "src/locales"
-    ]
-  },
-  "eslintConfig": {
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
+      "src/locales",
+      "src/types"
     ]
   }
 }

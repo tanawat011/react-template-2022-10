@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 
 import ReactDOM from 'react-dom/client'
 
-import App from './App'
+import { Example } from './containers/Example'
 import reportWebVitals from './reportWebVitals'
 
 import { setupEnv } from 'configs/env'
@@ -16,7 +16,7 @@ setupLocales()
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <StrictMode>
-    <App />
+    <Example />
   </StrictMode>,
 )
 

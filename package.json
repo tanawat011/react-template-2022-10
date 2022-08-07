@@ -118,7 +118,8 @@
       "src/configs",
       "src/constants",
       "src/locales",
-      "src/types"
+      "src/types",
+      "Routes.tsx"
     ]
   }
 }

@@ -16,7 +16,7 @@ export const Example = () => {
           target='_blank'
           rel='noopener noreferrer'
         >
-          Example
+          learn react
         </a>
         <Link to='/about'>About</Link>
       </header>

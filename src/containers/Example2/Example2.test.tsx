@@ -1,4 +1,5 @@
 import { render, screen, fireEvent, act } from '@testing-library/react'
+import { BrowserRouter } from 'react-router-dom'
 
 import { Example2 } from './Example2'
 
@@ -10,24 +11,24 @@ jest.mock('components/Button', () => ({
 
 describe('<Example />', () => {
   test('should render', () => {
-    render(<Example2 />)
+    render(<Example2 />, { wrapper: BrowserRouter })
     const el = screen.getByText(/learn react/i)
     expect(el).toBeInTheDocument()
   })
 
   test('match snapshot', () => {
-    const { asFragment } = render(<Example2 />)
+    const { asFragment } = render(<Example2 />, { wrapper: BrowserRouter })
     expect(asFragment()).toMatchSnapshot()
   })
 
   test('should render 3 button', () => {
-    render(<Example2 />)
+    render(<Example2 />, { wrapper: BrowserRouter })
     const totalButton = screen.getAllByRole('button').length
     expect(totalButton).toEqual(3)
   })
 
   test('should toggle to thai language', () => {
-    render(<Example2 />)
+    render(<Example2 />, { wrapper: BrowserRouter })
     const button = screen.getByTestId(/Toggle Lang TH/i)
     fireEvent.click(button)
 
@@ -36,7 +37,7 @@ describe('<Example />', () => {
   })
 
   test('should toggle to english language', () => {
-    render(<Example2 />)
+    render(<Example2 />, { wrapper: BrowserRouter })
     const button = screen.getByTestId(/Toggle Lang EN/i)
     fireEvent.click(button)
 
@@ -45,7 +46,7 @@ describe('<Example />', () => {
   })
 
   test('should display error message when click submit form', async () => {
-    render(<Example2 />)
+    render(<Example2 />, { wrapper: BrowserRouter })
 
     const button = screen.getByTestId('Submit')
 

@@ -18,7 +18,7 @@ exports[`<Example /> match snapshot 1`] = `
       >
         Edit 
         <code>
-          src/App.tsx
+          src/container/Example.tsx
         </code>
          and save to reload.
       </p>
@@ -28,47 +28,13 @@ exports[`<Example /> match snapshot 1`] = `
         rel="noopener noreferrer"
         target="_blank"
       >
-        Learn React
+        learn react
       </a>
-      <button
-        data-testid="Toggle Lang TH"
+      <a
+        href="/about"
       >
-        Toggle Lang TH
-      </button>
-      <button
-        data-testid="Toggle Lang EN"
-      >
-        Toggle Lang EN
-      </button>
-      <form>
-        <div>
-          <label>
-            Name
-          </label>
-          <input
-            name="name"
-            value=""
-          />
-        </div>
-        <div>
-          <label>
-            Age
-          </label>
-          <input
-            name="age"
-            value=""
-          />
-        </div>
-        <div
-          style="color: red;"
-        />
-        <button
-          color="primary"
-          data-testid="Submit"
-          label="Submit"
-          type="submit"
-        />
-      </form>
+        About
+      </a>
     </header>
   </div>
 </DocumentFragment>

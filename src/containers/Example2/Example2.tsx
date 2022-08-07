@@ -31,7 +31,7 @@ export const Example2 = () => {
           target='_blank'
           rel='noopener noreferrer'
         >
-          Learn React
+          learn react
         </a>
         <Link to='/'>Home</Link>
         <Button onClick={() => i18n.changeLanguage('th')}>Toggle Lang TH</Button>

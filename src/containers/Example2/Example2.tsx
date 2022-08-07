@@ -1,5 +1,7 @@
 import type { Example } from 'recoils/example'
 
+import { useEffect, useState } from 'react'
+
 import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
@@ -7,6 +9,7 @@ import { useRecoilState } from 'recoil'
 
 import { Button } from 'components/Button'
 import { exampleState } from 'recoils/example'
+import { fetchApi } from 'helpers/fetch'
 
 import logo from '../../logo.svg'
 
@@ -19,9 +22,24 @@ export const Example2 = () => {
   } = useForm<Example>()
   const [recoilState, setRecoilState] = useRecoilState(exampleState)
 
+  const [, setUsers] = useState([])
+
   const doSubmit = (data: Example) => {
     setRecoilState(data)
   }
+
+  const fetchUsers = async () => {
+    const { data } = await fetchApi({
+      method: 'get',
+      path: '/users',
+    })
+
+    setUsers(data as [])
+  }
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
   return (
     <div className='App'>

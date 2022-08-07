@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
 
 import { setupEnv } from 'configs/env'
+import { setupAxios } from 'configs/axios'
 import { setupLocales } from 'locales/i18n'
 
 import { AppRoutes } from './Routes'
@@ -13,6 +14,7 @@ import './styles/styles.scss'
 
 setupEnv()
 setupLocales()
+setupAxios()
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(

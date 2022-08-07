@@ -12,7 +12,7 @@ BLUE=$(tput setaf 4)
 bold=$(tput bold)
 normal=$(tput sgr0)
 
-echo "${YELLOW}If had a new env, don't forget to add it to the ${bold}.env.example${normal}${YELLOW} file and in the ${bold}README.md${normal}${YELLOW} file for explain"
+echo "${YELLOW}If had a new env, don't forget to add it to the ${bold}.env.example${normal}${YELLOW} file, ${bold}global.d.ts${normal}${YELLOW} file and in the ${bold}README.md${normal}${YELLOW} file for explain"
 exec </dev/tty
 read -p "Do you had a new ${bold}env${normal}${YELLOW} and add it to that file or no new ${bold}env${normal}${YELLOW} right? (yes[y]/no[n]) " yn
 

@@ -1,12 +1,30 @@
+import { useEffect, useState } from 'react'
+
 import { Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 
 import { exampleState } from 'recoils/example'
+import { fetchApi } from 'helpers/fetch'
 
 import logo from '../../logo.svg'
 
 export const Example = () => {
   const [recoilState] = useRecoilState(exampleState)
+
+  const [users, setUsers] = useState([])
+
+  const fetchUsers = async () => {
+    const { data } = await fetchApi({
+      method: 'get',
+      path: '/users',
+    })
+
+    setUsers(data as [])
+  }
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
   return (
     <div className='App'>
@@ -27,6 +45,10 @@ export const Example = () => {
 
         <code style={{ background: 'green' }}>
           <>{JSON.stringify(recoilState)}</>
+        </code>
+
+        <code style={{ background: 'blue' }}>
+          <>{JSON.stringify(users[0])}</>
         </code>
       </header>
     </div>

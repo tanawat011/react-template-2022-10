@@ -58,7 +58,7 @@ A Frontend Backoffice Project for Fixtab project.
 - [x] React Hook Form (for form validation)
 - [ ] Yup (for schema form validation)
 - [x] React Router (for routing)
-- [ ] Axios (for HTTP requests)
+- [x] Axios (for HTTP requests)
 - [ ] Sentry (for error reporting)
 - [x] Recoil (for state management)
 

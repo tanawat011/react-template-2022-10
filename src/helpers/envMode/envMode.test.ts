@@ -2,7 +2,7 @@ import { isDevelopmentMode } from './envMode'
 
 let windowSpy: jest.SpyInstance
 
-describe('utils/envMode', () => {
+describe('helpers/envMode', () => {
   beforeEach(() => {
     windowSpy = jest.spyOn(window, 'window', 'get')
   })

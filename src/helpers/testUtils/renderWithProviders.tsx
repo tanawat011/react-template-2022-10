@@ -1,3 +1,5 @@
+import type { RenderResult } from '@testing-library/react'
+
 import { render } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
@@ -17,7 +19,10 @@ interface RenderWithProvidersOptions {
   recoil?: object
 }
 
-export const renderWithProviders = (ui: JSX.Element, option?: RenderWithProvidersOptions) => {
+export const renderWithProviders = (
+  ui: JSX.Element,
+  option?: RenderWithProvidersOptions,
+): RenderResult => {
   const routerOption = { ...(option?.router || { route: '/' }) }
   window.history.pushState({}, 'Test page', routerOption.route)
 

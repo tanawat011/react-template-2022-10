@@ -1,6 +1,7 @@
 import type { ButtonProps } from 'components/Button'
+import type { RenderResult } from '@testing-library/react'
 
-import { screen, fireEvent, act } from '@testing-library/react'
+import { waitFor, screen, fireEvent, act } from '@testing-library/react'
 
 import { renderWithProviders } from 'helpers/testUtils'
 
@@ -10,26 +11,46 @@ jest.mock('components/Button', () => ({
   Button: (props: ButtonProps) => <button {...props} data-testid={props.label || props.children} />,
 }))
 
+jest.mock('helpers/fetch', () => ({
+  fetchApi: () => Promise.resolve({ data: [{ id: 1, name: 'john' }] }),
+}))
+
 describe('<Example2 />', () => {
-  test('should render', () => {
-    renderWithProviders(<Example2 />)
+  test('should render', async () => {
+    await act(async () => {
+      renderWithProviders(<Example2 />)
+    })
+
     const el = screen.getByText(/learn react/i)
     expect(el).toBeInTheDocument()
   })
 
-  test('match snapshot', () => {
-    const { asFragment } = renderWithProviders(<Example2 />)
-    expect(asFragment()).toMatchSnapshot()
+  test('match snapshot', async () => {
+    let el: RenderResult
+
+    await act(async () => {
+      el = renderWithProviders(<Example2 />)
+    })
+
+    await waitFor(() => {
+      expect(el.asFragment()).toMatchSnapshot()
+    })
   })
 
-  test('should render 3 button', () => {
-    renderWithProviders(<Example2 />)
+  test('should render 3 button', async () => {
+    await act(async () => {
+      renderWithProviders(<Example2 />)
+    })
+
     const totalButton = screen.getAllByRole('button').length
     expect(totalButton).toEqual(3)
   })
 
-  test('should toggle to thai language', () => {
-    renderWithProviders(<Example2 />)
+  test('should toggle to thai language', async () => {
+    await act(async () => {
+      renderWithProviders(<Example2 />)
+    })
+
     const button = screen.getByTestId(/Toggle Lang TH/i)
     fireEvent.click(button)
 
@@ -37,8 +58,11 @@ describe('<Example2 />', () => {
     expect(el).toBeInTheDocument()
   })
 
-  test('should toggle to english language', () => {
-    renderWithProviders(<Example2 />)
+  test('should toggle to english language', async () => {
+    await act(async () => {
+      renderWithProviders(<Example2 />)
+    })
+
     const button = screen.getByTestId(/Toggle Lang EN/i)
     fireEvent.click(button)
 
@@ -47,7 +71,9 @@ describe('<Example2 />', () => {
   })
 
   test('should display error message when click submit form', async () => {
-    renderWithProviders(<Example2 />)
+    await act(async () => {
+      renderWithProviders(<Example2 />)
+    })
 
     const button = screen.getByTestId('Submit')
 
@@ -63,7 +89,9 @@ describe('<Example2 />', () => {
     const mockName = 'John Doe'
     const mockAge = '30'
 
-    renderWithProviders(<Example2 />)
+    await act(async () => {
+      renderWithProviders(<Example2 />)
+    })
 
     const nameInput = screen.getByTestId<HTMLInputElement>('name')
     const ageInput = screen.getByTestId<HTMLInputElement>('age')

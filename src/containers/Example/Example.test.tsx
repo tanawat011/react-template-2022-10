@@ -1,8 +1,11 @@
 import type { ButtonProps } from 'components/Button'
+import type { RenderResult } from '@testing-library/react'
 
-import { screen } from '@testing-library/react'
+import { waitFor, screen, act } from '@testing-library/react'
+import { mocked } from 'jest-mock'
 
 import { renderWithProviders } from 'helpers/testUtils'
+import { fetchApi } from 'helpers/fetch'
 
 import { Example } from './Example'
 
@@ -10,15 +13,30 @@ jest.mock('components/Button', () => ({
   Button: (props: ButtonProps) => <button {...props} data-testid={props.label || props.children} />,
 }))
 
+jest.mock('helpers/fetch')
+
 describe('<Example />', () => {
-  test('should render', () => {
-    renderWithProviders(<Example />)
+  test('should render', async () => {
+    mocked(fetchApi).mockResolvedValue({ data: [{ id: 1, name: 'john' }] })
+
+    await act(async () => {
+      renderWithProviders(<Example />)
+    })
     const el = screen.getByText(/learn react/i)
     expect(el).toBeInTheDocument()
   })
 
-  test('match snapshot', () => {
-    const { asFragment } = renderWithProviders(<Example />)
-    expect(asFragment()).toMatchSnapshot()
+  test('match snapshot', async () => {
+    mocked(fetchApi).mockResolvedValue({ data: [{ id: 2, name: 'doe' }] })
+
+    let el: RenderResult
+
+    await act(async () => {
+      el = renderWithProviders(<Example />)
+    })
+
+    await waitFor(() => {
+      expect(el.asFragment()).toMatchSnapshot()
+    })
   })
 })

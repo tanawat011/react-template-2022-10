@@ -3,14 +3,9 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
+import { setupLocales } from './locales/i18n'
 
-jest.mock('react-i18next', () => ({
-  useTranslation: () => {
-    return [
-      (str: string) => str, // t
-      {
-        changeLanguage: (lang: string) => new Promise(() => lang),
-      },
-    ] // [t, i18n] = useTranslation()
-  },
-}))
+import { setupEnv } from 'configs/env'
+
+setupEnv()
+setupLocales()

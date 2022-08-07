@@ -13,8 +13,8 @@ export const Example = () => {
     formState: { errors },
   } = useForm()
 
-  const doSubmit = (data: unknown) => {
-    console.log(data)
+  const doSubmit = () => {
+    // console.log(data)
   }
 
   return (

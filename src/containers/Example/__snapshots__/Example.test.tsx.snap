@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Home /> match snapshot 1`] = `
+exports[`<Example /> match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="App"
@@ -16,7 +16,7 @@ exports[`<Home /> match snapshot 1`] = `
       <p
         class="bg-red-700"
       >
-        common:edit 
+        Edit 
         <code>
           src/App.tsx
         </code>
@@ -31,12 +31,12 @@ exports[`<Home /> match snapshot 1`] = `
         Learn React
       </a>
       <button
-        class="flex justify-center items-center h-9 px-2 py-4 rounded-2xl font-sans font-bold text-xs text-white leading-6 min-w-[156px] cursor-pointer bg-blue-500"
+        data-testid="Toggle Lang TH"
       >
         Toggle Lang TH
       </button>
       <button
-        class="flex justify-center items-center h-9 px-2 py-4 rounded-2xl font-sans font-bold text-xs text-white leading-6 min-w-[156px] cursor-pointer bg-blue-500"
+        data-testid="Toggle Lang EN"
       >
         Toggle Lang EN
       </button>
@@ -63,12 +63,11 @@ exports[`<Home /> match snapshot 1`] = `
           style="color: red;"
         />
         <button
-          class="flex justify-center items-center h-9 px-2 py-4 rounded-2xl font-sans font-bold text-xs text-white leading-6 min-w-[156px] cursor-pointer bg-blue-500"
-        >
-          <span>
-            Submit
-          </span>
-        </button>
+          color="primary"
+          data-testid="Submit"
+          label="Submit"
+          type="submit"
+        />
       </form>
     </header>
   </div>

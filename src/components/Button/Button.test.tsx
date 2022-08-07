@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 
 import { Button } from './Button'
 
-describe('<Home />', () => {
+describe('<Button />', () => {
   test('should render', () => {
     render(<Button label='test' />)
     const linkElement = screen.getByText(/test/i)

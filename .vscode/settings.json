@@ -36,7 +36,9 @@
     "lcov",
     "microsite",
     "middlewares",
-    "SILOM"
+    "SILOM",
+    "testid",
+    "แก้ไข"
   ],
   "tailwindCSS.includeLanguages": {
     "plaintext": "html",

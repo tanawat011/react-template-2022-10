@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Home /> match snapshot 1`] = `
+exports[`<Button /> match snapshot 1`] = `
 <DocumentFragment>
   <button
     class="flex justify-center items-center h-9 px-2 py-4 rounded-2xl font-sans font-bold text-xs text-white leading-6 min-w-[156px] cursor-pointer bg-blue-500"

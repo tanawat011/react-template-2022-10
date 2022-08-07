@@ -1,7 +1,9 @@
 # ESLint for Typescript
 
 ```text
-`ESLint` is a linter for JavaScript, linters are tools that will help you set up rules to follow as you write your code and they ensure that you follow your rules.
+`ESLint` is a linter for JavaScript
+
+linters are tools that will help you set up rules to follow as you write your code and they ensure that you follow your rules.
 ```
 
 ## Documentation => [Click](https://eslint.org/docs/latest/)

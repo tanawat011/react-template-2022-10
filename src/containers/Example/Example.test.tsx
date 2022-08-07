@@ -1,9 +1,9 @@
-import { render, screen } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { screen } from '@testing-library/react'
 
 import { Example } from './Example'
 
 import type { ButtonProps } from 'components/Button'
+import { renderWithRouter } from 'helpers/testUtils'
 
 jest.mock('components/Button', () => ({
   Button: (props: ButtonProps) => <button {...props} data-testid={props.label || props.children} />,
@@ -11,13 +11,13 @@ jest.mock('components/Button', () => ({
 
 describe('<Example />', () => {
   test('should render', () => {
-    render(<Example />, { wrapper: BrowserRouter })
+    renderWithRouter(<Example />)
     const el = screen.getByText(/learn react/i)
     expect(el).toBeInTheDocument()
   })
 
   test('match snapshot', () => {
-    const { asFragment } = render(<Example />, { wrapper: BrowserRouter })
+    const { asFragment } = renderWithRouter(<Example />)
     expect(asFragment()).toMatchSnapshot()
   })
 })

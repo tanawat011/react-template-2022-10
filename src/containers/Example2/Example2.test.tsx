@@ -1,9 +1,9 @@
-import { render, screen, fireEvent, act } from '@testing-library/react'
-import { BrowserRouter } from 'react-router-dom'
+import { screen, fireEvent, act } from '@testing-library/react'
 
 import { Example2 } from './Example2'
 
 import type { ButtonProps } from 'components/Button'
+import { renderWithRouter } from 'helpers/testUtils'
 
 jest.mock('components/Button', () => ({
   Button: (props: ButtonProps) => <button {...props} data-testid={props.label || props.children} />,
@@ -11,24 +11,24 @@ jest.mock('components/Button', () => ({
 
 describe('<Example />', () => {
   test('should render', () => {
-    render(<Example2 />, { wrapper: BrowserRouter })
+    renderWithRouter(<Example2 />)
     const el = screen.getByText(/learn react/i)
     expect(el).toBeInTheDocument()
   })
 
   test('match snapshot', () => {
-    const { asFragment } = render(<Example2 />, { wrapper: BrowserRouter })
+    const { asFragment } = renderWithRouter(<Example2 />)
     expect(asFragment()).toMatchSnapshot()
   })
 
   test('should render 3 button', () => {
-    render(<Example2 />, { wrapper: BrowserRouter })
+    renderWithRouter(<Example2 />)
     const totalButton = screen.getAllByRole('button').length
     expect(totalButton).toEqual(3)
   })
 
   test('should toggle to thai language', () => {
-    render(<Example2 />, { wrapper: BrowserRouter })
+    renderWithRouter(<Example2 />)
     const button = screen.getByTestId(/Toggle Lang TH/i)
     fireEvent.click(button)
 
@@ -37,7 +37,7 @@ describe('<Example />', () => {
   })
 
   test('should toggle to english language', () => {
-    render(<Example2 />, { wrapper: BrowserRouter })
+    renderWithRouter(<Example2 />)
     const button = screen.getByTestId(/Toggle Lang EN/i)
     fireEvent.click(button)
 
@@ -46,7 +46,7 @@ describe('<Example />', () => {
   })
 
   test('should display error message when click submit form', async () => {
-    render(<Example2 />, { wrapper: BrowserRouter })
+    renderWithRouter(<Example2 />)
 
     const button = screen.getByTestId('Submit')
 

@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Example /> match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <header
+      class="App-header"
+    >
+      <img
+        alt="logo"
+        class="App-logo"
+        src="logo.svg"
+      />
+      <p
+        class="bg-red-700"
+      >
+        Edit 
+        <code>
+          src/App.tsx
+        </code>
+         and save to reload.
+      </p>
+      <a
+        class="App-link"
+        href="https://reactjs.org"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Learn React
+      </a>
+      <button
+        data-testid="Toggle Lang TH"
+      >
+        Toggle Lang TH
+      </button>
+      <button
+        data-testid="Toggle Lang EN"
+      >
+        Toggle Lang EN
+      </button>
+      <form>
+        <div>
+          <label>
+            Name
+          </label>
+          <input
+            name="name"
+            value=""
+          />
+        </div>
+        <div>
+          <label>
+            Age
+          </label>
+          <input
+            name="age"
+            value=""
+          />
+        </div>
+        <div
+          style="color: red;"
+        />
+        <button
+          color="primary"
+          data-testid="Submit"
+          label="Submit"
+          type="submit"
+        />
+      </form>
+    </header>
+  </div>
+</DocumentFragment>
+`;

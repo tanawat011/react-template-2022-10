@@ -57,7 +57,13 @@ A Frontend Backoffice Project for Fixtab project.
 - [x] Husky (for linting)
 - [x] React Hook Form (for form validation)
 - [ ] Yup (for schema form validation)
-- [ ] React Router (for routing)
+- [x] React Router (for routing)
 - [ ] Axios (for HTTP requests)
 - [ ] Sentry (for error reporting)
 - [ ] Recoil (for state management)
+
+## Utilities Support
+
+- [ ] `Error Page` (for error handling)
+- [ ] `Loading Page` (for loading handling)
+- [ ] `Modal` (for modal handling)

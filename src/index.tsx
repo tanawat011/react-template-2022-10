@@ -1,8 +1,9 @@
 import { StrictMode } from 'react'
 
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 
-import { Example } from './containers/Example'
+import { AppRoutes } from './Routes'
 import reportWebVitals from './reportWebVitals'
 
 import { setupEnv } from 'configs/env'
@@ -16,7 +17,9 @@ setupLocales()
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <StrictMode>
-    <Example />
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   </StrictMode>,
 )
 

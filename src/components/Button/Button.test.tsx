@@ -17,25 +17,25 @@ describe('<Button />', () => {
   test('should render with default setting', () => {
     render(<Button label='test' color='primary' />)
     const button = screen.getByTestId(/button/i)
-    expect(button).toHaveClass('bg-space-blue')
+    expect(button).toHaveStyleRule('background-color', 'rgb(24 28 35 / var(--tw-bg-opacity))')
   })
 
   test('should render primary button', () => {
     render(<Button label='test' color='primary' />)
     const button = screen.getByTestId(/button/i)
-    expect(button).toHaveClass('bg-space-blue')
+    expect(button).toHaveStyleRule('background-color', 'rgb(24 28 35 / var(--tw-bg-opacity))')
   })
 
   test('should render secondary button', () => {
     render(<Button label='test' color='secondary' />)
     const button = screen.getByTestId(/button/i)
-    expect(button).toHaveClass('bg-soft-lapis-blue')
+    expect(button).toHaveStyleRule('background-color', 'rgb(23 98 193 / var(--tw-bg-opacity))')
   })
 
   test('should render ternary button', () => {
     render(<Button label='test' color='ternary' />)
     const button = screen.getByTestId(/button/i)
-    expect(button).toHaveClass('bg-lapis-blue')
+    expect(button).toHaveStyleRule('background-color', 'rgb(229 240 252 / var(--tw-bg-opacity))')
   })
 
   test('should render with child node', () => {
@@ -48,5 +48,8 @@ describe('<Button />', () => {
     render(<Button label='test' disabled />)
     const button = screen.getByTestId(/button/i)
     expect(button).toHaveAttribute('disabled')
+    expect(button).toHaveStyleRule('background-color', 'rgb(215 219 224 / var(--tw-bg-opacity))', {
+      modifier: ':disabled',
+    })
   })
 })

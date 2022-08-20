@@ -21,7 +21,7 @@ export default {
   },
 } as ComponentMeta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = (props) => <Button {...props} label='Button' />
+const Template: ComponentStory<typeof Button> = (props) => <Button label='Button' {...props} />
 
 export const Customable = Template.bind({})
 
@@ -45,11 +45,11 @@ Disabled.args = {
   disabled: true,
 }
 
-const VariantTemplate: ComponentStory<typeof Button> = () => (
+const VariantTemplate: ComponentStory<typeof Button> = (props) => (
   <div className='flex'>
-    <Primary {...Primary.args} label='Button' />
-    <Secondary {...Secondary.args} label='Button' />
-    <Ternary {...Ternary.args} label='Button' />
+    <Primary label='Button' {...props} {...Primary.args} />
+    <Secondary label='Button' {...props} {...Secondary.args} />
+    <Ternary label='Button' {...props} {...Ternary.args} />
   </div>
 )
 

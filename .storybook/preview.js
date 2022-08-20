@@ -17,4 +17,7 @@ export const parameters = {
     // Override the default light theme
     light: { ...themes.normal }
   },
+  docs: {
+    theme: themes.dark,
+  },
 }

@@ -1,54 +1,53 @@
-import type { Color, TwProps } from 'types/common'
+import type { ButtonType, Color, Size, TwProps } from 'types/common'
 
+import clsx from 'clsx'
 import tw from 'tailwind-styled-components'
 
 export interface ButtonProps {
   label?: string
-  size?: 'sm' | 'md' | 'lg'
+  size?: Size
   color?: Color
-  type?: 'button' | 'submit' | 'reset'
+  type?: ButtonType
   icon?: React.ReactNode
   children?: React.ReactNode
-  isLoading?: boolean
+  loading?: boolean
+  disabled?: boolean
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
-  className?: string
 }
-
-type FcButtonProps = React.FC<ButtonProps>
 
 const TwButton = tw.button`
   flex
   justify-center
   items-center
   h-9
+  min-w-[156px]
   px-2
   py-4
-  rounded-2xl
+  rounded-4xl
   font-sans
   font-bold
   text-xs
   text-white
   leading-6
-  min-w-[156px]
   cursor-pointer
   ${(p: TwProps<ButtonProps>) => {
     switch (p.$props.color) {
       case 'secondary':
-        return 'bg-gray-500'
+        return 'bg-soft-lapis-blue'
       case 'ternary':
-        return 'bg-yellow-500'
+        return 'bg-lapis-blue'
       case 'primary':
       default:
-        return 'bg-blue-500'
+        return clsx('bg-space-blue', 'hover:bg-onyx-gray', 'disabled:bg-jade-gray')
     }
   }}
 `
 
-export const Button: FcButtonProps = (props: ButtonProps) => {
-  const { children, label = '', onClick } = props
+export const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
+  const { children, disabled, label = '', onClick } = props
 
   return (
-    <TwButton $props={props} onClick={onClick} data-testid='button'>
+    <TwButton $props={props} disabled={disabled} onClick={onClick} data-testid='button'>
       {children ? children : <span>{label}</span>}
     </TwButton>
   )

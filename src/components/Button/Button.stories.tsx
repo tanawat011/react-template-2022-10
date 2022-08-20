@@ -1,36 +1,56 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Button } from './Button'
+import { Button } from '.'
 
 export default {
-  title: 'Example/Button',
+  title: 'Components/Button',
   component: Button,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Button description',
+      },
+      page: null,
+    },
+  },
   argTypes: {
-    backgroundColor: { control: 'color' },
+    color: { control: { type: 'select' } },
+    size: { control: { type: 'select' } },
+    type: { control: { type: 'select' } },
+    icon: { control: { type: 'none' } },
   },
 } as ComponentMeta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
+const Template: ComponentStory<typeof Button> = (props) => <Button {...props} label='Button' />
+
+export const Customable = Template.bind({})
 
 export const Primary = Template.bind({})
 Primary.args = {
   color: 'primary',
-  label: 'Button',
 }
 
 export const Secondary = Template.bind({})
 Secondary.args = {
-  label: 'Button',
+  color: 'secondary',
 }
 
-export const Large = Template.bind({})
-Large.args = {
-  size: 'lg',
-  label: 'Button',
+export const Ternary = Template.bind({})
+Ternary.args = {
+  color: 'ternary',
 }
 
-export const Small = Template.bind({})
-Small.args = {
-  size: 'sm',
-  label: 'Button',
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
 }
+
+const VariantTemplate: ComponentStory<typeof Button> = () => (
+  <div className='flex'>
+    <Primary {...Primary.args} label='Button' />
+    <Secondary {...Secondary.args} label='Button' />
+    <Ternary {...Ternary.args} label='Button' />
+  </div>
+)
+
+export const Variants = VariantTemplate.bind({})

@@ -8,9 +8,7 @@ import { renderWithProviders } from 'helpers/test'
 import { Example2 } from './Example2'
 
 jest.mock('components/Button', () => ({
-  ButtonPrimary: (props: ButtonProps) => (
-    <button {...props} data-testid={props.label || props.children} />
-  ),
+  Button: (props: ButtonProps) => <button {...props} data-testid={props.label || props.children} />,
 }))
 
 jest.mock('helpers/api', () => ({

@@ -3,7 +3,7 @@
 exports[`<Button /> match snapshot 1`] = `
 <DocumentFragment>
   <button
-    class="flex justify-center items-center h-9 px-2 py-4 rounded-2xl font-sans font-bold text-xs text-white leading-6 min-w-[156px] cursor-pointer bg-blue-500"
+    class="flex justify-center items-center h-9 min-w-[156px] px-2 py-4 rounded-4xl font-sans font-bold text-xs text-white leading-6 cursor-pointer bg-space-blue hover:bg-onyx-gray disabled:bg-jade-gray"
     data-testid="button"
   >
     <span>

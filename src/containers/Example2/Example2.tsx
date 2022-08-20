@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 
-import { ButtonPrimary } from 'components/Button'
+import { Button } from 'components/Button'
 import { exampleState } from 'recoils/example'
 import { fetchApi } from 'helpers/api'
 
@@ -57,8 +57,8 @@ export const Example2 = () => {
           learn react
         </a>
         <Link to='/'>Home</Link>
-        <ButtonPrimary onClick={() => i18n.changeLanguage('th')}>Toggle Lang TH</ButtonPrimary>
-        <ButtonPrimary onClick={() => i18n.changeLanguage('en')}>Toggle Lang EN</ButtonPrimary>
+        <Button onClick={() => i18n.changeLanguage('th')}>Toggle Lang TH</Button>
+        <Button onClick={() => i18n.changeLanguage('en')}>Toggle Lang EN</Button>
 
         <code>
           <>{JSON.stringify(recoilState)}</>
@@ -74,7 +74,7 @@ export const Example2 = () => {
             <input {...register('age', { required: true })} data-testid='age' defaultValue='' />
           </div>
           <div style={{ color: 'red' }}>{errors?.age && 'input is required'}</div>
-          <ButtonPrimary type='submit' label='Submit' />
+          <Button type='submit' label='Submit' />
         </form>
       </header>
     </div>

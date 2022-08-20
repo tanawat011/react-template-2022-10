@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 
 import { exampleState } from 'recoils/example'
-import { fetchApi } from 'helpers/fetch'
+import { fetchApi } from 'helpers/api'
 
 import logo from '../../logo.svg'
 

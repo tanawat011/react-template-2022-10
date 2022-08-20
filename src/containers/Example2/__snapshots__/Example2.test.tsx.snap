@@ -73,7 +73,6 @@ exports[`<Example2 /> match snapshot 1`] = `
           style="color: red;"
         />
         <button
-          color="primary"
           data-testid="Submit"
           label="Submit"
           type="submit"

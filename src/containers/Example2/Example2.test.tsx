@@ -3,15 +3,17 @@ import type { RenderResult } from '@testing-library/react'
 
 import { waitFor, screen, fireEvent, act } from '@testing-library/react'
 
-import { renderWithProviders } from 'helpers/testUtils'
+import { renderWithProviders } from 'helpers/test'
 
 import { Example2 } from './Example2'
 
 jest.mock('components/Button', () => ({
-  Button: (props: ButtonProps) => <button {...props} data-testid={props.label || props.children} />,
+  ButtonPrimary: (props: ButtonProps) => (
+    <button {...props} data-testid={props.label || props.children} />
+  ),
 }))
 
-jest.mock('helpers/fetch', () => ({
+jest.mock('helpers/api', () => ({
   fetchApi: () => Promise.resolve({ data: [{ id: 1, name: 'john' }] }),
 }))
 

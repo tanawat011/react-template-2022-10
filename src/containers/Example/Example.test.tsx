@@ -4,8 +4,8 @@ import type { RenderResult } from '@testing-library/react'
 import { waitFor, screen, act } from '@testing-library/react'
 import { mocked } from 'jest-mock'
 
-import { renderWithProviders } from 'helpers/testUtils'
-import { fetchApi } from 'helpers/fetch'
+import { renderWithProviders } from 'helpers/test'
+import { fetchApi } from 'helpers/api'
 
 import { Example } from './Example'
 
@@ -13,7 +13,7 @@ jest.mock('components/Button', () => ({
   Button: (props: ButtonProps) => <button {...props} data-testid={props.label || props.children} />,
 }))
 
-jest.mock('helpers/fetch')
+jest.mock('helpers/api')
 
 describe('<Example />', () => {
   test('should render', async () => {

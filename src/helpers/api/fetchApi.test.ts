@@ -6,7 +6,7 @@ import { fetchApi } from './fetchApi'
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<any>
 
-describe('helpers/fetch', () => {
+describe('helpers/api', () => {
   test('fetchApi: should resolved and got a result', async () => {
     const mockResponse = {
       status: 200,

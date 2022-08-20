@@ -1,4 +1,4 @@
-import type { Color, Props } from 'types/common'
+import type { Color, TwProps } from 'types/common'
 
 import tw from 'tailwind-styled-components'
 
@@ -31,7 +31,7 @@ const TwButton = tw.button`
   leading-6
   min-w-[156px]
   cursor-pointer
-  ${(p: Props<ButtonProps>) => {
+  ${(p: TwProps<ButtonProps>) => {
     switch (p.$props.color) {
       case 'secondary':
         return 'bg-gray-500'
@@ -48,7 +48,7 @@ export const Button: FcButtonProps = (props: ButtonProps) => {
   const { children, label = '', onClick } = props
 
   return (
-    <TwButton $props={props} onClick={onClick}>
+    <TwButton $props={props} onClick={onClick} data-testid='button'>
       {children ? children : <span>{label}</span>}
     </TwButton>
   )

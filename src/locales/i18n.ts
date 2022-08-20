@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 import { LANG } from 'constants/language'
-import { isDevelopmentMode } from 'helpers/envMode'
+import { isDevelopmentMode } from 'helpers/env'
 
 import enCommon from './en/common.json'
 import thCommon from './th/common.json'

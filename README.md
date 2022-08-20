@@ -47,6 +47,7 @@ A Frontend Backoffice Project for Fixtab project.
 - [x] SCSS support
 - [x] Tailwind CSS (with Tailwind preset)
 - [x] Styled Components (with Styled Components preset)
+- [x] Twin.macro (with Styled Component for Tailwind)
 - [x] Jest (for unit testing)
 - [x] Storybook (for component documentation)
 - [ ] Cypress (for E2E testing)

@@ -1,10 +1,17 @@
+import React from 'react'
+
 import { themes } from '@storybook/theming'
+
+import { useDarkMode } from 'storybook-dark-mode'
+
+import { DocsContainer } from './DocsContainer'
 
 import '!style-loader!css-loader!postcss-loader!tailwindcss/tailwind.css'
 import 'tailwindcss/tailwind.css'
+import { theme } from 'twin.macro'
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -13,12 +20,8 @@ export const parameters = {
   },
   darkMode: {
     current: 'dark',
-    // Override the default dark theme
-    dark: { ...themes.dark },
-    // Override the default light theme
-    light: { ...themes.normal }
   },
   docs: {
-    theme: { ...themes.dark },
+    theme: { ...themes.dark }
   },
 }

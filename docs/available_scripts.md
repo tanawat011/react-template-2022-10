@@ -10,6 +10,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+## `yarn storybook`
+
+Runs the storybook.\
+Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
+
 ## `yarn build`
 
 **Note: This will run together with hook pre:commit.**
@@ -20,6 +25,35 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## `yarn build:css`
+
+**Note: This will not effect with production mode.**
+Builds the css file from the `src/styles` folder for the production build.\
+
+**For development mode only.**
+
+## `yarn build:storybook`
+
+Builds the storybook for the production build to the `storybook-static` folder.\
+
+## `yarn serve`
+
+Runs the app from build folder in the `build` folder.\
+
+**For development mode only.**
+
+## `yarn serve:storybook`
+
+Runs the storybook from build folder in the `storybook-static` folder.\
+
+**For development mode only.**
+
+## `yarn serve:coverage`
+
+Runs the coverage code from coverage folder in the `coverage/lcov-report` folder.\
+
+**For development mode only.**
 
 ## `yarn eject`
 
@@ -84,6 +118,8 @@ Use this command to install the husky hooks.
 ## `yarn husky:add`
 
 Use this command to add the husky hooks.
+
+**By normally used when init project.**
 
 **Example:**
 

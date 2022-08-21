@@ -12,6 +12,7 @@ You will also see any lint errors in the console.
 
 ## `yarn build`
 
+**Note: This will run together with hook pre:commit.**
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
@@ -32,6 +33,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## `yarn lint`
 
+**Note: This will run together with hook pre:commit.**
 will search for problems, but will not fix
 
 ## `yarn lint:fix`
@@ -52,6 +54,7 @@ Launches the test runner in the interactive with watch mode.
 
 ## `yarn test:cv`
 
+**Note: This will run together with hook pre:push.**
 Launches the test runner in the interactive without watch mode together with collect coverage result.
 
 ## `yarn test:cv:msg`
@@ -81,3 +84,10 @@ Use this command to install the husky hooks.
 ## `yarn husky:add`
 
 Use this command to add the husky hooks.
+
+**Example:**
+
+```sh
+yarn husky:add .husky/pre-commit "yarn pre:commit"
+yarn husky:add .husky/pre-push "yarn pre:push"
+```

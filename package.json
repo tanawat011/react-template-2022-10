@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "serve": "serve -s build -l 4000",
+    "start:serve": "serve -s build -l 4000",
     "storybook": "start-storybook -p 6006 -s public",
+    "storybook:serve": "serve -s storybook-static -l 4001",
     "build": "react-scripts build",
     "build:css": "postcss src/styles/styles.scss -o postcss.css",
     "build:storybook": "build-storybook -s public",

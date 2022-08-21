@@ -12,12 +12,13 @@ export const parameters = {
     },
   },
   darkMode: {
+    current: 'dark',
     // Override the default dark theme
     dark: { ...themes.dark },
     // Override the default light theme
     light: { ...themes.normal }
   },
   docs: {
-    theme: themes.dark,
+    theme: { ...themes.dark },
   },
 }

@@ -70,6 +70,7 @@ A Frontend Backoffice Project for Fixtab project.
 - [x] `Error Page` (for error handling)
 - [ ] `Loading Page` (for loading handling)
 - [ ] `Modal` (for modal handling)
+- [ ] Router authentication guard (for authentication handling)
 
 ## HOW TO
 

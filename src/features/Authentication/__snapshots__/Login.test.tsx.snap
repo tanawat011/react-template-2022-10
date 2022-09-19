@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> match snapshot 1`] = `
+<DocumentFragment>
+  <p>
+    Login
+  </p>
+  <a
+    href="/home"
+  >
+    Login
+  </a>
+  <a
+    href="/forgot-password"
+  >
+    Forgot Password
+  </a>
+</DocumentFragment>
+`;

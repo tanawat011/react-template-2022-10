@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Error504 /> match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    504 Gateway Timeout
+  </div>
+</DocumentFragment>
+`;

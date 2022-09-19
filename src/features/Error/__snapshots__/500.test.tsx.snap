@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Error500 /> match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    500 Internal Server Error
+  </div>
+</DocumentFragment>
+`;

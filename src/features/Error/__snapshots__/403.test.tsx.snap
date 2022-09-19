@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Error403 /> match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    403 Forbidden
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AuthenticationContainer /> match snapshot 1`] = `
+<DocumentFragment>
+  <p>
+    AuthenticationContainer
+  </p>
+</DocumentFragment>
+`;

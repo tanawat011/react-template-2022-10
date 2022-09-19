@@ -1,5 +1,5 @@
-import type { ButtonProps } from 'components/Button'
 import type { RenderResult } from '@testing-library/react'
+import type { ButtonProps } from 'components/Button'
 
 import { waitFor, screen, fireEvent, act } from '@testing-library/react'
 

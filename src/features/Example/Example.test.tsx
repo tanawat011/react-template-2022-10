@@ -1,11 +1,11 @@
-import type { ButtonProps } from 'components/Button'
 import type { RenderResult } from '@testing-library/react'
+import type { ButtonProps } from 'components/Button'
 
 import { waitFor, screen, act } from '@testing-library/react'
 import { mocked } from 'jest-mock'
 
-import { renderWithProviders } from 'helpers/test'
 import { fetchApi } from 'helpers/api'
+import { renderWithProviders } from 'helpers/test'
 
 import { Example } from './Example'
 

@@ -10,8 +10,10 @@ A Frontend Backoffice Project for Fixtab project.
 
 ## 🛣 Active Branch
 
-- [x] `main` (protected) => for UAT, Staging & Production.
-- [x] `dev` (default & protected) => for development mode.
+- [x] `main` (protected) => Production mode.
+- [x] `staging` protected) => Staging mode for QA testing.
+- [x] `uat` protected) => UAT mode for development user.
+- [x] `dev` (default & protected) => Development mode for developer.
 
 ## 📋 Usage
 
@@ -58,7 +60,7 @@ A Frontend Backoffice Project for Fixtab project.
 - [x] Husky (for linting)
 - [x] React Hook Form (for form validation)
 - [ ] Yup (for schema form validation)
-- [x] React Router (for routing)
+- [x] React Router Dom V6 (for routing)
 - [x] Axios (for HTTP requests)
 - [ ] Sentry (for error reporting)
 - [x] Recoil (for state management)
@@ -68,3 +70,40 @@ A Frontend Backoffice Project for Fixtab project.
 - [ ] `Error Page` (for error handling)
 - [ ] `Loading Page` (for loading handling)
 - [ ] `Modal` (for modal handling)
+
+## HOW TO
+
+### How to add a new container
+
+- Create a new folder in `src/containers` with the name of the container.
+- Create a new file with the container name.
+  - Each container will have at least 2 files.
+    - `Container.tsx` (for container layout)
+    - `index.ts` (for exporting component)
+- This container will used in the feature
+
+### How to add a new component
+
+- Create a new folder in `src/components` with the component name.
+- Create a new file with the component name.
+  - Each component will have at least 3 files.
+    - `Button.stories.tsx` (for storybook)
+    - `Button.test.tsx` (for unit testing)
+    - `Button.ts` (for component)
+    - `index.ts` (for exporting component)
+
+### How to add a new feature
+
+- Create a new folder in `src/features` with the feature name.
+- Create a new file with the feature name.
+  - For example.
+    - `TodoForm.tsx`
+    - `TodoDetail.tsx`
+    - `index.ts` (for exporting feature)
+
+### How to add a new page
+
+- Add a new route in `src/Routes.tsx` file.
+- Add a new member in type `Path`.
+- Add a new path in constant `PATH`.
+- Add a new route in component `AppRoutes`.

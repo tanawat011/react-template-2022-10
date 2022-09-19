@@ -3,8 +3,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
 
-import { setupEnv } from 'configs/env'
 import { setupAxios } from 'configs/axios'
+import { setupEnv } from 'configs/env'
 import { setupLocales } from 'locales/i18n'
 
 import { AppRoutes } from './Routes'

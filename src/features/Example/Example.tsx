@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 
-import { exampleState } from 'recoils/example'
 import { fetchApi } from 'helpers/api'
+import { exampleState } from 'recoils/example'
 
 import logo from '../../logo.svg'
 

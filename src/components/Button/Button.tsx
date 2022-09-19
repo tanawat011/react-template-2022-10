@@ -1,5 +1,5 @@
-import type { ButtonType, Color, Size } from 'types/common'
 import type { TwStyle } from 'twin.macro'
+import type { ButtonType, Color, Size } from 'types/common'
 
 import tw, { styled } from 'twin.macro'
 

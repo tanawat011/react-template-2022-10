@@ -2,16 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Fixtab Backoffice `SILOM` version
+## Project Name
 
 ```text
-A Frontend Backoffice Project for Fixtab project.
+A Frontend Backoffice Project.
 ```
 
 ## 🛣 Active Branch
 
-- [x] `main` (protected) => for UAT, Staging & Production.
-- [x] `dev` (default & protected) => for development mode.
+- [x] `main` (protected) => Production mode.
+- [x] `staging` protected) => Staging mode for QA testing.
+- [x] `uat` protected) => UAT mode for development user.
+- [x] `dev` (default & protected) => Development mode for developer.
 
 ## 📋 Usage
 

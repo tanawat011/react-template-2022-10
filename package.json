@@ -81,7 +81,6 @@
     "postcss-cli": "^10.0.0",
     "postcss-import": "^14.1.0",
     "prettier": "^2.7.1",
-    "prop-types": "^15.8.1",
     "sass": "^1.54.3",
     "storybook-dark-mode": "^1.1.0",
     "styled-components": "^5.3.5",

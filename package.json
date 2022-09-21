@@ -1,6 +1,6 @@
 {
   "name": "fixtab-backoffice",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -24,7 +24,10 @@
     "pre:commit": "yarn lint && yarn build && yarn build:css",
     "pre:push": "yarn test:cv",
     "husky:install": "husky install",
-    "husky:add": "husky add"
+    "husky:add": "husky add",
+    "v:major": "yarn version --major",
+    "v:minor": "yarn version --minor",
+    "v:patch": "yarn version --patch"
   },
   "dependencies": {
     "axios": "^0.27.2",

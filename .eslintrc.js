@@ -75,6 +75,7 @@ module.exports = {
         '@typescript-eslint/consistent-type-imports': 'error',
         '@typescript-eslint/keyword-spacing': 'error',
         '@typescript-eslint/no-explicit-any': 'warn', // * Do not use `any` type
+        '@typescript-eslint/no-shadow': ['error'],
         '@typescript-eslint/no-unused-vars': 'warn', // * Unused variables
         '@typescript-eslint/padding-line-between-statements': [
           'error',
@@ -100,7 +101,9 @@ module.exports = {
             'pathGroupsExcludedImportTypes': ['react'], // * Do not group react imports
             'groups': importOrder
           }
-        ]
+        ],
+        'no-shadow': 'off',
+        'no-undef': 'off',
       }
     }
   ]

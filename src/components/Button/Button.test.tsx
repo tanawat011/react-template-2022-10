@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
+import { renderWithProviders } from 'helpers/test'
+
 import { Button } from '../Button'
 
 describe('<Button />', () => {
@@ -51,5 +53,11 @@ describe('<Button />', () => {
     expect(button).toHaveStyleRule('background-color', 'rgb(215 219 224 / var(--tw-bg-opacity))', {
       modifier: ':disabled',
     })
+  })
+
+  test('should render link button', () => {
+    renderWithProviders(<Button link label='test' />)
+    const button = screen.getByTestId(/button/i)
+    expect(button).toHaveStyleRule('background-color', 'rgb(24 28 35 / var(--tw-bg-opacity))')
   })
 })

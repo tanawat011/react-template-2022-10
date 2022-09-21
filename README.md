@@ -72,6 +72,13 @@ A Frontend Backoffice Project for Fixtab project.
 - [ ] `Modal` (for modal handling)
 - [ ] Router authentication guard (for authentication handling)
 
+## Document
+
+- [Git & Changelog format](./docs/git_and_changelog_format.md)
+- [Available scripts](./docs/available_scripts.md)
+- [Unit-test](./docs/unit_test.md)
+- [Better comment](./docs/better-comments.md)
+
 ## HOW TO
 
 ### How to add a new container

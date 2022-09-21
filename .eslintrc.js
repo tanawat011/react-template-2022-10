@@ -1,5 +1,16 @@
 const statements = ['if', 'for', 'while', 'do', 'switch', 'try', 'class', 'function']
 const statementsVariables = ['const', 'let', 'var']
+const importAlphabetize = { 'order': 'asc' } // * Alphabetize imports
+const importOrder = [
+  'type', // * import type
+  'builtin',  // * import react
+  'external', // * import from node_modules
+  'internal', // * import from src
+  'parent', // * import from parent folder
+  'sibling', // * import from sibling folder
+  'index', // * import from index
+  'object' // * import from object
+]
 
 module.exports = {
   'root': true,
@@ -77,7 +88,7 @@ module.exports = {
         'import/order': [
           'error',
           {
-            'alphabetize': { 'order': 'asc' }, // * Alphabetize imports
+            'alphabetize': importAlphabetize, // * Alphabetize imports
             'newlines-between': 'always', // * always add a blank line between imports
             'pathGroups': [
               {
@@ -87,16 +98,7 @@ module.exports = {
               }
             ],
             'pathGroupsExcludedImportTypes': ['react'], // * Do not group react imports
-            'groups': [
-              'type', // * import type
-              'builtin',  // * import react
-              'external', // * import from node_modules
-              'internal', // * import from src
-              'parent', // * import from parent folder
-              'sibling', // * import from sibling folder
-              'index', // * import from index
-              'object' // * import from object
-            ]
+            'groups': importOrder
           }
         ]
       }

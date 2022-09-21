@@ -1,6 +1,8 @@
+import type { To } from 'react-router-dom'
 import type { TwStyle } from 'twin.macro'
 import type { ButtonType, Color, Size } from 'types/common'
 
+import { Link } from 'react-router-dom'
 import tw, { styled } from 'twin.macro'
 
 export interface ButtonProps {
@@ -12,6 +14,8 @@ export interface ButtonProps {
   children?: React.ReactNode
   loading?: boolean
   disabled?: boolean
+  link?: boolean
+  to?: To
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -21,7 +25,7 @@ const colorVariant: { [key in Color]: TwStyle } = {
   ternary: tw`bg-soft-lapis-blue hover:bg-onyx-gray disabled:bg-jade-gray`,
 }
 
-const TwButton = styled.button((props: ButtonProps) => [
+const styleButton = (props: ButtonProps) => [
   tw`
       flex
       justify-center
@@ -39,13 +43,24 @@ const TwButton = styled.button((props: ButtonProps) => [
       cursor-pointer
     `,
   colorVariant[props.color || 'primary'],
-])
+]
+
+const TwButton = styled.button(styleButton)
+const TwButtonLink = styled(Link)(styleButton)
 
 export const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
-  const { children, disabled, label = '', onClick } = props
+  const { children, disabled, label = '', onClick, link, to, ...allProps } = props
+
+  if (link) {
+    return (
+      <TwButtonLink {...allProps} to={to || ''} data-testid='button-link'>
+        {children ? children : <span>{label}</span>}
+      </TwButtonLink>
+    )
+  }
 
   return (
-    <TwButton {...props} disabled={disabled} onClick={onClick} data-testid='button'>
+    <TwButton {...allProps} disabled={disabled} onClick={onClick} data-testid='button'>
       {children ? children : <span>{label}</span>}
     </TwButton>
   )

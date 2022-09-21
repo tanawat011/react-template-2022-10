@@ -45,25 +45,25 @@ A Frontend Backoffice Project for Fixtab project.
 
 ## Code Features
 
-- [x] Typescript support
-- [x] SCSS support
-- [x] Tailwind CSS (with Tailwind preset)
-- [x] Styled Components (with Styled Components preset)
-- [x] Twin.macro (with Styled Component for Tailwind)
-- [x] Jest (for unit testing)
-- [x] Storybook (for component documentation)
+- [x] [Typescript](https://www.typescriptlang.org/docs/) support
+- [x] [SCSS](https://sass-lang.com/documentation/) support
+- [x] [Tailwind CSS](https://tailwindcss.com/docs/installation) (with Tailwind preset)
+- [x] [Styled Components](https://styled-components.com/docs) (with Styled Components preset)
+- [x] [Twin.macro](https://github.com/ben-rogerson/twin.macro) (with Styled Component for Tailwind)
+- [x] [Jest](https://jestjs.io/docs/getting-started) (for unit testing)
+- [x] [Storybook](https://storybook.js.org/docs/react/get-started/introduction) (for component documentation)
 - [ ] Cypress (for E2E testing)
-- [x] ESLint (for linting)
-- [x] Prettier (for formatting)
+- [x] [ESLint](https://eslint.org/docs/latest/) (for linting)
+- [x] [Prettier](https://prettier.io/docs/en/index.html) (for formatting)
 - [ ] Stylelint (for linting)
-- [x] i18n (for internationalization)
-- [x] Husky (for linting)
-- [x] React Hook Form (for form validation)
+- [x] [i18n](https://www.i18next.com/) (for internationalization)
+- [x] [Husky](https://typicode.github.io/husky/#/) (for linting)
+- [x] [React Hook Form](https://react-hook-form.com/get-started/) (for form validation)
 - [ ] Yup (for schema form validation)
-- [x] React Router Dom V6 (for routing)
-- [x] Axios (for HTTP requests)
+- [x] [React Router Dom V6](https://reactrouter.com/en/main/start/overview) (for routing)
+- [x] [Axios](https://github.com/axios/axios) (for HTTP requests)
 - [ ] Sentry (for error reporting)
-- [x] Recoil (for state management)
+- [x] [Recoil](https://recoiljs.org/docs/introduction/getting-started) (for state management)
 
 ## Utilities Support
 
@@ -79,6 +79,7 @@ A Frontend Backoffice Project for Fixtab project.
 - Create a new folder in `src/containers` with the name of the container.
 - Create a new file with the container name.
   - Each container will have at least 2 files.
+    - `Container.test.tsx` (for snapshot testing)
     - `Container.tsx` (for container layout)
     - `index.ts` (for exporting component)
 - This container will used in the feature
@@ -98,8 +99,8 @@ A Frontend Backoffice Project for Fixtab project.
 - Create a new folder in `src/features` with the feature name.
 - Create a new file with the feature name.
   - For example.
-    - `TodoForm.tsx`
-    - `TodoDetail.tsx`
+    - `Feature.test.tsx` (for snapshot testing)
+    - `Feature.tsx`
     - `index.ts` (for exporting feature)
 
 ### How to add a new page

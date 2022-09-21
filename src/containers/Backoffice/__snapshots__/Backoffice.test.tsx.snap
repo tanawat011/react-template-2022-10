@@ -2,33 +2,231 @@
 
 exports[`<BackofficeContainer /> match snapshot 1`] = `
 <DocumentFragment>
-  <p>
-    BackofficeContainer
-  </p>
-  <a
-    href="/home"
+  .c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 2.25rem;
+  min-width: 156px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 30px;
+  font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  cursor: pointer;
+  --tw-bg-opacity: 1;
+  background-color: rgb(24 28 35 / var(--tw-bg-opacity));
+}
+
+.c6:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 64 80 / var(--tw-bg-opacity));
+}
+
+.c6:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(215 219 224 / var(--tw-bg-opacity));
+}
+
+.c1 {
+  width: 100%;
+  height: 100vh;
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
+.c3 {
+  min-width: 280px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
+.c4 {
+  min-height: 64px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
+.c5 {
+  height: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.c7 {
+  width: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+}
+
+.c8 {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  min-height: 64px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.c9 {
+  height: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+
+<div
+    class="c0 c1"
   >
-    Home
-  </a>
-  <a
-    href="/todo"
-  >
-    Todo
-  </a>
-  <a
-    href="/about"
-  >
-    About
-  </a>
-  <a
-    href="/about2"
-  >
-    About2
-  </a>
-  <a
-    href="/auth"
-  >
-    Logout
-  </a>
+    <div
+      class="c2 c3"
+    >
+      <div
+        class="c0 c4"
+      >
+        Sidebar Header
+      </div>
+      <div
+        class="c2 c5"
+      >
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/home"
+        >
+          Home
+        </a>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/todo"
+        >
+          Todo
+        </a>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/about"
+        >
+          About
+        </a>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/about2"
+        >
+          About2
+        </a>
+        <h1>
+          Error Stage
+        </h1>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/401"
+        >
+          Error 401
+        </a>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/403"
+        >
+          Error 403
+        </a>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/404"
+        >
+          Error 404
+        </a>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/500"
+        >
+          Error 500
+        </a>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/502"
+        >
+          Error 502
+        </a>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/503"
+        >
+          Error 503
+        </a>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/504"
+        >
+          Error 504
+        </a>
+      </div>
+    </div>
+    <div
+      class="c2 c7"
+    >
+      <div
+        class="c0 c8"
+      >
+        <p>
+          Container Header
+        </p>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/auth"
+        >
+          Logout
+        </a>
+      </div>
+      <div
+        class="c0 c9"
+      />
+    </div>
+  </div>
 </DocumentFragment>
 `;

@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react'
+import { renderWithProviders } from 'helpers/test'
 
 import { Error504 } from './504'
 
 describe('<Error504 />', () => {
   test('match snapshot', () => {
-    const { asFragment } = render(<Error504 />)
+    const { asFragment } = renderWithProviders(<Error504 />)
     expect(asFragment()).toMatchSnapshot()
   })
 })

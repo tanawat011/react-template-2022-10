@@ -6,7 +6,7 @@ import { AuthenticationContainer } from './Authentication'
 describe('<AuthenticationContainer />', () => {
   test('should render', () => {
     const { container } = renderWithProviders(<AuthenticationContainer />, {
-      router: { route: `/${PATH.AUTH._PATH}` },
+      router: { route: `/${PATH.AUTH.ROOT}` },
     })
     expect(container).toBeInTheDocument()
   })

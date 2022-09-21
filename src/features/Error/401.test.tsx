@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react'
+import { renderWithProviders } from 'helpers/test'
 
 import { Error401 } from './401'
 
 describe('<Error401 />', () => {
   test('match snapshot', () => {
-    const { asFragment } = render(<Error401 />)
+    const { asFragment } = renderWithProviders(<Error401 />)
     expect(asFragment()).toMatchSnapshot()
   })
 })

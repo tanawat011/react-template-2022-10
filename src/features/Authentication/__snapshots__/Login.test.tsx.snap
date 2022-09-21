@@ -2,18 +2,91 @@
 
 exports[`<Login /> match snapshot 1`] = `
 <DocumentFragment>
-  <p>
-    Login
-  </p>
-  <a
-    href="/home"
+  .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 2.25rem;
+  min-width: 156px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 30px;
+  font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  cursor: pointer;
+  --tw-bg-opacity: 1;
+  background-color: rgb(24 28 35 / var(--tw-bg-opacity));
+}
+
+.c0:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 64 80 / var(--tw-bg-opacity));
+}
+
+.c0:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(215 219 224 / var(--tw-bg-opacity));
+}
+
+<div
+    id="login-form"
   >
-    Login
-  </a>
-  <a
-    href="/forgot-password"
-  >
-    Forgot Password
-  </a>
+    <h1>
+      Login
+    </h1>
+    <form
+      class="flex flex-col"
+    >
+      <label
+        id="username"
+      >
+        Username
+      </label>
+      <input
+        id="username"
+      />
+      <label
+        id="password"
+      >
+        Password
+      </label>
+      <input
+        id="password"
+      />
+      <div
+        class="flex"
+      >
+        <a
+          class="c0"
+          data-testid="button-link"
+          href="/home"
+        >
+          Login
+        </a>
+        <a
+          class="c0"
+          data-testid="button-link"
+          href="/forgot-password"
+        >
+          Forgot Password
+        </a>
+      </div>
+    </form>
+  </div>
 </DocumentFragment>
 `;

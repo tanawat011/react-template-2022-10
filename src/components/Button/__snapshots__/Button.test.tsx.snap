@@ -46,7 +46,6 @@ exports[`<Button /> match snapshot 1`] = `
 <button
     class="c0"
     data-testid="button"
-    label="test"
   >
     <span>
       test

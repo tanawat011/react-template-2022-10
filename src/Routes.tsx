@@ -20,20 +20,20 @@ import { Todo } from 'features/Todo'
 
 type Path = {
   AUTH: {
-    _PATH: string
+    ROOT: string
     LOGIN: string
     CHANGE_PASSWORD: string
     FORGOT_PASSWORD: string
   }
   BACKOFFICE: {
-    _PATH: string
+    ROOT: string
     HOME: string
     TODO: string
     ABOUT: string
     ABOUT2: string
   }
   ERROR: {
-    _PATH: string
+    ROOT: string
     401: string
     403: string
     404: string
@@ -46,20 +46,20 @@ type Path = {
 
 export const PATH: Path = {
   AUTH: {
-    _PATH: 'auth',
+    ROOT: 'auth',
     LOGIN: 'login',
     CHANGE_PASSWORD: 'change-password',
     FORGOT_PASSWORD: 'forgot-password',
   },
   BACKOFFICE: {
-    _PATH: '/',
+    ROOT: '/',
     HOME: 'home',
     TODO: 'todo',
     ABOUT: 'about',
     ABOUT2: 'about2',
   },
   ERROR: {
-    _PATH: '',
+    ROOT: '',
     401: '401',
     403: '403',
     404: '404',
@@ -74,14 +74,14 @@ export const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={PATH.AUTH._PATH} element={<AuthenticationContainer />}>
+        <Route path={PATH.AUTH.ROOT} element={<AuthenticationContainer />}>
           <Route index element={<Login />} />
           <Route path={PATH.AUTH.LOGIN} element={<Login />} />
           <Route path={PATH.AUTH.CHANGE_PASSWORD} element={<ChangePassword />} />
           <Route path={PATH.AUTH.FORGOT_PASSWORD} element={<ForgotPassword />} />
         </Route>
 
-        <Route path={PATH.BACKOFFICE._PATH} element={<BackofficeContainer />}>
+        <Route path={PATH.BACKOFFICE.ROOT} element={<BackofficeContainer />}>
           <Route index element={<Home />} />
           <Route path={PATH.BACKOFFICE.HOME} element={<Home />} />
           <Route path={PATH.BACKOFFICE.TODO} element={<Todo />} />
@@ -89,7 +89,7 @@ export const AppRoutes = () => {
           <Route path={PATH.BACKOFFICE.ABOUT2} element={<Example2 />} />
         </Route>
 
-        <Route path={PATH.ERROR._PATH} element={<ErrorContainer />}>
+        <Route path={PATH.ERROR.ROOT} element={<ErrorContainer />}>
           <Route index element={<Error404 />} />
           <Route path={PATH.ERROR[401]} element={<Error401 />} />
           <Route path={PATH.ERROR[403]} element={<Error403 />} />

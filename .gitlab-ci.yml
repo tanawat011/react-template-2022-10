@@ -12,6 +12,13 @@ before_script:
   - whoami
   - pwd
   - ls -lrta
+
+fake:
+  stage: test
+  tags:
+    - sonar-cli
+  script:
+    - echo 'fake'
 # # SCAN
 # scan:
 #   stage: test

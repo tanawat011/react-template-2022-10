@@ -68,7 +68,7 @@ A Frontend Backoffice Project for Fixtab project.
 ## Utilities Support
 
 - [x] `Error Page` (for error handling)
-- [ ] `Loading Page` (for loading handling)
+- [ ] `Page Loading` (for loading handling)
 - [ ] `Modal` (for modal handling)
 - [ ] Router authentication guard (for authentication handling)
 

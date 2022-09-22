@@ -3,20 +3,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthenticationContainer } from 'containers/Authentication'
 import { BackofficeContainer } from 'containers/Backoffice'
 import { ErrorContainer } from 'containers/Error'
-import { ChangePassword, ForgotPassword, Login } from 'features/Authentication'
-import {
-  Error401,
-  Error403,
-  Error404,
-  Error500,
-  Error502,
-  Error503,
-  Error504,
-} from 'features/Error'
-import { Example } from 'features/Example'
-import { Example2 } from 'features/Example2'
-import { Home } from 'features/Home'
-import { Todo } from 'features/Todo'
+import { ChangePassword, ForgotPassword, Login } from 'pages/Authentication'
+import { Error401, Error403, Error404, Error500, Error502, Error503, Error504 } from 'pages/Error'
+import { Example } from 'pages/Example'
+import { Example2 } from 'pages/Example2'
+import { Home } from 'pages/Home'
+import { Todo } from 'pages/Todo/TodoDetail'
 
 type Path = {
   AUTH: {

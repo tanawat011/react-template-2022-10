@@ -12,6 +12,13 @@ module.exports = {
   theme: {
     ...defaultTheme,
     extend: {
+      screens: {
+        'mobile': { max: '767px' },                 // * => @media (max-width: 767px) { ... }
+        'tablet': { min: '768px', max: '1023px' },  // * => @media (min-width: 768px && max-width: 1023px) { ... }
+        'laptop': '1024px',                         // * => @media (min-width: 1024px) { ... }
+        'desktop': '1280px',                        // * => @media (min-width: 1280px) { ... }
+        'desktop-xl': '1600px',                     // * => @media (min-width: 1600px) { ... }
+      },
       colors: {
         // Primary color
         'space-blue': '#181c23',

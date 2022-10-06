@@ -11,9 +11,9 @@ const TwContainer = tw(TwRow)`w-full h-screen bg-slate-200`
 const TwSidebar = tw(TwCol)`min-w-[280px] bg-slate-300`
 const TwSidebarHeader = tw(TwRow)`min-h-[64px] bg-slate-400`
 const TwSidebarMenu = tw(TwCol)`h-full bg-slate-500`
-const TwFeature = tw(TwCol)`w-full bg-slate-600`
+const TwFeature = tw(TwCol)`w-full overflow-auto bg-slate-600`
 const TwFeatureHeader = tw(TwRow)`justify-between min-h-[64px] bg-slate-700`
-const TwFeatureContainer = tw(TwRow)`h-full bg-slate-800`
+const TwFeatureContainer = tw(TwRow)`h-full overflow-x-auto bg-slate-800`
 
 export const BackofficeContainer: React.FC = () => {
   const location = useLocation()
@@ -54,7 +54,9 @@ export const BackofficeContainer: React.FC = () => {
           <Button link to={`../${PATH.BACKOFFICE.READ_CSV}`}>
             Read CSV
           </Button>
+
           <h1>Error Stage</h1>
+
           <Button link to={`/${PATH.ERROR[401]}`}>
             Error 401
           </Button>

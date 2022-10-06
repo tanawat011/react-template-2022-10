@@ -6,8 +6,9 @@ import { ErrorContainer } from 'containers/Error'
 import { ChangePassword, ForgotPassword, Login } from 'pages/Authentication'
 import { Error401, Error403, Error404, Error500, Error502, Error503, Error504 } from 'pages/Error'
 import { Example } from 'pages/Example'
-import { Example2 } from 'pages/Example2'
+import { Game } from 'pages/Game'
 import { Home } from 'pages/Home'
+import { ReadCsv } from 'pages/ReadCsv'
 import { Todo } from 'pages/Todo/TodoDetail'
 
 type Path = {
@@ -22,7 +23,8 @@ type Path = {
     HOME: string
     TODO: string
     ABOUT: string
-    ABOUT2: string
+    GAME: string
+    READ_CSV: string
   }
   ERROR: {
     ROOT: string
@@ -48,7 +50,8 @@ export const PATH: Path = {
     HOME: 'home',
     TODO: 'todo',
     ABOUT: 'about',
-    ABOUT2: 'about2',
+    GAME: 'game',
+    READ_CSV: 'read-csv',
   },
   ERROR: {
     ROOT: '',
@@ -78,7 +81,8 @@ export const AppRoutes = () => {
           <Route path={PATH.BACKOFFICE.HOME} element={<Home />} />
           <Route path={PATH.BACKOFFICE.TODO} element={<Todo />} />
           <Route path={PATH.BACKOFFICE.ABOUT} element={<Example />} />
-          <Route path={PATH.BACKOFFICE.ABOUT2} element={<Example2 />} />
+          <Route path={PATH.BACKOFFICE.GAME} element={<Game />} />
+          <Route path={PATH.BACKOFFICE.READ_CSV} element={<ReadCsv />} />
         </Route>
 
         <Route path={PATH.ERROR.ROOT} element={<ErrorContainer />}>

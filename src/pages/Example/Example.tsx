@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 
-import { fetchApi } from 'helpers/api'
 import { exampleState } from 'recoils/example'
 
 import logo from '../../logo.svg'
@@ -14,10 +13,9 @@ export const Example = () => {
   const [users, setUsers] = useState([])
 
   const fetchUsers = async () => {
-    const { data } = await fetchApi({
-      method: 'get',
-      path: '/users',
-    })
+    const { data } = {
+      data: [],
+    }
 
     setUsers(data as [])
   }

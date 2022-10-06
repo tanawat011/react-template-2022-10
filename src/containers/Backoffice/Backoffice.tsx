@@ -48,8 +48,11 @@ export const BackofficeContainer: React.FC = () => {
           <Button link to={`../${PATH.BACKOFFICE.ABOUT}`}>
             About
           </Button>
-          <Button link to={`../${PATH.BACKOFFICE.ABOUT2}`}>
-            About2
+          <Button link to={`../${PATH.BACKOFFICE.GAME}`}>
+            Game
+          </Button>
+          <Button link to={`../${PATH.BACKOFFICE.READ_CSV}`}>
+            Read CSV
           </Button>
           <h1>Error Stage</h1>
           <Button link to={`/${PATH.ERROR[401]}`}>

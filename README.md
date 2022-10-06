@@ -2,10 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Fixtab Backoffice `SILOM` version
+## Backoffice `SILOM` version
 
 ```text
-A Frontend Backoffice Project for Fixtab project.
+A Frontend Backoffice Project.
 ```
 
 ## 🛣 Active Branch
@@ -39,9 +39,9 @@ A Frontend Backoffice Project for Fixtab project.
 
 ## 📚 Private Package Dependencies
 
-- [ ] @fixtab/common-types
-- [ ] @fixtab/helpers
-- [ ] @fixtab/lint-config
+- [ ] @app/common-types
+- [ ] @app/helpers
+- [ ] @app/lint-config
 
 ## Code Features
 

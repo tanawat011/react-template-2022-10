@@ -2,8 +2,8 @@ version: '3.5'
 
 services:
   backoffice:
-    container_name: fixtab_backoffice_local
-    image: fixtab_backoffice_local
+    container_name: backoffice_local
+    image: backoffice_local
     build:
       context: .
       dockerfile: ./docker/Dockerfile.local

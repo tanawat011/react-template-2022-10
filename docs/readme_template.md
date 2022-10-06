@@ -34,9 +34,9 @@ A Frontend Backoffice Project.
 
 ## 📚 Private Package Dependencies
 
-- [ ] @fixtab/common-types
-- [ ] @fixtab/helpers
-- [ ] @fixtab/lint-config
+- [ ] @app/common-types
+- [ ] @app/helpers
+- [ ] @app/lint-config
 
 ## Code Features
 

@@ -12,19 +12,19 @@ start:
 stop:
 	docker-compose down
 exec:
-	docker exec -it fixtab_backoffice_renew_local sh
+	docker exec -it backoffice_renew_local sh
 log:
-	docker logs -f fixtab_backoffice_renew_local
+	docker logs -f backoffice_renew_local
 
 clean-dev:
-	docker rm -f fixtab-dev && docker rmi -f registry.gitlab.com/magicboxsolutionsco.ltd/softwaredvelopment/fixtab/fixtab-backoffice-re-new:development
+	docker rm -f app-dev && docker rmi -f registry.gitlab.com/app-backoffice-re-new:development
 build-dev:
-	docker --debug build -t registry.gitlab.com/magicboxsolutionsco.ltd/softwaredvelopment/fixtab/fixtab-backoffice-re-new:development -f ./docker/Dockerfile . --build-arg NODE_ENV=development --no-cache
+	docker --debug build -t registry.gitlab.com/app-backoffice-re-new:development -f ./docker/Dockerfile . --build-arg NODE_ENV=development --no-cache
 start-dev:
-	docker run -i -t --name fixtab-dev -p 80:80 registry.gitlab.com/magicboxsolutionsco.ltd/softwaredvelopment/fixtab/fixtab-backoffice-re-new:development
+	docker run -i -t --name app-dev -p 80:80 registry.gitlab.com/app-backoffice-re-new:development
 stop-dev:
-	docker rm -f fixtab-dev
+	docker rm -f app-dev
 exec-dev:
-	docker exec -it fixtab-dev sh
+	docker exec -it app-dev sh
 log-dev:
-	docker logs -f fixtab-dev
+	docker logs -f app-dev

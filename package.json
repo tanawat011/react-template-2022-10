@@ -27,11 +27,16 @@
     "husky:add": "husky add",
     "v:major": "yarn version --major",
     "v:minor": "yarn version --minor",
-    "v:patch": "yarn version --patch"
+    "v:patch": "yarn version --patch",
+    "login:deploy": "firebase login",
+    "init:deploy": "firebase init",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
+    "@types/uuid": "^8.3.4",
     "axios": "^0.27.2",
     "clsx": "^1.2.1",
+    "firebase": "9.10.0",
     "i18next": "^21.8.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,6 +45,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "recoil": "^0.7.4",
+    "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
@@ -56,6 +62,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/firebase": "^3.2.1",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.47",
     "@types/react": "^18.0.15",

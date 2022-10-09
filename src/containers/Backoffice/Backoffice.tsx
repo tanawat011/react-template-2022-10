@@ -19,7 +19,10 @@ export const BackofficeContainer: React.FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const homePath = `../${PATH.BACKOFFICE.HOME}`
+  const { AUTH, BACKOFFICE, ERROR } = PATH
+  const { ROOT: GAME, HUES_AND_CUES } = BACKOFFICE.GAME
+
+  const homePath = `../${BACKOFFICE.HOME}`
 
   useEffect(() => {
     handleRedirectToHome()
@@ -42,40 +45,40 @@ export const BackofficeContainer: React.FC = () => {
           <Button link to={homePath}>
             Home
           </Button>
-          <Button link to={`../${PATH.BACKOFFICE.TODO}`}>
+          <Button link to={`../${BACKOFFICE.TODO}`}>
             Todo
           </Button>
-          <Button link to={`../${PATH.BACKOFFICE.ABOUT}`}>
+          <Button link to={`../${BACKOFFICE.ABOUT}`}>
             About
           </Button>
-          <Button link to={`../${PATH.BACKOFFICE.GAME}`}>
+          <Button link to={`../${GAME}/${HUES_AND_CUES.ROOT}/${HUES_AND_CUES.SET_DISPLAY_NAME}`}>
             Game
           </Button>
-          <Button link to={`../${PATH.BACKOFFICE.READ_CSV}`}>
+          <Button link to={`../${BACKOFFICE.READ_CSV}`}>
             Read CSV
           </Button>
 
           <h1>Error Stage</h1>
 
-          <Button link to={`/${PATH.ERROR[401]}`}>
+          <Button link to={`/${ERROR[401]}`}>
             Error 401
           </Button>
-          <Button link to={`/${PATH.ERROR[403]}`}>
+          <Button link to={`/${ERROR[403]}`}>
             Error 403
           </Button>
-          <Button link to={`/${PATH.ERROR[404]}`}>
+          <Button link to={`/${ERROR[404]}`}>
             Error 404
           </Button>
-          <Button link to={`/${PATH.ERROR[500]}`}>
+          <Button link to={`/${ERROR[500]}`}>
             Error 500
           </Button>
-          <Button link to={`/${PATH.ERROR[502]}`}>
+          <Button link to={`/${ERROR[502]}`}>
             Error 502
           </Button>
-          <Button link to={`/${PATH.ERROR[503]}`}>
+          <Button link to={`/${ERROR[503]}`}>
             Error 503
           </Button>
-          <Button link to={`/${PATH.ERROR[504]}`}>
+          <Button link to={`/${ERROR[504]}`}>
             Error 504
           </Button>
         </TwSidebarMenu>
@@ -85,7 +88,7 @@ export const BackofficeContainer: React.FC = () => {
         <TwFeatureHeader>
           <p>Container Header</p>
 
-          <Button link to={`/${PATH.AUTH.ROOT}`}>
+          <Button link to={`/${AUTH.ROOT}`}>
             Logout
           </Button>
         </TwFeatureHeader>

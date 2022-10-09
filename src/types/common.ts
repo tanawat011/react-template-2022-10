@@ -8,4 +8,4 @@ export type TwProps<T> = {
 
 export type RequestMethod = 'get' | 'post' | 'put' | 'patch' | 'delete'
 
-export type AnyType = string | number | boolean
+export type AnyType = string | number | boolean | object | never | unknown

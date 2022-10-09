@@ -1,0 +1,7 @@
+export * from './deleteCollection'
+export * from './deleteDocument'
+export * from './getAllDocuments'
+export * from './getDocument'
+export * from './setDocument'
+export * from './subscribeCollection'
+export * from './updateDocument'

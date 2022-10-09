@@ -42,9 +42,7 @@ exports[`<Example /> match snapshot 1`] = `
       </code>
       <code
         style="background: blue;"
-      >
-        {"id":2,"name":"doe"}
-      </code>
+      />
     </header>
   </div>
 </DocumentFragment>

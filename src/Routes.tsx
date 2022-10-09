@@ -6,7 +6,7 @@ import { ErrorContainer } from 'containers/Error'
 import { ChangePassword, ForgotPassword, Login } from 'pages/Authentication'
 import { Error401, Error403, Error404, Error500, Error502, Error503, Error504 } from 'pages/Error'
 import { Example } from 'pages/Example'
-import { Game } from 'pages/Game'
+import { SetDisplayName, GameHuesAndCues, SetupRoom } from 'pages/Game'
 import { Home } from 'pages/Home'
 import { ReadCsv } from 'pages/ReadCsv'
 import { Todo } from 'pages/Todo/TodoDetail'
@@ -23,7 +23,14 @@ type Path = {
     HOME: string
     TODO: string
     ABOUT: string
-    GAME: string
+    GAME: {
+      ROOT: string
+      HUES_AND_CUES: {
+        ROOT: string
+        SET_DISPLAY_NAME: string
+        SETUP_ROOM: string
+      }
+    }
     READ_CSV: string
   }
   ERROR: {
@@ -50,7 +57,14 @@ export const PATH: Path = {
     HOME: 'home',
     TODO: 'todo',
     ABOUT: 'about',
-    GAME: 'game',
+    GAME: {
+      ROOT: 'game',
+      HUES_AND_CUES: {
+        ROOT: 'hues-and-cues',
+        SET_DISPLAY_NAME: 'set-display-name',
+        SETUP_ROOM: 'setup-room',
+      },
+    },
     READ_CSV: 'read-csv',
   },
   ERROR: {
@@ -66,34 +80,43 @@ export const PATH: Path = {
 }
 
 export const AppRoutes = () => {
+  const { AUTH, BACKOFFICE, ERROR } = PATH
+  const { ROOT: GAME, HUES_AND_CUES } = BACKOFFICE.GAME
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={PATH.AUTH.ROOT} element={<AuthenticationContainer />}>
+        <Route path={AUTH.ROOT} element={<AuthenticationContainer />}>
           <Route index element={<Login />} />
-          <Route path={PATH.AUTH.LOGIN} element={<Login />} />
-          <Route path={PATH.AUTH.CHANGE_PASSWORD} element={<ChangePassword />} />
-          <Route path={PATH.AUTH.FORGOT_PASSWORD} element={<ForgotPassword />} />
+          <Route path={AUTH.LOGIN} element={<Login />} />
+          <Route path={AUTH.CHANGE_PASSWORD} element={<ChangePassword />} />
+          <Route path={AUTH.FORGOT_PASSWORD} element={<ForgotPassword />} />
         </Route>
 
-        <Route path={PATH.BACKOFFICE.ROOT} element={<BackofficeContainer />}>
+        <Route path={BACKOFFICE.ROOT} element={<BackofficeContainer />}>
           <Route index element={<Home />} />
-          <Route path={PATH.BACKOFFICE.HOME} element={<Home />} />
-          <Route path={PATH.BACKOFFICE.TODO} element={<Todo />} />
-          <Route path={PATH.BACKOFFICE.ABOUT} element={<Example />} />
-          <Route path={PATH.BACKOFFICE.GAME} element={<Game />} />
-          <Route path={PATH.BACKOFFICE.READ_CSV} element={<ReadCsv />} />
+          <Route path={BACKOFFICE.HOME} element={<Home />} />
+          <Route path={BACKOFFICE.TODO} element={<Todo />} />
+          <Route path={BACKOFFICE.ABOUT} element={<Example />} />
+          <Route path={GAME}>
+            <Route path={HUES_AND_CUES.ROOT}>
+              <Route path={':roomId'} element={<GameHuesAndCues />} />
+              <Route path={HUES_AND_CUES.SET_DISPLAY_NAME} element={<SetDisplayName />} />
+              <Route path={HUES_AND_CUES.SETUP_ROOM} element={<SetupRoom />} />
+            </Route>
+          </Route>
+          <Route path={BACKOFFICE.READ_CSV} element={<ReadCsv />} />
         </Route>
 
-        <Route path={PATH.ERROR.ROOT} element={<ErrorContainer />}>
+        <Route path={ERROR.ROOT} element={<ErrorContainer />}>
           <Route index element={<Error404 />} />
-          <Route path={PATH.ERROR[401]} element={<Error401 />} />
-          <Route path={PATH.ERROR[403]} element={<Error403 />} />
-          <Route path={PATH.ERROR[404]} element={<Error404 />} />
-          <Route path={PATH.ERROR[500]} element={<Error500 />} />
-          <Route path={PATH.ERROR[502]} element={<Error502 />} />
-          <Route path={PATH.ERROR[503]} element={<Error503 />} />
-          <Route path={PATH.ERROR[504]} element={<Error504 />} />
+          <Route path={ERROR[401]} element={<Error401 />} />
+          <Route path={ERROR[403]} element={<Error403 />} />
+          <Route path={ERROR[404]} element={<Error404 />} />
+          <Route path={ERROR[500]} element={<Error500 />} />
+          <Route path={ERROR[502]} element={<Error502 />} />
+          <Route path={ERROR[503]} element={<Error503 />} />
+          <Route path={ERROR[504]} element={<Error504 />} />
         </Route>
 
         <Route path='*' element={<Error404 />} />

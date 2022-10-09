@@ -5,6 +5,7 @@ import { RecoilRoot } from 'recoil'
 
 import { setupAxios } from 'configs/axios'
 import { setupEnv } from 'configs/env'
+import { setupFirebase } from 'configs/firebase'
 import { setupLocales } from 'locales/i18n'
 
 import { AppRoutes } from './Routes'
@@ -15,6 +16,7 @@ import './styles/styles.scss'
 setupEnv()
 setupLocales()
 setupAxios()
+setupFirebase()
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(

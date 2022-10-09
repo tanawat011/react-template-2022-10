@@ -40,7 +40,17 @@ module.exports = {
       },
       borderRadius: {
         '4xl': '30px',
-      }
+      },
+      boxShadow: {
+        ...defaultTheme.boxShadow,
+        round: '0 0 4px 4px rgb(0 0 0 / 8%)',
+        t: '0 -4px 4px 0 rgb(0 0 0 / 8%)',
+        tr: '4px -4px 4px 0 rgb(0 0 0 / 8%)',
+        b: '0 4px 4px 0 rgb(0 0 0 / 8%)',
+        l: '-4px 0 4px 0 rgb(0 0 0 / 8%)',
+        r: '4px 0 4px 0 rgb(0 0 0 / 8%)',
+        around: '4px 4px 4px 4px rgb(0 0 0 / 8%)',
+      },
     },
   },
   variantOrder: [

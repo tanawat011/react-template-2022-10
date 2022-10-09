@@ -90,6 +90,7 @@ exports[`<BackofficeContainer /> match snapshot 1`] = `
 
 .c7 {
   width: 100%;
+  overflow: auto;
   --tw-bg-opacity: 1;
   background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
@@ -106,6 +107,7 @@ exports[`<BackofficeContainer /> match snapshot 1`] = `
 
 .c9 {
   height: 100%;
+  overflow-x: auto;
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
@@ -148,9 +150,16 @@ exports[`<BackofficeContainer /> match snapshot 1`] = `
         <a
           class="c6"
           data-testid="button-link"
-          href="/about2"
+          href="/game/hues-and-cues/set-display-name"
         >
-          About2
+          Game
+        </a>
+        <a
+          class="c6"
+          data-testid="button-link"
+          href="/read-csv"
+        >
+          Read CSV
         </a>
         <h1>
           Error Stage

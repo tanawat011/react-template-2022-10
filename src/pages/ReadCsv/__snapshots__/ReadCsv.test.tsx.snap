@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReadCsv /> match snapshot 1`] = `
+<DocumentFragment>
+  <p>
+    ReadCsv
+  </p>
+  <input
+    id="file"
+    type="file"
+  />
+</DocumentFragment>
+`;

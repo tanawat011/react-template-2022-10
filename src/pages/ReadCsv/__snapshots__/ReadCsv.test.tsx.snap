@@ -5,9 +5,5 @@ exports[`<ReadCsv /> match snapshot 1`] = `
   <p>
     ReadCsv
   </p>
-  <input
-    id="file"
-    type="file"
-  />
 </DocumentFragment>
 `;

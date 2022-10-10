@@ -12,3 +12,8 @@ export const COLLECTION = {
 export const DOCUMENT = {
   ROOMS: 'rooms',
 }
+
+export const FIRESTORE_PATH = {
+  ROOMS_DOCUMENT: `${COLLECTION.HUES_AND_CUES}/${DOCUMENT.ROOMS}`,
+  PLAYERS_COLLECTION: `${COLLECTION.PLAYERS}`,
+}

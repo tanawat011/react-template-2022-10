@@ -2,11 +2,11 @@ import { getFirestore } from 'firebase/firestore'
 
 import { subscribeCollection } from 'helpers/firebase'
 
-import { COLLECTION, DOCUMENT } from '../_constants'
+import { FIRESTORE_PATH } from '../_constants'
 
 export const subscribeRoom = <T>(roomId: string, callback: (data: T[]) => void) => {
   const db = getFirestore()
-  const collectionPath = `${COLLECTION.HUES_AND_CUES}/${DOCUMENT.ROOMS}/${roomId}`
+  const collectionPath = `${FIRESTORE_PATH.ROOMS_DOCUMENT}/${roomId}`
 
   return subscribeCollection(db, collectionPath, callback)
 }

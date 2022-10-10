@@ -4,11 +4,11 @@ import { getFirestore } from 'firebase/firestore'
 
 import { getDocument } from 'helpers/firebase'
 
-import { COLLECTION } from '../_constants'
+import { FIRESTORE_PATH } from '../_constants'
 
 export const getPlayerProfile = async (id: string) => {
   const db = getFirestore()
-  const collectionPath = COLLECTION.PLAYERS
+  const collectionPath = FIRESTORE_PATH.PLAYERS_COLLECTION
 
   const data = await getDocument<Player>(db, collectionPath, id)
 

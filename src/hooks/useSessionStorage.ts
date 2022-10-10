@@ -1,16 +1,16 @@
-import type { AnyType } from 'types/common'
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
 
-type Prop = [string, (value: string) => void, () => void]
+type Prop = [string, (value: any) => void, () => void]
 
 export const useSessionStorage = (sessionKey: string): Prop => {
   const initialValue = sessionStorage.getItem(sessionKey) || ''
 
   const [item, setItem] = useState(initialValue)
 
-  const handleSetItem = (value: AnyType) => {
-    const data = typeof value === 'string' ? value : JSON.stringify(value)
+  const handleSetItem = (value: any) => {
+    const data = typeof value === 'object' ? JSON.stringify(value) : value
+    console.log('datadatadatadatadatadatadatadata', data)
 
     sessionStorage.setItem(sessionKey, data)
     setItem(data)

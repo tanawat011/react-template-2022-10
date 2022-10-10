@@ -9,7 +9,7 @@ export type RoomPlayer = {
   score: number
   color: string // * color is a hex value
   cells: string[] // * cells that the player has selected
-  owner: boolean // * if true, the player is the owner of the room
+  owner?: boolean // * if true, the player is the owner of the room
   number: number // * sequential number of player in room
   hinter?: boolean // * is the player the hinter
   choice?: string[] // * choice is an array of colorIds that the player can select

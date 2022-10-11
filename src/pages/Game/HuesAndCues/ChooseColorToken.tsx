@@ -17,14 +17,12 @@ export const ChooseColorToken: React.FC<Prop> = ({
   updateCurrentPlayer,
 }) => {
   const handleChooseColorToken = async (color: string) => {
-    if (currentPlayer) {
-      const _currentPlayer: RoomPlayer = {
-        ...currentPlayer,
-        color,
-      }
-
-      updateCurrentPlayer(_currentPlayer)
+    const _currentPlayer: RoomPlayer = {
+      ...currentPlayer,
+      color,
     }
+
+    updateCurrentPlayer(_currentPlayer)
   }
 
   return (

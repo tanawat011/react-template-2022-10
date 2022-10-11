@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NextHinter /> match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="button"
+    disabled=""
+  >
+    Next Hinter
+  </div>
+</DocumentFragment>
+`;

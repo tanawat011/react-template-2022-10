@@ -31,22 +31,20 @@ export const NextHinter: React.FC<Prop> = ({
 
     await updateCurrentHinter(currentHinter)
 
-    const nextHinter = playersInRoom.find((p) => !p.hinter)
+    const nextHinter = playersInRoom.find((p) => !p.hinter) as RoomPlayer
 
-    if (nextHinter) {
-      const _nextHinter: RoomPlayer = {
-        ...nextHinter,
-        cells: [],
-        countRound: 0,
-        countTurn: 0,
-        hinter: true,
-        isMyTurn: false,
-        isStartGame: true,
-        isSubmitResult: false,
-      }
-
-      await setPlayerInTheRoom(roomId, _nextHinter)
+    const _nextHinter: RoomPlayer = {
+      ...nextHinter,
+      cells: [],
+      countRound: 0,
+      countTurn: 0,
+      hinter: true,
+      isMyTurn: false,
+      isStartGame: true,
+      isSubmitResult: false,
     }
+
+    await setPlayerInTheRoom(roomId, _nextHinter)
   }
 
   const handleUpdateCurrentHinter = async () => {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GameHuesAndCues /> match snapshot 1`] = `
+exports[`<HuesAndCues /> match snapshot 1`] = `
 <DocumentFragment>
   .c0 {
   display: -webkit-box;
@@ -16,7 +16,30 @@ exports[`<GameHuesAndCues /> match snapshot 1`] = `
     class="c0 p-6"
   >
     <div>
+      RemoveRoom
+    </div>
+    <div>
+      ResetRoom
+    </div>
+    <div
+      data-testid="button"
+    >
+      StartGame
+    </div>
+    <div>
+      NextHinter
+    </div>
+    <div>
+      SubmitResult
+    </div>
+    <div>
+      NextRound
+    </div>
+    <div>
       ScoreBoard
+    </div>
+    <div>
+      ChooseColorToken
     </div>
   </div>
 </DocumentFragment>

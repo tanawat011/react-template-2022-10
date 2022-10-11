@@ -12,7 +12,7 @@ type Prop = {
 }
 
 export const ChooseColorHint: React.FC<Prop> = ({ currentPlayer, updateCurrentPlayer }) => {
-  const randomNumber = (toNumber = 10) => {
+  const randomNumber = (toNumber: number) => {
     return Math.floor(Math.random() * toNumber) + 1
   }
 
@@ -25,24 +25,22 @@ export const ChooseColorHint: React.FC<Prop> = ({ currentPlayer, updateCurrentPl
   }
 
   const handleRandomColorHint = async () => {
-    if (currentPlayer) {
-      let choice: string[] = []
+    let choice: string[] = []
 
-      for (let i = 1; i <= 4; i++) {
-        choice = [...choice, randomColorId()]
-      }
-
-      const _currentPlayer: RoomPlayer = {
-        ...currentPlayer,
-        choice,
-      }
-
-      updateCurrentPlayer(_currentPlayer)
+    for (let i = 1; i <= 4; i++) {
+      choice = [...choice, randomColorId()]
     }
+
+    const _currentPlayer: RoomPlayer = {
+      ...currentPlayer,
+      choice,
+    }
+
+    updateCurrentPlayer(_currentPlayer)
   }
 
   const handleChooseColorHint = async (result: string) => {
-    if (currentPlayer && !currentPlayer?.result) {
+    if (!currentPlayer?.result) {
       const _currentPlayer: RoomPlayer = {
         ...currentPlayer,
         result,
@@ -54,8 +52,7 @@ export const ChooseColorHint: React.FC<Prop> = ({ currentPlayer, updateCurrentPl
 
   const colorsSelectable = currentPlayer?.choice || []
   const colorSelected = huesAndCues.flat().find((c) => c.id === currentPlayer?.result)
-  const hasColorSelectable = !!colorsSelectable.length
-  const nonColorSelectable = !hasColorSelectable
+  const isNoColorSelectable = !colorsSelectable.length
 
   return (
     <div className='mb-2 p-3 shadow-around flex divide-x'>
@@ -63,22 +60,25 @@ export const ChooseColorHint: React.FC<Prop> = ({ currentPlayer, updateCurrentPl
         <div className='pl-2 mb-1 text-white font-bold select-none'>Choose Color Hint</div>
 
         <TwRow>
-          {nonColorSelectable && <Button onClick={handleRandomColorHint}>Random Color Hint</Button>}
+          {isNoColorSelectable ? (
+            <Button onClick={handleRandomColorHint}>Random Color Hint</Button>
+          ) : (
+            <>
+              {colorsSelectable.map((colorId) => {
+                const data = huesAndCues.flat().find((c) => c.id === colorId)
 
-          {hasColorSelectable &&
-            colorsSelectable.map((colorId) => {
-              const data = huesAndCues.flat().find((c) => c.id === colorId)
-
-              return (
-                <CellClickable
-                  key={`choose-color-hint-${data?.color}`}
-                  className={data?.color}
-                  onClick={() => handleChooseColorHint(colorId)}
-                >
-                  {colorId}
-                </CellClickable>
-              )
-            })}
+                return (
+                  <CellClickable
+                    key={`choose-color-hint-${data?.color}`}
+                    className={data?.color}
+                    onClick={() => handleChooseColorHint(colorId)}
+                  >
+                    {colorId}
+                  </CellClickable>
+                )
+              })}
+            </>
+          )}
         </TwRow>
       </div>
 

@@ -10,7 +10,6 @@ export const useSessionStorage = (sessionKey: string): Prop => {
 
   const handleSetItem = (value: any) => {
     const data = typeof value === 'object' ? JSON.stringify(value) : value
-    console.log('datadatadatadatadatadatadatadata', data)
 
     sessionStorage.setItem(sessionKey, data)
     setItem(data)

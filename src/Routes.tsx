@@ -6,7 +6,7 @@ import { ErrorContainer } from 'containers/Error'
 import { ChangePassword, ForgotPassword, Login } from 'pages/Authentication'
 import { Error401, Error403, Error404, Error500, Error502, Error503, Error504 } from 'pages/Error'
 import { Example } from 'pages/Example'
-import { SetDisplayName, GameHuesAndCues, SetupRoom } from 'pages/Game'
+import { SetDisplayName, HuesAndCues, SetupRoom } from 'pages/Game'
 import { Home } from 'pages/Home'
 import { ReadCsv } from 'pages/ReadCsv'
 import { Todo } from 'pages/Todo/TodoDetail'
@@ -100,7 +100,7 @@ export const AppRoutes = () => {
           <Route path={BACKOFFICE.ABOUT} element={<Example />} />
           <Route path={GAME}>
             <Route path={HUES_AND_CUES.ROOT}>
-              <Route path={':roomId'} element={<GameHuesAndCues />} />
+              <Route path={':roomId'} element={<HuesAndCues />} />
               <Route path={HUES_AND_CUES.SET_DISPLAY_NAME} element={<SetDisplayName />} />
               <Route path={HUES_AND_CUES.SETUP_ROOM} element={<SetupRoom />} />
             </Route>

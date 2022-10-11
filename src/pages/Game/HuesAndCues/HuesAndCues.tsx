@@ -30,7 +30,7 @@ import {
   toSetDisplayRoom,
 } from './services'
 
-export const GameHuesAndCues = () => {
+export const HuesAndCues = () => {
   const urlParam = useParams<{ roomId: string }>()
   const navigate = useNavigate()
 
@@ -102,7 +102,7 @@ export const GameHuesAndCues = () => {
       fetchCurrentPlayer()
     }
 
-    unsubscribe = subscribeRoom<RoomPlayer>(roomId, callback)
+    unsubscribe = subscribeRoom(roomId, callback)
   }
 
   const isOwnerRoom = currentPlayer && currentPlayer.owner

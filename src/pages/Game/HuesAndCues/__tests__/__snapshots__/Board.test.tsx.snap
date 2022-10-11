@@ -230,6 +230,28 @@ exports[`<Board /> match snapshot 1`] = `
   background-color: transparent;
 }
 
+.c4 {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  border-width: 1px;
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 <div
     class="c0"
   >
@@ -762,7 +784,11 @@ exports[`<Board /> match snapshot 1`] = `
         <div
           class="bg-[#df569f]"
           data-testid="bg-[#df569f]"
-        />
+        >
+          <div
+            class="c4 bg-[#0758a5]"
+          />
+        </div>
         <div
           class="bg-[#cd58a2]"
           data-testid="bg-[#cd58a2]"

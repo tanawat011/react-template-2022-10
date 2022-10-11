@@ -95,6 +95,36 @@ Launches the test runner in the interactive without watch mode together with col
 
 Launches the test runner in the interactive without watch mode together with collect coverage result and message description.
 
+**Test and generate snapshot => Example:**
+
+```sh
+yarn test:cv:msg -u
+```
+
+**Test with specific name pattern => Example:**
+
+```sh
+yarn test:cv:msg -t '<Button />'
+```
+
+**Test with specific path pattern => Example:**
+
+```sh
+yarn test:cv:msg --testPathPattern 'Button'
+```
+
+**Test coverage single folder => Example:**
+
+```sh
+yarn test:cv:msg --collectCoverageFrom '**/components/**/*' --testPathPattern 'components'
+```
+
+**Test coverage single file => Example:**
+
+```sh
+yarn test:cv:msg --collectCoverageFrom '**/Button.tsx' --testPathPattern 'Button.test'
+```
+
 ## `yarn test:cv:w`
 
 Launches the test runner in the interactive with watch mode together with collect coverage result.

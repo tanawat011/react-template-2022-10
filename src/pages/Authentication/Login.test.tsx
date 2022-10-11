@@ -8,6 +8,7 @@ import { Login } from './Login'
 
 jest.mock('components/Button', () => ({
   Button: ({ link, ...props }: React.HTMLAttributes<never> & { link: boolean }) => {
+    // eslint-disable-next-line no-console
     console.log(link)
 
     return (

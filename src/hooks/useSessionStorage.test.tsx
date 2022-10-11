@@ -1,8 +1,4 @@
-import type { RenderResult } from '@testing-library/react'
-
 import { useEffect } from 'react'
-
-import { act, waitFor } from '@testing-library/react'
 
 import { renderWithProviders } from 'helpers/test'
 

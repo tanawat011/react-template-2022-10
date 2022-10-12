@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SetupRoom /> match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      data-testid="button"
+      type="button"
+    >
+      Create Public Room
+    </div>
+    <div
+      data-testid="button"
+      type="button"
+    >
+      Create Private Room
+    </div>
+    <form>
+      <label
+        id="code"
+      >
+        Code
+      </label>
+      <input
+        id="code"
+      />
+      <div
+        data-testid="button"
+        type="submit"
+      >
+        Join Private Room
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

@@ -9,13 +9,7 @@ import { Button } from 'components/Button'
 import { useSessionStorage } from 'hooks'
 
 import { SESSION } from './_constants'
-import {
-  getPlayerProfile,
-  setPlayerInTheRoom,
-  toRoom,
-  toSetDisplayRoom,
-  toSetupRoom,
-} from './services'
+import { getPlayerProfile, setPlayerInTheRoom, toRoom, toSetDisplayRoom } from './services'
 
 export const SetupRoom = () => {
   const navigate = useNavigate()
@@ -78,20 +72,10 @@ export const SetupRoom = () => {
 
   const handleCreatePrivateRoom = async (e: MouseEvent) => {
     e.preventDefault()
-
-    try {
-      toSetupRoom(navigate)
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log('error', error)
-    }
   }
 
   const handlerSubmitJoinPrivateRoom = async (e: FormEvent) => {
     e.preventDefault()
-
-    // eslint-disable-next-line no-console
-    console.log('handlerSubmitJoinPrivateRoom')
   }
 
   return (

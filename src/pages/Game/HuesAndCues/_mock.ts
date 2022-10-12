@@ -70,6 +70,7 @@ export const MOCK: {
       result,
       choice,
       owner: true,
+      score: 1,
     },
     {
       ...PLAYER_BASE,
@@ -212,6 +213,7 @@ export const MOCK: {
       ...PLAYER_BASE,
       number: 2,
       isMyTurn: true,
+      color: 'bg-[#117822]',
     },
     {
       ...PLAYER_BASE,
@@ -226,15 +228,18 @@ export const MOCK: {
       color: 'bg-[#0758a5]',
       owner: true,
       isStartGame: true,
+      result: 'F4',
     },
     {
       ...PLAYER_BASE,
       number: 2,
       isMyTurn: true,
+      cells: ['F4'],
     },
     {
       ...PLAYER_BASE,
       number: 3,
+      cells: ['F5', 'F6'],
     },
   ],
   PLAYER_HAS_COLOR_START_GAME_SUBMIT_RESULT: [

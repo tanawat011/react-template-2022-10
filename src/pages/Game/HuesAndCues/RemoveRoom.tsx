@@ -27,7 +27,6 @@ export const RemoveRoom: React.FC<Prop> = ({ roomId }) => {
       const playersInRoom = await getAllPlayersInTheRoom(roomId)
 
       await deleteRoom(roomId)
-
       await deleteAllPlayerProfileInTheRoom(playersInRoom)
 
       removeUid()

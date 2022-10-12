@@ -19,7 +19,6 @@ import { RemoveRoom } from './RemoveRoom'
 import { ResetRoom } from './ResetRoom'
 import { ScoreBoard } from './ScoreBoard'
 import { StartGame } from './StartGame'
-// import { SubmitChooseAndNextTurn } from './SubmitChooseAndNextTurn'
 import { SubmitResult } from './SubmitResult'
 import { SESSION } from './_constants'
 import {
@@ -156,14 +155,6 @@ export const HuesAndCues = () => {
           />
         </>
       )}
-
-      {/* {currentPlayer?.isMyTurn && (
-        <SubmitChooseAndNextTurn
-          roomId={roomId}
-          currentPlayer={currentPlayer}
-          setCurrentPlayer={setCurrentPlayer}
-        />
-      )} */}
 
       <ScoreBoard playersInRoom={playersInRoom} />
 

@@ -8,8 +8,7 @@ import { Login } from './Login'
 
 jest.mock('components/Button', () => ({
   Button: ({ link, ...props }: React.HTMLAttributes<never> & { link: boolean }) => {
-    // eslint-disable-next-line no-console
-    console.log(link)
+    jest.fn().mockReturnValue(link)
 
     return (
       <div {...props} data-testid={props.children}>
@@ -33,7 +32,7 @@ describe('<Login />', () => {
     })
 
     const button = screen.getByTestId(/Login/i)
-    fireEvent.click(button)
+    fireEvent.submit(button)
 
     await waitFor(() => {
       expect(el.asFragment()).toBeTruthy()

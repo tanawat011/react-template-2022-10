@@ -1,7 +1,5 @@
-import type { CustomEventTarget } from 'types/html'
-
 import type { FormEvent } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
@@ -19,10 +17,13 @@ import {
 } from './services'
 
 export const SetDisplayName = () => {
+  const navigate = useNavigate()
+
   const [sessionId, setSessionId] = useSessionStorage(SESSION.ID)
   const [roomId] = useSessionStorage(SESSION.ROOM_ID)
   const [tempSessionId, , removeTempSessionId] = useSessionStorage(SESSION.TEMP_ID)
-  const navigate = useNavigate()
+
+  const [displayName, setDisplayName] = useState('')
 
   useEffect(() => {
     if (sessionId) {
@@ -33,12 +34,10 @@ export const SetDisplayName = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
-    const target = e.target as CustomEventTarget<{ displayName: { value: string } }>
-    const displayName = target.displayName.value
-    const uid = tempSessionId || sessionId || uuid()
+    try {
+      const uid = tempSessionId || sessionId || uuid()
 
-    if (displayName) {
-      try {
+      if (displayName) {
         setSessionId(uid)
 
         // * Create a new player
@@ -69,10 +68,10 @@ export const SetDisplayName = () => {
         }
 
         toSetupRoom(navigate)
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log('error', error)
       }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log('error', error)
     }
   }
 
@@ -80,7 +79,11 @@ export const SetDisplayName = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <label id='displayName'>Display Name</label>
-        <input id='displayName' />
+        <input
+          id='displayName'
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
+        />
         <Button type='submit'>GO</Button>
       </form>
     </div>

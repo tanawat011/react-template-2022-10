@@ -2,10 +2,10 @@
 
 exports[`<ResetRoom /> match snapshot 1`] = `
 <DocumentFragment>
-  <div
+  <button
     data-testid="button"
   >
     Reset Room
-  </div>
+  </button>
 </DocumentFragment>
 `;

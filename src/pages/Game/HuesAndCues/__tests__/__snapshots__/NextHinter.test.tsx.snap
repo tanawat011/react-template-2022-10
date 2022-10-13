@@ -2,11 +2,11 @@
 
 exports[`<NextHinter /> match snapshot 1`] = `
 <DocumentFragment>
-  <div
+  <button
     data-testid="button"
     disabled=""
   >
     Next Hinter
-  </div>
+  </button>
 </DocumentFragment>
 `;

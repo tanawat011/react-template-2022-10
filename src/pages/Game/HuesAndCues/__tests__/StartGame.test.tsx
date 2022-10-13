@@ -9,16 +9,6 @@ import { StartGame } from '../StartGame'
 import { MOCK } from '../_mock'
 import { setPlayerInTheRoom } from '../services'
 
-jest.mock('components/Button', () => ({
-  Button: (props: React.HTMLAttributes<never>) => {
-    return (
-      <button {...props} data-testid={'button'}>
-        {props.children}
-      </button>
-    )
-  },
-}))
-
 jest.mock('../services', () => ({
   setPlayerInTheRoom: jest.fn(),
 }))

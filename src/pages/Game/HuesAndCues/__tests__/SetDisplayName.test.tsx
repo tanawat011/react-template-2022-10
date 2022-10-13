@@ -9,16 +9,6 @@ import { SetDisplayName } from '../SetDisplayName'
 import { MOCK } from '../_mock'
 import { getAllPlayersInTheRoom } from '../services'
 
-jest.mock('components/Button', () => ({
-  Button: (props: React.HTMLAttributes<never>) => {
-    return (
-      <div {...props} data-testid={'button'}>
-        {props.children}
-      </div>
-    )
-  },
-}))
-
 jest.mock('../services', () => ({
   setPlayerProfile: jest.fn(),
   setPlayerInTheRoom: jest.fn(),

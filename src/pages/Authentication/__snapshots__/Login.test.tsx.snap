@@ -30,18 +30,18 @@ exports[`<Login /> match snapshot 1`] = `
       <div
         class="flex"
       >
-        <div
-          data-testid="Login"
+        <button
+          data-testid="button"
           type="submit"
         >
           Login
-        </div>
-        <div
-          data-testid="Forgot Password"
+        </button>
+        <button
+          data-testid="button"
           to="../forgot-password"
         >
           Forgot Password
-        </div>
+        </button>
       </div>
     </form>
   </div>

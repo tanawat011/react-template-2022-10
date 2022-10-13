@@ -1,5 +1,4 @@
 import type { RenderResult } from '@testing-library/react'
-import type { ButtonProps } from 'components/Button'
 
 import { waitFor, screen, act } from '@testing-library/react'
 import { mocked } from 'jest-mock'
@@ -8,10 +7,6 @@ import { fetchApi } from 'helpers/api'
 import { renderWithProviders } from 'helpers/test'
 
 import { Example } from './Example'
-
-jest.mock('components/Button', () => ({
-  Button: (props: ButtonProps) => <button {...props} data-testid={props.label || props.children} />,
-}))
 
 jest.mock('helpers/api')
 

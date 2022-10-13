@@ -1,8 +1,7 @@
-import type { Firestore } from 'firebase/firestore'
+import { getFirestore, getDocs, writeBatch, collection } from 'firebase/firestore'
 
-import { getDocs, writeBatch, collection } from 'firebase/firestore'
-
-export const deleteCollection = async (db: Firestore, collectionPath: string) => {
+export const deleteCollection = async (collectionPath: string) => {
+  const db = getFirestore()
   const collectionRef = collection(db, collectionPath)
 
   const snapshot = await getDocs(collectionRef)

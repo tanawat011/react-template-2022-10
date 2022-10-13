@@ -6,6 +6,12 @@ COLLECT_COVERAGE_PATH=**/$NAME
 
 if [ $TYPE = "-f" ]; then
   COLLECT_COVERAGE_PATH=**/$NAME/**/*
+elif [ $TYPE = "-ts" ]; then
+  COLLECT_COVERAGE_PATH=**/$NAME.ts
+  NAME=$NAME.test
+elif [ $TYPE = "-tsx" ]; then
+  COLLECT_COVERAGE_PATH=**/$NAME.tsx
+  NAME=$NAME.test
 else
   NAME=$TYPE.test
   COLLECT_COVERAGE_PATH=**/$TYPE.tsx

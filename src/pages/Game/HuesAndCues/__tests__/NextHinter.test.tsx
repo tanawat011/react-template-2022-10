@@ -9,16 +9,6 @@ import { NextHinter } from '../NextHinter'
 import { MOCK } from '../_mock'
 import { setPlayerInTheRoom } from '../services'
 
-jest.mock('components/Button', () => ({
-  Button: (props: React.HTMLAttributes<never>) => {
-    return (
-      <div {...props} data-testid={'button'}>
-        {props.children}
-      </div>
-    )
-  },
-}))
-
 jest.mock('../services', () => ({
   setPlayerInTheRoom: jest.fn(),
 }))
@@ -53,7 +43,7 @@ describe('<NextHinter />', () => {
       )
     })
 
-    const button = screen.getByTestId('button')
+    const button = screen.getByRole('button')
     fireEvent.click(button)
 
     await waitFor(() => {
@@ -77,7 +67,7 @@ describe('<NextHinter />', () => {
       )
     })
 
-    const button = screen.getByTestId('button')
+    const button = screen.getByRole('button')
     fireEvent.click(button)
 
     await waitFor(() => {
@@ -100,7 +90,7 @@ describe('<NextHinter />', () => {
       )
     })
 
-    const button = screen.getByTestId('button')
+    const button = screen.getByRole('button')
     fireEvent.click(button)
 
     await waitFor(() => {
@@ -123,7 +113,7 @@ describe('<NextHinter />', () => {
       )
     })
 
-    const button = screen.getByTestId('button')
+    const button = screen.getByRole('button')
     fireEvent.click(button)
 
     await waitFor(() => {
@@ -146,7 +136,7 @@ describe('<NextHinter />', () => {
       )
     })
 
-    const button = screen.getByTestId('button')
+    const button = screen.getByRole('button')
     fireEvent.click(button)
 
     await waitFor(() => {
@@ -169,7 +159,7 @@ describe('<NextHinter />', () => {
       )
     })
 
-    const button = screen.getByTestId('button')
+    const button = screen.getByRole('button')
     fireEvent.click(button)
 
     await waitFor(() => {

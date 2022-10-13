@@ -1,17 +1,13 @@
-import type { Firestore } from 'firebase/firestore'
+import type { QuerySnapshot, DocumentData } from 'firebase/firestore'
 
-import { collection, onSnapshot } from 'firebase/firestore'
+import { getFirestore, collection, onSnapshot } from 'firebase/firestore'
 
-export const subscribeCollection = <T>(
-  db: Firestore,
-  collectionPath: string,
-  callback: (data: T[]) => void,
+export const subscribeCollection = (
+  path: string,
+  callback: (snapshot: QuerySnapshot<DocumentData>) => void,
 ) => {
-  const collectionRef = collection(db, collectionPath)
+  const db = getFirestore()
+  const collectionRef = collection(db, path)
 
-  return onSnapshot(collectionRef, (snapshot) => {
-    const data = snapshot.docs.map((_doc) => _doc.data()) as T[]
-
-    callback(data)
-  })
+  return onSnapshot(collectionRef, callback)
 }

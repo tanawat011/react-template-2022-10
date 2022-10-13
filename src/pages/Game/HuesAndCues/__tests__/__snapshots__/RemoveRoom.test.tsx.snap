@@ -2,10 +2,10 @@
 
 exports[`<RemoveRoom /> match snapshot 1`] = `
 <DocumentFragment>
-  <div
+  <button
     data-testid="button"
   >
     Remove Room
-  </div>
+  </button>
 </DocumentFragment>
 `;

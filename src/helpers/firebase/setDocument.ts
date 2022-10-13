@@ -1,13 +1,8 @@
-import type { Firestore } from 'firebase/firestore'
+import { doc, getFirestore, setDoc } from 'firebase/firestore'
 
-import { doc, setDoc } from 'firebase/firestore'
-
-export const setDocument = async <T = unknown>(
-  db: Firestore,
-  collectionPath: string,
-  payload: T,
-) => {
+export const setDocument = async (collectionPath: string, payload: never) => {
+  const db = getFirestore()
   const docRef = doc(db, collectionPath)
 
-  await setDoc(docRef, payload as never)
+  await setDoc(docRef, payload)
 }

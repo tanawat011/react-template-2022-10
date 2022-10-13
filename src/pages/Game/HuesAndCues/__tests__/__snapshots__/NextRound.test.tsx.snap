@@ -2,11 +2,11 @@
 
 exports[`<NextRound /> match snapshot 1`] = `
 <DocumentFragment>
-  <div
+  <button
     data-testid="button"
     disabled=""
   >
     Next Round
-  </div>
+  </button>
 </DocumentFragment>
 `;

@@ -2,7 +2,9 @@ import { render, screen } from '@testing-library/react'
 
 import { renderWithProviders } from 'helpers/test'
 
-import { Button } from '../Button'
+import { Button } from './Button'
+
+jest.mock('./Button', () => jest.requireActual('./Button'))
 
 describe('<Button />', () => {
   test('should render', () => {
@@ -57,6 +59,16 @@ describe('<Button />', () => {
 
   test('should render link button', () => {
     renderWithProviders(<Button link label='test' />)
+    const button = screen.getByTestId(/button/i)
+    expect(button).toHaveStyleRule('background-color', 'rgb(24 28 35 / var(--tw-bg-opacity))')
+  })
+
+  test('should render link button with child label', () => {
+    renderWithProviders(
+      <Button link label='test'>
+        test
+      </Button>,
+    )
     const button = screen.getByTestId(/button/i)
     expect(button).toHaveStyleRule('background-color', 'rgb(24 28 35 / var(--tw-bg-opacity))')
   })

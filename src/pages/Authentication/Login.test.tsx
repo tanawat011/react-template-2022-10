@@ -6,18 +6,6 @@ import { renderWithProviders } from 'helpers/test'
 
 import { Login } from './Login'
 
-jest.mock('components/Button', () => ({
-  Button: ({ link, ...props }: React.HTMLAttributes<never> & { link: boolean }) => {
-    jest.fn().mockReturnValue(link)
-
-    return (
-      <div {...props} data-testid={props.children}>
-        {props.children}
-      </div>
-    )
-  },
-}))
-
 describe('<Login />', () => {
   test('match snapshot', () => {
     const { asFragment } = renderWithProviders(<Login />)
@@ -31,7 +19,7 @@ describe('<Login />', () => {
       el = renderWithProviders(<Login />)
     })
 
-    const button = screen.getByTestId(/Login/i)
+    const button = screen.getAllByTestId(/button/i)[0]
     fireEvent.submit(button)
 
     await waitFor(() => {

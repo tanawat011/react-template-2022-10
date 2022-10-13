@@ -1,46 +1,43 @@
-import { getFirestore } from 'firebase/firestore'
+import { getDocs } from 'firebase/firestore'
+import { mocked } from 'jest-mock'
 
 import { getAllDocuments } from 'helpers/firebase'
-
-jest.mock('firebase/firestore', () => ({
-  ...jest.requireActual('__mocks__/firebase').default,
-  getDocs: () => ({ docs: [{ data: () => 1 }] }),
-}))
+import { getMockQuerySnapshotDocs } from 'mocks/firestore'
 
 jest.mock('helpers/firebase', () => jest.requireActual('helpers/firebase'))
 
 describe('helpers/firebase', () => {
   test('getAllDocuments() => without option', async () => {
-    const db = getFirestore()
+    mocked(getDocs).mockResolvedValue(getMockQuerySnapshotDocs({ id: 'x' }))
+    const snapshot = await getAllDocuments('path/doc')
+    const data = snapshot.docs.map((d) => d.data())
 
-    const result = await getAllDocuments(db, 'path/doc')
-
-    expect(result).toEqual([1])
+    expect(data).toEqual([{ id: 'x' }])
   })
 
   test('getAllDocuments() => with `limit`', async () => {
-    const db = getFirestore()
+    mocked(getDocs).mockResolvedValue(getMockQuerySnapshotDocs({ id: 'x' }))
+    const snapshot = await getAllDocuments('path/doc', { limit: 1 })
+    const data = snapshot.docs.map((d) => d.data())
 
-    const result = await getAllDocuments(db, 'path/doc', { limit: 1 })
-
-    expect(result).toEqual([1])
+    expect(data).toEqual([{ id: 'x' }])
   })
 
   test('getAllDocuments() => with `orderBy`', async () => {
-    const db = getFirestore()
+    mocked(getDocs).mockResolvedValue(getMockQuerySnapshotDocs({ id: 'x' }))
+    const snapshot = await getAllDocuments('path/doc', { orderBy: 'name' })
+    const data = snapshot.docs.map((d) => d.data())
 
-    const result = await getAllDocuments(db, 'path/doc', { orderBy: 'name' })
-
-    expect(result).toEqual([1])
+    expect(data).toEqual([{ id: 'x' }])
   })
 
   test('getAllDocuments() => with `where`', async () => {
-    const db = getFirestore()
-
-    const result = await getAllDocuments(db, 'path/doc', {
+    mocked(getDocs).mockResolvedValue(getMockQuerySnapshotDocs({ id: 'x' }))
+    const snapshot = await getAllDocuments('path/doc', {
       where: { field: 'name', operator: '==', value: 'x' },
     })
+    const data = snapshot.docs.map((d) => d.data())
 
-    expect(result).toEqual([1])
+    expect(data).toEqual([{ id: 'x' }])
   })
 })

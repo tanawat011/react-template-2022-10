@@ -9,16 +9,6 @@ import { NextRound } from '../NextRound'
 import { MOCK } from '../_mock'
 import { setPlayerInTheRoom } from '../services'
 
-jest.mock('components/Button', () => ({
-  Button: (props: React.HTMLAttributes<never>) => {
-    return (
-      <div {...props} data-testid={'button'}>
-        {props.children}
-      </div>
-    )
-  },
-}))
-
 jest.mock('../services', () => ({
   setPlayerInTheRoom: jest.fn(),
 }))

@@ -9,6 +9,70 @@ const PLAYER_BASE: RoomPlayer = {
   number: 1,
 }
 
+const HINTER: RoomPlayer = {
+  uid: 'p1',
+  name: 'p1',
+  number: 1,
+  color: 'bg-[#0758a5]',
+  score: 0,
+  hinter: true,
+  cells: [],
+}
+
+const HINTER_HAS_CHOICE: RoomPlayer = {
+  ...HINTER,
+  choice: ['A1', 'A2', 'A3', 'A4'],
+}
+
+const HINTER_HAS_CHOICE_SELECT_RESULT: RoomPlayer = {
+  ...HINTER_HAS_CHOICE,
+  result: 'A1',
+}
+
+const HINTER_HAS_CHOICE_SELECT_RESULT_SUBMIT_RESULT: RoomPlayer = {
+  ...HINTER_HAS_CHOICE_SELECT_RESULT,
+  isSubmitResult: true,
+}
+
+const HINTER_IS_OWNER: RoomPlayer = {
+  ...HINTER,
+  owner: true,
+}
+
+const HINTER_IS_OWNER_HAS_CHOICE: RoomPlayer = {
+  ...HINTER_HAS_CHOICE,
+  owner: true,
+}
+
+const HINTER_IS_OWNER_HAS_CHOICE_SELECT_RESULT: RoomPlayer = {
+  ...HINTER_HAS_CHOICE_SELECT_RESULT,
+  owner: true,
+}
+
+const HINTER_IS_OWNER_HAS_CHOICE_SELECT_RESULT_SUBMIT_RESULT: RoomPlayer = {
+  ...HINTER_HAS_CHOICE_SELECT_RESULT_SUBMIT_RESULT,
+  owner: true,
+}
+
+const PLAYER: RoomPlayer = {
+  uid: 'P2',
+  name: 'p2',
+  number: 2,
+  color: 'bg-[#117822]',
+  score: 0,
+  cells: [],
+}
+
+const PLAYER_MY_TURN: RoomPlayer = {
+  ...PLAYER,
+  isMyTurn: true,
+}
+
+const PLAYER_MY_TURN_SELECT_CELL: RoomPlayer = {
+  ...PLAYER_MY_TURN,
+  cells: ['A1'],
+}
+
 const result = 'F4'
 const choice = ['F4', 'A9', 'P27', 'E15']
 

@@ -126,7 +126,8 @@
       "src/**/*.{ts,tsx}",
       "!src/**/*.stories.tsx",
       "!src/**/*.d.ts",
-      "!src/data/**/*"
+      "!src/data/**/*",
+      "!src/pages/Game/HuesAndCues/**/*"
     ],
     "coveragePathIgnorePatterns": [
       "index.tsx",

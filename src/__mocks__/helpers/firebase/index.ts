@@ -1,7 +1,5 @@
-export const deleteCollection = jest.fn()
-export const deleteDocument = jest.fn()
-export const getDocument = jest.fn()
-export const getAllDocuments = jest.fn()
-export const setDocument = jest.fn()
-export const subscribeCollection = jest.fn()
-export const updateDocument = jest.fn()
+import type * as Firebase from 'helpers/firebase'
+
+const firebase = jest.createMockFromModule<typeof Firebase>('helpers/firebase')
+
+module.exports = firebase

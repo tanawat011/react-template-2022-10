@@ -9,16 +9,6 @@ import { SetupRoom } from '../SetupRoom'
 import { MOCK } from '../_mock'
 import { getPlayerProfile, setPlayerInTheRoom } from '../services'
 
-jest.mock('components/Button', () => ({
-  Button: (props: React.HTMLAttributes<never>) => {
-    return (
-      <div {...props} data-testid={'button'}>
-        {props.children}
-      </div>
-    )
-  },
-}))
-
 jest.mock('../services', () => ({
   getPlayerProfile: jest.fn(),
   setPlayerInTheRoom: jest.fn(),

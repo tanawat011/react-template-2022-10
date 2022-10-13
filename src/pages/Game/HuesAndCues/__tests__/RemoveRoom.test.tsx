@@ -8,16 +8,6 @@ import { renderWithProviders } from 'helpers/test'
 import { RemoveRoom } from '../RemoveRoom'
 import { getAllPlayersInTheRoom } from '../services'
 
-jest.mock('components/Button', () => ({
-  Button: (props: React.HTMLAttributes<never>) => {
-    return (
-      <div {...props} data-testid={'button'}>
-        {props.children}
-      </div>
-    )
-  },
-}))
-
 jest.mock('../services', () => ({
   deleteAllPlayerProfileInTheRoom: jest.fn(),
   deleteRoom: jest.fn(),

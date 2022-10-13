@@ -1,7 +1,6 @@
-import type { Firestore } from 'firebase/firestore'
 import type { FirebaseOperator } from 'types/firebase'
 
-import { limit, orderBy, query, where, collection, getDocs } from 'firebase/firestore'
+import { getFirestore, limit, orderBy, query, where, collection, getDocs } from 'firebase/firestore'
 
 type Option = {
   limit?: number
@@ -13,11 +12,8 @@ type Option = {
   }
 }
 
-export const getAllDocuments = async <T = unknown>(
-  db: Firestore,
-  collectionPath: string,
-  option?: Option,
-) => {
+export const getAllDocuments = async (collectionPath: string, option?: Option) => {
+  const db = getFirestore()
   const collectionRef = collection(db, collectionPath)
 
   let queryRef
@@ -44,5 +40,5 @@ export const getAllDocuments = async <T = unknown>(
 
   const snapshot = await getDocs(queryRef)
 
-  return snapshot.docs.map((d) => d.data()) as T[]
+  return snapshot
 }

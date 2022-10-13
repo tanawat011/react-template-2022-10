@@ -3,18 +3,18 @@
 exports[`<SetupRoom /> match snapshot 1`] = `
 <DocumentFragment>
   <div>
-    <div
+    <button
       data-testid="button"
       type="button"
     >
       Create Public Room
-    </div>
-    <div
+    </button>
+    <button
       data-testid="button"
       type="button"
     >
       Create Private Room
-    </div>
+    </button>
     <form>
       <label
         id="code"
@@ -24,12 +24,12 @@ exports[`<SetupRoom /> match snapshot 1`] = `
       <input
         id="code"
       />
-      <div
+      <button
         data-testid="button"
         type="submit"
       >
         Join Private Room
-      </div>
+      </button>
     </form>
   </div>
 </DocumentFragment>

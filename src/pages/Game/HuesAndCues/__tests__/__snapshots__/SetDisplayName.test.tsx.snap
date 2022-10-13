@@ -13,12 +13,12 @@ exports[`<SetDisplayName /> match snapshot 1`] = `
         id="displayName"
         value=""
       />
-      <div
+      <button
         data-testid="button"
         type="submit"
       >
         GO
-      </div>
+      </button>
     </form>
   </div>
 </DocumentFragment>

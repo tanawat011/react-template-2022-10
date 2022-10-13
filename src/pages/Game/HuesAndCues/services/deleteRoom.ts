@@ -1,12 +1,9 @@
-import { getFirestore } from 'firebase/firestore'
-
 import { deleteCollection } from 'helpers/firebase'
 
-import { FIRESTORE_PATH } from '../_constants'
+import { FIRESTORE_PATH } from '../constants'
 
 export const deleteRoom = async (roomId: string) => {
-  const db = getFirestore()
-  const collectionPath = `${FIRESTORE_PATH.ROOMS_DOCUMENT}/${roomId}`
+  const path = FIRESTORE_PATH.DOC_ROOM + `/${roomId}`
 
-  await deleteCollection(db, collectionPath)
+  await deleteCollection(path)
 }

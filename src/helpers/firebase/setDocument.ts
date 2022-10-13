@@ -1,6 +1,6 @@
 import { doc, getFirestore, setDoc } from 'firebase/firestore'
 
-export const setDocument = async (collectionPath: string, payload: never) => {
+export const setDocument = async (collectionPath: string, payload: unknown) => {
   const db = getFirestore()
   const docRef = doc(db, collectionPath)
 

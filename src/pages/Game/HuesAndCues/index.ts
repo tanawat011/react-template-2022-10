@@ -1,3 +1,1 @@
-export * from './HuesAndCues'
-export * from './SetDisplayName'
-export * from './SetupRoom'
+export * from './HuesAndCues/HuesAndCues'

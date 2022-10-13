@@ -1,14 +1,18 @@
-import type { RoomPlayer } from '../_type'
+import type { Room } from '../type'
+import type { DocumentData, DocumentSnapshot } from 'firebase/firestore'
 
-import { getFirestore } from 'firebase/firestore'
+import { subscribeDocument } from 'helpers/firebase'
 
-import { subscribeCollection } from 'helpers/firebase'
+import { FIRESTORE_PATH } from '../constants'
 
-import { FIRESTORE_PATH } from '../_constants'
+export const subscribeRoom = (roomId: string, callback: (data: Room) => void) => {
+  const path = FIRESTORE_PATH.DOC_ROOM + `/${roomId}`
 
-export const subscribeRoom = (roomId: string, callback: (data: RoomPlayer[]) => void) => {
-  const db = getFirestore()
-  const collectionPath = `${FIRESTORE_PATH.ROOMS_DOCUMENT}/${roomId}`
+  const subscribeCallback = (snapshot: DocumentSnapshot<DocumentData>) => {
+    const room = snapshot.data() as Room
 
-  return subscribeCollection(db, collectionPath, callback)
+    callback(room)
+  }
+
+  return subscribeDocument(path, subscribeCallback)
 }

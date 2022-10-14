@@ -7,7 +7,6 @@ import { renderWithProviders } from 'helpers/test'
 
 import { ButtonDangerMenu } from '../ButtonDangerMenu'
 import { getMockPlayersInRoom, getMockRoom } from '../mock'
-import { deletePlayer, deleteRoomPlayer } from '../services'
 
 jest.mock('../services')
 jest.mock('../ButtonCloseGame')

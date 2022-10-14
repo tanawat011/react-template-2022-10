@@ -1,9 +1,8 @@
 import type { Player, RoomPlayer } from '../type'
 import type { DocumentData, QuerySnapshot } from 'firebase/firestore'
 
+import { FIRESTORE_PATH } from 'constants/gameHuesAndCues'
 import { getDocumentWithRef, subscribeCollection } from 'helpers/firebase'
-
-import { FIRESTORE_PATH } from '../constants'
 
 export const subscribeRoomPlayer = (roomId: string, callback: (data: RoomPlayer[]) => void) => {
   const path = FIRESTORE_PATH.DOC_ROOM_PLAYER.replace(':roomId', roomId)

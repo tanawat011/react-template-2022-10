@@ -1,4 +1,7 @@
-export const Button = ({ link, ...props }: React.HTMLAttributes<never> & { link: unknown }) => {
+export const Button = ({
+  link,
+  ...props
+}: React.HTMLAttributes<never> & { [key: string]: unknown }) => {
   jest.fn().mockReturnValue(link)
 
   return (

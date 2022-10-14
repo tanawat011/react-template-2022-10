@@ -1,6 +1,6 @@
 import { renderWithProviders } from 'helpers/test'
 
-import { HuesAndCues } from './HuesAndCues'
+import { HuesAndCues } from '../HuesAndCues'
 
 describe('<HuesAndCues />', () => {
   test('render snapshot', async () => {

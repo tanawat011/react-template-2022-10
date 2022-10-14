@@ -5,7 +5,7 @@ import type { ButtonType, Color, Size } from 'types/common'
 import { Link } from 'react-router-dom'
 import tw, { styled } from 'twin.macro'
 
-export interface ButtonProps {
+export type ButtonProps = {
   label?: string
   size?: Size
   color?: Color
@@ -16,6 +16,7 @@ export interface ButtonProps {
   disabled?: boolean
   link?: boolean
   to?: To
+  className?: string
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 

@@ -25,7 +25,7 @@ import { setRoomPlayer } from './setRoomPlayer'
 import { subscribeRoom } from './subscribeRoom'
 import { subscribeRoomPlayer } from './subscribeRoomPlayer'
 
-describe('NewHuesAndCues/services', () => {
+describe('HuesAndCues/services', () => {
   test('deleteAllGlobalPlayers()', async () => {
     const voidResult = await deleteAllGlobalPlayers(getMockPlayersInRoom())
 

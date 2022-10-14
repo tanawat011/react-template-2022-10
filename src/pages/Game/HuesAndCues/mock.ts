@@ -7,12 +7,14 @@ type OptionAllPlayers = {
   p3?: Partial<RoomPlayer>
 }
 
+export const getMockHintChoice = ['A1', 'A2', 'A3', 'A4']
+
 export const getMockRoom = (option?: Partial<Room>): Room => {
   return {
     id: 'room-id-x',
     password: '',
-    hintChoice: ['A1', 'A2', 'A3', 'A4'],
-    hintSelected: 'A1',
+    hintChoice: [],
+    hintSelected: '',
     isStarted: false,
     isSubmitResult: false,
     totalRound: 0,
@@ -53,18 +55,21 @@ export const getMockPlayersInRoom = (option?: OptionAllPlayers): RoomPlayer[] =>
     {
       player: players[0],
       color: 'bg-[#000000]',
+      seq: 1,
       ...defaultPlayerData,
       ...option?.p1,
     },
     {
       player: players[1],
       color: 'bg-[#999999]',
+      seq: 2,
       ...defaultPlayerData,
       ...option?.p2,
     },
     {
       player: players[2],
       color: 'bg-[#666666]',
+      seq: 3,
       ...defaultPlayerData,
       ...option?.p3,
     },

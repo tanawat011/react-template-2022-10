@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DisplayMiniColorToken /> render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-[#000000]"
+  >
+    <svg
+      color="bg-[#000000]"
+      data-testid="icon-circle-dense"
+    />
+  </div>
+  <div
+    class="bg-[#999999]"
+  >
+    <svg
+      color="bg-[#999999]"
+      data-testid="icon-circle-dense"
+    />
+  </div>
+  <div
+    class="bg-[#666666]"
+  >
+    <svg
+      color="bg-[#666666]"
+      data-testid="icon-circle-dense"
+    />
+  </div>
+</DocumentFragment>
+`;

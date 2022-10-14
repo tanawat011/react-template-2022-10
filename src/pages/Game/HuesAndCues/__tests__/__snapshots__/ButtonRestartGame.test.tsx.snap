@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonRestartGame /> clickable 1`] = `
+<DocumentFragment>
+  <button
+    data-testid="button"
+  >
+    Restart Game
+  </button>
+</DocumentFragment>
+`;

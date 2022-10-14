@@ -1,8 +1,7 @@
 import type { RoomPlayer } from '../type'
 
+import { FIRESTORE_PATH } from 'constants/gameHuesAndCues'
 import { deleteDocument } from 'helpers/firebase'
-
-import { FIRESTORE_PATH } from '../constants'
 
 export const deleteAllGlobalPlayers = async (players: RoomPlayer[]) => {
   const playerPath = FIRESTORE_PATH.DOC_PLAYER

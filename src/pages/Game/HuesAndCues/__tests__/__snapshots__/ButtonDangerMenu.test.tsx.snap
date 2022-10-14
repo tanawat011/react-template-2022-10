@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonDangerMenu /> clickable open menu 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="outside-el"
+  >
+    Outside EL
+  </div>
+  <div>
+    <button
+      data-testid="button"
+    >
+      <svg
+        data-testid="icon-ellipsis"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ButtonDangerMenu /> clickable open menu 2`] = `
+<DocumentFragment>
+  <div
+    data-testid="outside-el"
+  >
+    Outside EL
+  </div>
+  <div>
+    <button
+      data-testid="button"
+    >
+      <svg
+        data-testid="icon-ellipsis"
+      />
+    </button>
+    <div>
+      <button
+        currroomplayer="[object Object]"
+        data-testid="button"
+        room="[object Object]"
+        roomplayers="[object Object],[object Object],[object Object]"
+      >
+        button
+      </button>
+      <button
+        currroomplayer="[object Object]"
+        data-testid="button"
+        room="[object Object]"
+      >
+        button
+      </button>
+      <button
+        currroomplayer="[object Object]"
+        data-testid="button"
+        room="[object Object]"
+        roomplayers="[object Object],[object Object],[object Object]"
+      >
+        button
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ButtonDangerMenu /> clickable open menu 3`] = `
+<DocumentFragment>
+  <div
+    data-testid="outside-el"
+  >
+    Outside EL
+  </div>
+  <div>
+    <button
+      data-testid="button"
+    >
+      <svg
+        data-testid="icon-ellipsis"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ButtonDangerMenu /> clickable open menu, but current player are not \`owner\` 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="outside-el"
+  >
+    Outside EL
+  </div>
+  <div>
+    <button
+      data-testid="button"
+    >
+      <svg
+        data-testid="icon-ellipsis"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ButtonDangerMenu /> clickable open menu, but current player are not \`owner\` 2`] = `
+<DocumentFragment>
+  <div
+    data-testid="outside-el"
+  >
+    Outside EL
+  </div>
+  <div>
+    <button
+      data-testid="button"
+    >
+      <svg
+        data-testid="icon-ellipsis"
+      />
+    </button>
+    <div>
+      <button
+        currroomplayer="[object Object]"
+        data-testid="button"
+        room="[object Object]"
+      >
+        button
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ButtonDangerMenu /> clickable open menu, but current player are not \`owner\` 3`] = `
+<DocumentFragment>
+  <div
+    data-testid="outside-el"
+  >
+    Outside EL
+  </div>
+  <div>
+    <button
+      data-testid="button"
+    >
+      <svg
+        data-testid="icon-ellipsis"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;

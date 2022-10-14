@@ -1,8 +1,7 @@
 import type { Room } from '../type'
 
+import { FIRESTORE_PATH } from 'constants/gameHuesAndCues'
 import { setDocument } from 'helpers/firebase'
-
-import { FIRESTORE_PATH } from '../constants'
 
 export const setRoom = async (payload: Room) => {
   const path = FIRESTORE_PATH.DOC_ROOM + `/${payload.id}`

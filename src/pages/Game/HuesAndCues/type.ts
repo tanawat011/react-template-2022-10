@@ -25,15 +25,9 @@ export type RawRoomPlayer = {
   isTurn: boolean
   isHinter: boolean
   totalTurn: number
+  seq: number
 }
 
-export type RoomPlayer = {
+export type RoomPlayer = Omit<RawRoomPlayer, 'player'> & {
   player: Player
-  color: string
-  score: number
-  allSelected: string[]
-  isOwner: boolean
-  isTurn: boolean
-  isHinter: boolean
-  totalTurn: number
 }

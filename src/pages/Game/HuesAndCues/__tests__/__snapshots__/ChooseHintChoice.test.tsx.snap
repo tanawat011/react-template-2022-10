@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChooseHintChoice /> clickable 1`] = `
+<DocumentFragment>
+  <button
+    class="bg-[#612b10]"
+    data-testid="button"
+  >
+    A1
+  </button>
+  <button
+    class="bg-[#6b2810]"
+    data-testid="button"
+  >
+    A2
+  </button>
+  <button
+    class="bg-[#752316]"
+    data-testid="button"
+  >
+    A3
+  </button>
+  <button
+    class="bg-[#861e1a]"
+    data-testid="button"
+  >
+    A4
+  </button>
+</DocumentFragment>
+`;

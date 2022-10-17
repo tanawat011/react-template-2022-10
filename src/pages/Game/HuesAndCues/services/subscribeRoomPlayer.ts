@@ -10,11 +10,14 @@ export const subscribeRoomPlayer = (roomId: string, callback: (data: RoomPlayer[
   const subscribeCallback = async (snapshot: QuerySnapshot<DocumentData>) => {
     const roomPlayers = await Promise.all(
       snapshot.docs.map(async (d) => {
-        const snapshotPlayer = await getDocumentWithRef(d.get('player'))
+        const snapshotPlayer = await getDocumentWithRef(d.get('refPlayer'))
         const player = snapshotPlayer.data() as Player
+        const playerData = d.data()
+
+        delete playerData.refPlayer
 
         return {
-          ...(d.data() as RoomPlayer),
+          ...(playerData as RoomPlayer),
           player,
         }
       }),

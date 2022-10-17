@@ -17,7 +17,7 @@ export type Room = {
 }
 
 export type RawRoomPlayer = {
-  player: QueryDocumentSnapshot<DocumentData>
+  refPlayer: QueryDocumentSnapshot<DocumentData>
   color: string
   score: number
   allSelected: string[]
@@ -28,6 +28,6 @@ export type RawRoomPlayer = {
   seq: number
 }
 
-export type RoomPlayer = Omit<RawRoomPlayer, 'player'> & {
+export type RoomPlayer = Omit<RawRoomPlayer, 'refPlayer'> & {
   player: Player
 }

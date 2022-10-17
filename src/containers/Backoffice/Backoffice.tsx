@@ -8,7 +8,7 @@ import { Button } from 'components/Button'
 import { TwCol, TwRow } from 'components/Common'
 
 const TwContainer = tw(TwRow)`w-full h-screen bg-slate-200`
-const TwSidebar = tw(TwCol)`min-w-[280px] bg-slate-300`
+const TwSidebar = tw(TwCol)`min-w-[240px] bg-slate-300`
 const TwSidebarHeader = tw(TwRow)`min-h-[64px] bg-slate-400`
 const TwSidebarMenu = tw(TwCol)`h-full bg-slate-500`
 const TwFeature = tw(TwCol)`w-full overflow-auto bg-slate-600`

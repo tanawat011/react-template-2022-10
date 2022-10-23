@@ -1,22 +1,26 @@
 // import type { CustomEventTarget } from 'types/html'
 
-import type { FormEvent } from 'react'
+// import type { FormEvent } from 'react'
 
 // import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
-import { PATH } from 'Routes'
+import { allRoutes } from 'Routes'
 import { Button } from 'components/Button'
 
 export const Login = () => {
   // const auth = getAuth()
 
+  const { auth, backoffice } = allRoutes
+  const { forgotPassword } = auth.children
+  const { home } = backoffice.children
+
   const navigate = useNavigate()
 
-  const submitLogin = async (e: FormEvent) => {
-    e.preventDefault()
+  const submitLogin = async (/* e: FormEvent*/) => {
+    // e.preventDefault()
 
-    navigate(`/${PATH.BACKOFFICE.HOME}`)
+    navigate(home.fullPath)
 
     // try {
     //   const target = e.target as CustomEventTarget<{
@@ -58,7 +62,7 @@ export const Login = () => {
 
           <div className='flex'>
             <Button type='submit'>Login</Button>
-            <Button link to={`../${PATH.AUTH.FORGOT_PASSWORD}`}>
+            <Button link to={forgotPassword.fullPath}>
               Forgot Password
             </Button>
           </div>

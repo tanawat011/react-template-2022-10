@@ -1,4 +1,4 @@
-import { PATH } from 'Routes'
+import { allRoutes } from 'Routes'
 import { Button } from 'components/Button'
 
 export const ForgotPassword = () => {
@@ -12,7 +12,7 @@ export const ForgotPassword = () => {
           <input id='username' />
 
           <div className='flex'>
-            <Button link to={`../${PATH.AUTH.LOGIN}`}>
+            <Button link to={`../${allRoutes.auth.children?.login.fullPath}`}>
               Back to Login
             </Button>
           </div>

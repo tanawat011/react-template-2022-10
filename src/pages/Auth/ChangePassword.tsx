@@ -1,4 +1,4 @@
-import { PATH } from 'Routes'
+import { allRoutes } from 'Routes'
 import { Button } from 'components/Button'
 
 export const ChangePassword = () => {
@@ -14,7 +14,7 @@ export const ChangePassword = () => {
           <input id='newPassword' />
 
           <div className='flex'>
-            <Button link to={`../${PATH.AUTH.LOGIN}`}>
+            <Button link to={`../${allRoutes.auth.children.login.fullPath}`}>
               Submit
             </Button>
           </div>

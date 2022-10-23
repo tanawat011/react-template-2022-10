@@ -1,4 +1,4 @@
-import { PATH } from 'Routes'
+import { allRoutes } from 'Routes'
 import { Button } from 'components/Button'
 
 export const Error500 = () => {
@@ -6,7 +6,7 @@ export const Error500 = () => {
     <div>
       <p>500 Internal Server Error</p>
 
-      <Button link to={`${PATH.BACKOFFICE.ROOT}`}>
+      <Button link to={`${allRoutes.backoffice.fullPath}`}>
         Back to Home Page
       </Button>
     </div>

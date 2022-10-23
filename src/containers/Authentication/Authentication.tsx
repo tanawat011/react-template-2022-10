@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import tw from 'twin.macro'
 
-import { PATH } from 'Routes'
+import { allRoutes } from 'Routes'
 import { TwCol, TwRow } from 'components/Common'
 
 const TwLoginContainer = tw(TwRow)`w-full h-screen bg-slate-300`
@@ -19,10 +19,11 @@ export const AuthenticationContainer: React.FC = () => {
   }, [])
 
   const handleRedirectToLogin = () => {
-    const pathAuth = `/${PATH.AUTH.ROOT}`
+    const { auth } = allRoutes
+    const { login } = auth.children
 
-    if (location.pathname === pathAuth) {
-      navigate(`${pathAuth}/${PATH.AUTH.LOGIN}`)
+    if (location.pathname === auth.fullPath) {
+      navigate(login.fullPath)
     }
   }
 

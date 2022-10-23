@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import tw from 'twin.macro'
 
-import { PATH } from 'Routes'
+import { allRoutes } from 'Routes'
 import { Button } from 'components/Button'
 import { TwCol, TwRow } from 'components/Common'
 
@@ -19,10 +19,11 @@ export const BackofficeContainer: React.FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const { AUTH, BACKOFFICE, ERROR } = PATH
-  const { ROOT: GAME, HUES_AND_CUES } = BACKOFFICE.GAME
-
-  const homePath = `../${BACKOFFICE.HOME}`
+  const { auth, backoffice, error } = allRoutes
+  const { e401, e403, e404, e500, e502, e503, e504 } = error.children
+  const { about, game, home, todo } = backoffice.children
+  const { huesAndCues } = game.children
+  const { create: huesAndCuesCreate } = huesAndCues.children
 
   useEffect(() => {
     handleRedirectToHome()
@@ -32,7 +33,7 @@ export const BackofficeContainer: React.FC = () => {
     const defaultPaths = ['', '/']
 
     if (defaultPaths.includes(location.pathname)) {
-      navigate(homePath)
+      navigate(home.fullPath)
     }
   }
 
@@ -42,43 +43,40 @@ export const BackofficeContainer: React.FC = () => {
         <TwSidebarHeader>Sidebar Header</TwSidebarHeader>
 
         <TwSidebarMenu>
-          <Button link to={homePath}>
+          <Button link to={home.fullPath}>
             Home
           </Button>
-          <Button link to={`../${BACKOFFICE.TODO}`}>
+          <Button link to={todo.fullPath}>
             Todo
           </Button>
-          <Button link to={`../${BACKOFFICE.ABOUT}`}>
+          <Button link to={about.fullPath}>
             About
           </Button>
-          <Button link to={`../${GAME}/${HUES_AND_CUES.ROOT}/${HUES_AND_CUES.SET_DISPLAY_NAME}`}>
+          <Button link to={huesAndCuesCreate.fullPath}>
             Game
-          </Button>
-          <Button link to={`../${BACKOFFICE.READ_CSV}`}>
-            Read CSV
           </Button>
 
           <h1>Error Stage</h1>
 
-          <Button link to={`/${ERROR[401]}`}>
+          <Button link to={e401.fullPath}>
             Error 401
           </Button>
-          <Button link to={`/${ERROR[403]}`}>
+          <Button link to={e403.fullPath}>
             Error 403
           </Button>
-          <Button link to={`/${ERROR[404]}`}>
+          <Button link to={e404.fullPath}>
             Error 404
           </Button>
-          <Button link to={`/${ERROR[500]}`}>
+          <Button link to={e500.fullPath}>
             Error 500
           </Button>
-          <Button link to={`/${ERROR[502]}`}>
+          <Button link to={e502.fullPath}>
             Error 502
           </Button>
-          <Button link to={`/${ERROR[503]}`}>
+          <Button link to={e503.fullPath}>
             Error 503
           </Button>
-          <Button link to={`/${ERROR[504]}`}>
+          <Button link to={e504.fullPath}>
             Error 504
           </Button>
         </TwSidebarMenu>
@@ -88,7 +86,7 @@ export const BackofficeContainer: React.FC = () => {
         <TwFeatureHeader>
           <p>Container Header</p>
 
-          <Button link to={`/${AUTH.ROOT}`}>
+          <Button link to={auth.fullPath}>
             Logout
           </Button>
         </TwFeatureHeader>

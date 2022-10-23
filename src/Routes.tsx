@@ -1,121 +1,174 @@
+import type { RenderRoute } from 'helpers/route/renderRoutes'
+import type { WithRequired } from 'types/utility'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { AuthenticationContainer } from 'containers/Authentication'
 import { BackofficeContainer } from 'containers/Backoffice'
 import { ErrorContainer } from 'containers/Error'
-import { ChangePassword, ForgotPassword, Login } from 'pages/Authentication'
+import { renderRoutes } from 'helpers/route/renderRoutes'
+import { ChangePassword, ForgotPassword, Login } from 'pages/Auth'
 import { Error401, Error403, Error404, Error500, Error502, Error503, Error504 } from 'pages/Error'
 import { Example } from 'pages/Example'
 import { HuesAndCues } from 'pages/Game/HuesAndCues'
 import { Home } from 'pages/Home'
-import { ReadCsv } from 'pages/ReadCsv'
 import { Todo } from 'pages/Todo/TodoDetail'
 
-type Path = {
-  AUTH: {
-    ROOT: string
-    LOGIN: string
-    CHANGE_PASSWORD: string
-    FORGOT_PASSWORD: string
-  }
-  BACKOFFICE: {
-    ROOT: string
-    HOME: string
-    TODO: string
-    ABOUT: string
-    GAME: {
-      ROOT: string
-      HUES_AND_CUES: {
-        ROOT: string
-        SET_DISPLAY_NAME: string
-        SETUP_ROOM: string
-      }
-    }
-    READ_CSV: string
-  }
-  ERROR: {
-    ROOT: string
-    401: string
-    403: string
-    404: string
-    500: string
-    502: string
-    503: string
-    504: string
-  }
+type WithChildrenRoute<T> = WithRequired<RenderRoute<T>, 'children'>
+
+type AuthRoutes = WithChildrenRoute<{
+  login: RenderRoute
+  changePassword: RenderRoute
+  forgotPassword: RenderRoute
+}>
+
+type BackofficeRoutes = WithChildrenRoute<{
+  home: RenderRoute
+  todo: RenderRoute
+  about: RenderRoute
+  game: WithChildrenRoute<{
+    huesAndCues: WithChildrenRoute<{
+      create: RenderRoute
+      roomId: RenderRoute
+    }>
+  }>
+}>
+
+type ErrorRoutes = WithChildrenRoute<{
+  e401: RenderRoute
+  e403: RenderRoute
+  e404: RenderRoute
+  e500: RenderRoute
+  e502: RenderRoute
+  e503: RenderRoute
+  e504: RenderRoute
+}>
+
+type AllRoutes = {
+  auth: AuthRoutes
+  backoffice: BackofficeRoutes
+  error: ErrorRoutes
 }
 
-export const PATH: Path = {
-  AUTH: {
-    ROOT: 'auth',
-    LOGIN: 'login',
-    CHANGE_PASSWORD: 'change-password',
-    FORGOT_PASSWORD: 'forgot-password',
-  },
-  BACKOFFICE: {
-    ROOT: '/',
-    HOME: 'home',
-    TODO: 'todo',
-    ABOUT: 'about',
-    GAME: {
-      ROOT: 'game',
-      HUES_AND_CUES: {
-        ROOT: 'hues-and-cues',
-        SET_DISPLAY_NAME: 'set-display-name',
-        SETUP_ROOM: 'setup-room',
+export const allRoutes: AllRoutes = {
+  auth: {
+    path: 'auth',
+    fullPath: '/auth',
+    element: <AuthenticationContainer />,
+    children: {
+      login: {
+        path: 'login',
+        fullPath: '/auth/login',
+        element: <Login />,
+        isIndex: true,
+      },
+      changePassword: {
+        path: 'change-password',
+        fullPath: '/auth/change-password',
+        element: <ChangePassword />,
+      },
+      forgotPassword: {
+        path: 'forgot-password',
+        fullPath: '/auth/forgot-password',
+        element: <ForgotPassword />,
       },
     },
-    READ_CSV: 'read-csv',
   },
-  ERROR: {
-    ROOT: '',
-    401: '401',
-    403: '403',
-    404: '404',
-    500: '500',
-    502: '502',
-    503: '503',
-    504: '504',
+  backoffice: {
+    path: '/',
+    fullPath: '/',
+    element: <BackofficeContainer />,
+    children: {
+      home: {
+        path: '',
+        fullPath: '/',
+        element: <Home />,
+        isIndex: true,
+      },
+      todo: {
+        path: 'todo',
+        fullPath: '/todo',
+        element: <Todo />,
+      },
+      about: {
+        path: 'about',
+        fullPath: '/about',
+        element: <Example />,
+      },
+      game: {
+        path: 'game',
+        fullPath: '/game',
+        children: {
+          huesAndCues: {
+            path: 'hues-and-cues',
+            fullPath: '/game/hues-and-cues',
+            isIndex: true,
+            children: {
+              create: {
+                path: 'create',
+                fullPath: '/game/hues-and-cues/create',
+                element: <HuesAndCues />,
+              },
+              roomId: {
+                path: ':roomId',
+                fullPath: '/game/hues-and-cues/:roomId',
+                element: <HuesAndCues />,
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  error: {
+    path: '',
+    fullPath: '',
+    element: <ErrorContainer />,
+    children: {
+      e401: {
+        path: '401',
+        fullPath: '/401',
+        element: <Error401 />,
+      },
+      e403: {
+        path: '403',
+        fullPath: '/403',
+        element: <Error403 />,
+      },
+      e404: {
+        path: '404',
+        fullPath: '/404',
+        element: <Error404 />,
+      },
+      e500: {
+        path: '500',
+        fullPath: '/500',
+        element: <Error500 />,
+      },
+      e502: {
+        path: '502',
+        fullPath: '/502',
+        element: <Error502 />,
+      },
+      e503: {
+        path: '503',
+        fullPath: '/503',
+        element: <Error503 />,
+      },
+      e504: {
+        path: '504',
+        fullPath: '/504',
+        element: <Error504 />,
+      },
+    },
   },
 }
 
 export const AppRoutes = () => {
-  const { AUTH, BACKOFFICE, ERROR } = PATH
-  const { ROOT: GAME, HUES_AND_CUES } = BACKOFFICE.GAME
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AUTH.ROOT} element={<AuthenticationContainer />}>
-          <Route index element={<Login />} />
-          <Route path={AUTH.LOGIN} element={<Login />} />
-          <Route path={AUTH.CHANGE_PASSWORD} element={<ChangePassword />} />
-          <Route path={AUTH.FORGOT_PASSWORD} element={<ForgotPassword />} />
-        </Route>
-
-        <Route path={BACKOFFICE.ROOT} element={<BackofficeContainer />}>
-          <Route index element={<Home />} />
-          <Route path={BACKOFFICE.HOME} element={<Home />} />
-          <Route path={BACKOFFICE.TODO} element={<Todo />} />
-          <Route path={BACKOFFICE.ABOUT} element={<Example />} />
-          <Route path={GAME}>
-            <Route path={HUES_AND_CUES.ROOT}>
-              <Route path={':roomId'} element={<HuesAndCues />} />
-            </Route>
-          </Route>
-          <Route path={BACKOFFICE.READ_CSV} element={<ReadCsv />} />
-        </Route>
-
-        <Route path={ERROR.ROOT} element={<ErrorContainer />}>
-          <Route index element={<Error404 />} />
-          <Route path={ERROR[401]} element={<Error401 />} />
-          <Route path={ERROR[403]} element={<Error403 />} />
-          <Route path={ERROR[404]} element={<Error404 />} />
-          <Route path={ERROR[500]} element={<Error500 />} />
-          <Route path={ERROR[502]} element={<Error502 />} />
-          <Route path={ERROR[503]} element={<Error503 />} />
-          <Route path={ERROR[504]} element={<Error504 />} />
-        </Route>
+        {renderRoutes(allRoutes)}
 
         <Route path='*' element={<Error404 />} />
       </Routes>

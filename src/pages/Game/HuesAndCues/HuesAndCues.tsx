@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 import tw from 'twin.macro'
 
-import { TwCol, TwRow } from 'components/Common'
+// import { TwCol, TwRow } from 'components/Common'
 import { getColTitles, getRowTitles, huesAndCues } from 'data/HuesAndCues'
 import { useSessionStorage } from 'hooks'
 import { huesAndCuesRoomAtom, huesAndCuesRoomPlayersAtom } from 'recoils/huesAndCues'
@@ -44,6 +44,10 @@ const RowTitles = (props: { className: string }) => {
     </div>
   )
 }
+const TwCard = tw.div`bg-shark-gray rounded-lg p-4`
+
+const Container = tw.div`grid grid-rows-3 grid-cols-2 gap-6 p-6`
+const WrapInfo = tw.div`col-span-2 row-span-1 grid grid-rows-1 grid-cols-4 gap-6`
 
 export const HuesAndCues = () => {
   const [roomId] = useSessionStorage('roomId')
@@ -86,25 +90,23 @@ export const HuesAndCues = () => {
     unsubscribeRoomPlayers = subscribeRoomPlayer(_roomId, callback)
   }
 
-  const TwCard = tw.div`bg-shark-gray rounded-lg p-4`
-
   return (
-    <div className='grid grid-rows-2 grid-cols-2 gap-6 p-6'>
-      <div className='col-span-2 grid grid-rows-1 grid-cols-2 gap-6'>
+    <Container>
+      <WrapInfo>
         <TwCard className='col-span-1'>Profile Controller</TwCard>
-        <TwCard className='col-span-1'>Score Board</TwCard>
-      </div>
+        <TwCard className='col-span-3'>Score Board</TwCard>
+      </WrapInfo>
 
-      <TwCard className=''>
-        <ColTitles className='' />
+      <TwCard className='col-span-2 row-span-3'>
+        <ColTitles className='grid grid-flow-col' />
 
-        <div className=''>
+        <div className='grid grid-flow-col'>
           <RowTitles className='' />
 
           <div className=''>
             {huesAndCues.map((items, index) => {
               return (
-                <div key={`hues-and-cues-${index}`} className=''>
+                <div key={`hues-and-cues-${index}`} className='grid grid-flow-col'>
                   {items.map((item) => {
                     const itemId = item.id
                     const itemColor = item.color
@@ -121,8 +123,8 @@ export const HuesAndCues = () => {
           <RowTitles className='' />
         </div>
 
-        <ColTitles className='' />
+        <ColTitles className='grid grid-flow-col' />
       </TwCard>
-    </div>
+    </Container>
   )
 }

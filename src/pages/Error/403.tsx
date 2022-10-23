@@ -1,4 +1,4 @@
-import { PATH } from 'Routes'
+import { allRoutes } from 'Routes'
 import { Button } from 'components/Button'
 
 export const Error403 = () => {
@@ -6,7 +6,7 @@ export const Error403 = () => {
     <div>
       <p>403 Forbidden</p>
 
-      <Button link to={`/${PATH.AUTH.ROOT}`}>
+      <Button link to={allRoutes.auth.fullPath}>
         Back to Login
       </Button>
     </div>

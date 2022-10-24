@@ -10,6 +10,7 @@ module.exports = {
   ],
   presets: [],
   darkMode: 'media', // or 'class'
+  important: true,
   theme: {
     ...defaultTheme,
     extend: {

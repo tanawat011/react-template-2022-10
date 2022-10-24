@@ -13,7 +13,7 @@ const TwSidebarHeader = tw(TwRow)`min-h-[64px] bg-slate-400`
 const TwSidebarMenu = tw(TwCol)`h-full bg-slate-500`
 const TwFeature = tw(TwCol)`w-full overflow-auto bg-slate-600`
 const TwFeatureHeader = tw(TwRow)`justify-between min-h-[64px] bg-slate-700`
-const TwFeatureContainer = tw(TwRow)`h-full overflow-x-auto bg-slate-800`
+const TwFeatureContainer = tw(TwRow)`h-full overflow-x-auto bg-slate-800 relative`
 
 export const BackofficeContainer: React.FC = () => {
   const location = useLocation()

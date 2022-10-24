@@ -37,3 +37,11 @@ export const huesAndCuesMeAtom = atom({
     totalTurn: 0,
   } as RoomPlayer,
 })
+
+export const huesAndCuesModalChoiceAtom = atom({
+  key: 'huesAndCuesModalChoiceState',
+  default: {
+    isOpen: false,
+    colorId: '',
+  } as { isOpen: boolean; colorId?: string },
+})

@@ -2,9 +2,14 @@ import { useRecoilState } from 'recoil'
 import tw from 'twin.macro'
 
 import { TwCard } from 'components/Common'
+import {
+  IconClipboardQuestion,
+  IconPersonCircleCheck,
+  IconPersonCircleXMark,
+} from 'components/Icons'
 import { huesAndCuesRoomPlayersAtom } from 'recoils/huesAndCues'
 
-const CircleWithBorder = tw.div`rounded-full border border-white`
+const CircleWithBorder = tw.div`rounded-full border-2 border-white`
 
 const ScoreBoardCard = tw(TwCard)`col-span-3 grid grid-flow-col`
 const ProfileTokenWrap = tw.div`grid-self-center`
@@ -27,6 +32,16 @@ export const ScoreBoardWithAllProfile = () => {
             </ProfileTokenWrap>
 
             <ProfileName>{rp.player.name}</ProfileName>
+
+            <div className='grid-self-center grid grid-flow-col gap-2'>
+              {rp.isHinter && <IconClipboardQuestion />}
+
+              {rp.isTurn ? (
+                <IconPersonCircleCheck className={rp.isTurn ? 'fill-black' : 'fill-gray-600'} />
+              ) : (
+                <IconPersonCircleXMark className={rp.isTurn ? 'fill-black' : 'fill-gray-600'} />
+              )}
+            </div>
           </div>
         )
       })}

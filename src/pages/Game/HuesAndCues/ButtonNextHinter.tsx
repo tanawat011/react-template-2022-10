@@ -1,27 +1,25 @@
-import type { Room, RoomPlayer } from './type'
+import type { RoomPlayer } from './type'
 
 import { useState } from 'react'
 
-import { Button } from 'components/Button'
-import { IconAngleDoubleRight } from 'components/Icons'
+import { useRecoilState } from 'recoil'
 
+import { IconAngleDoubleRight } from 'components/Icons'
+import {
+  huesAndCuesMeAtom,
+  huesAndCuesRoomAtom,
+  huesAndCuesRoomPlayersAtom,
+} from 'recoils/huesAndCues'
+
+import { Button } from './common'
 import { setRoom, setRoomPlayer } from './services'
 
-type Prop = {
-  room: Room
-  roomPlayers: RoomPlayer[]
-  currRoomPlayer: RoomPlayer
-  updateCurrRoomPlayer: (payload: RoomPlayer) => void
-}
-
 // * This button will clickable when the player is a `hinter`, So in this button will call the current player is a `hinter`
-export const ButtonNextHinter: React.FC<Prop> = ({
-  room,
-  roomPlayers,
-  currRoomPlayer,
-  updateCurrRoomPlayer,
-}) => {
-  const [isTurn, setIsTurn] = useState(currRoomPlayer.isTurn)
+export const ButtonNextHinter = () => {
+  const [room] = useRecoilState(huesAndCuesRoomAtom)
+  const [roomPlayers] = useRecoilState(huesAndCuesRoomPlayersAtom)
+  const [me] = useRecoilState(huesAndCuesMeAtom)
+  const [isTurn, setIsTurn] = useState(me.isTurn)
 
   const getNextHinterBySequence = (seq: number) => {
     return roomPlayers.find((player) => player.seq === seq)
@@ -31,10 +29,9 @@ export const ButtonNextHinter: React.FC<Prop> = ({
     setIsTurn(false)
     await setRoom({ ...room, totalRound: room.totalRound + 1, isSubmitResult: false })
 
-    const hinter = currRoomPlayer
+    const hinter = me
     const hinterPayload = { ...hinter, isHinter: false, isTurn: false }
 
-    updateCurrRoomPlayer(hinterPayload)
     await setRoomPlayer(room.id, hinterPayload)
 
     let seqNextHinter = hinter.seq + 1
@@ -48,7 +45,7 @@ export const ButtonNextHinter: React.FC<Prop> = ({
     await setRoomPlayer(room.id, { ...nextHinter, isHinter: true, isTurn: true })
   }
 
-  const isHinter = currRoomPlayer.isHinter
+  const isHinter = me.isHinter
   const isSubmitResult = room.isSubmitResult
   const isStarted = room.isStarted
 

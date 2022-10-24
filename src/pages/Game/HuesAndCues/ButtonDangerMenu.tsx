@@ -2,7 +2,6 @@ import { useState, useRef } from 'react'
 
 import { useRecoilState } from 'recoil'
 
-import { Button } from 'components/Button'
 import { IconBoxArrow, IconEllipsis } from 'components/Icons'
 import { useOutsideClicks } from 'hooks'
 import {

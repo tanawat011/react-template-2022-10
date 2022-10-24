@@ -1,15 +1,23 @@
-import type { Room, RoomPlayer } from './type'
+import { useRecoilState } from 'recoil'
+import tw from 'twin.macro'
 
-import { Button } from 'components/Button'
+import { huesAndCuesMeAtom, huesAndCuesRoomAtom } from 'recoils/huesAndCues'
 
+import { Button } from './common'
 import { setRoom } from './services'
 
 type Prop = {
-  room: Room
-  currRoomPlayer: RoomPlayer
+  className?: string
 }
 
-export const ButtonRandomHint: React.FC<Prop> = ({ room, currRoomPlayer }) => {
+const TwButtonRandomHint = tw(
+  Button,
+)`w-[72px] h-[72px] bg-black bg-opacity-50 disabled:bg-black disabled:bg-opacity-50 hover:bg-black hover:bg-opacity-60`
+
+export const ButtonRandomHint: React.FC<Prop> = ({ className }) => {
+  const [room] = useRecoilState(huesAndCuesRoomAtom)
+  const [me] = useRecoilState(huesAndCuesMeAtom)
+
   const randomNumber = (toNumber: number) => {
     return Math.floor(Math.random() * toNumber) + 1
   }
@@ -32,14 +40,14 @@ export const ButtonRandomHint: React.FC<Prop> = ({ room, currRoomPlayer }) => {
     await setRoom({ ...room, hintChoice })
   }
 
-  const isHinter = currRoomPlayer.isHinter
+  const isHinter = me.isHinter
   const isRandomHint = Boolean(room.hintChoice.length)
 
   const isDisabled = [!isHinter, isRandomHint].includes(true)
 
   return (
-    <Button disabled={isDisabled} onClick={handleClickRandomHint}>
-      {isHinter ? 'Random Hint' : 'You`re not a hinter'}
-    </Button>
+    <TwButtonRandomHint className={className} disabled={isDisabled} onClick={handleClickRandomHint}>
+      {isHinter ? 'Random Hint' : 'Disabled'}
+    </TwButtonRandomHint>
   )
 }

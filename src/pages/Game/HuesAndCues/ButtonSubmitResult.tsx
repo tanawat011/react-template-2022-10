@@ -1,26 +1,22 @@
-import type { Room, RoomPlayer } from './type'
-
 import { useState } from 'react'
 
-import { Button } from 'components/Button'
-import { IconCheck } from 'components/Icons'
+import { useRecoilState } from 'recoil'
 
+import { IconCheck } from 'components/Icons'
+import {
+  huesAndCuesMeAtom,
+  huesAndCuesRoomAtom,
+  huesAndCuesRoomPlayersAtom,
+} from 'recoils/huesAndCues'
+
+import { Button } from './common'
 import { setRoom, setRoomPlayer } from './services'
 
-type Prop = {
-  room: Room
-  roomPlayers: RoomPlayer[]
-  currRoomPlayer: RoomPlayer
-  updateCurrRoomPlayer: (payload: RoomPlayer) => void
-}
-
 // * This button will clickable when the player is a `hinter`, So in this button will call the current player is a `hinter`
-export const ButtonSubmitResult: React.FC<Prop> = ({
-  room,
-  roomPlayers,
-  currRoomPlayer,
-  updateCurrRoomPlayer,
-}) => {
+export const ButtonSubmitResult = () => {
+  const [room] = useRecoilState(huesAndCuesRoomAtom)
+  const [roomPlayers] = useRecoilState(huesAndCuesRoomPlayersAtom)
+  const [me] = useRecoilState(huesAndCuesMeAtom)
   const [isSubmitResult, setIsSubmitResult] = useState(room.isSubmitResult)
 
   const getResult2Point = () => {
@@ -80,7 +76,7 @@ export const ButtonSubmitResult: React.FC<Prop> = ({
     setIsSubmitResult(true)
     await setRoom({ ...room, isSubmitResult: true })
 
-    const hinter = currRoomPlayer
+    const hinter = me
     let hinterScore = hinter.score
 
     const result3Point = room.hintSelected
@@ -118,10 +114,9 @@ export const ButtonSubmitResult: React.FC<Prop> = ({
     const payload = { ...hinter, score: hinterScore, totalTurn: 0 }
 
     await setRoomPlayer(room.id, payload)
-    updateCurrRoomPlayer(payload)
   }
 
-  const isHinter = currRoomPlayer.isHinter
+  const isHinter = me.isHinter
   const isStarted = room.isStarted
   const isAllPlayersCompleted = roomPlayers
     .filter((rp) => !rp.isHinter)

@@ -1,34 +1,30 @@
-import type { Room, RoomPlayer } from './type'
+import { useRecoilState } from 'recoil'
 
-import { useState } from 'react'
+import { IconCaretRight } from 'components/Icons'
+import { huesAndCuesMeAtom, huesAndCuesRoomAtom } from 'recoils/huesAndCues'
 
-import { Button } from 'components/Button'
-import { IconAngleDoubleRight } from 'components/Icons'
-
+import { Button } from './common'
 import { setRoom } from './services'
 
-type Prop = {
-  room: Room
-  currRoomPlayer: RoomPlayer
-}
-
 // * This button will clickable when the player is a `owner`, So in this button will call the current player is a `owner`
-export const ButtonStartGame: React.FC<Prop> = ({ room, currRoomPlayer }) => {
-  const [isStarted, setIsStarted] = useState(room.isStarted)
+export const ButtonStartGame = () => {
+  const [room] = useRecoilState(huesAndCuesRoomAtom)
+  const [me] = useRecoilState(huesAndCuesMeAtom)
 
   const handleClickStartGame = async () => {
-    setIsStarted(true)
     await setRoom({ ...room, isStarted: true })
   }
 
-  const isOwner = currRoomPlayer.isOwner
+  const isHinter = me.isHinter
+  const isSelected = Boolean(room.hintSelected)
+  const isStarted = room.isStarted
 
   // * Disabled when started game or you are not a `owner`
-  const isDisabled = [!isOwner, isStarted].includes(true)
+  const isDisabled = [!isHinter, isStarted, !isSelected].includes(true)
 
   return (
     <Button disabled={isDisabled} onClick={handleClickStartGame}>
-      <IconAngleDoubleRight />
+      <IconCaretRight />
     </Button>
   )
 }

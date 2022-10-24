@@ -10,7 +10,6 @@ export const IconBoxArrow: React.FC<Prop> = ({ width = 10, height = 4, className
       width={`${width}`}
       height={`${height}`}
       viewBox={'0 0 10 4'}
-      fill='none'
       xmlns='http://www.w3.org/2000/svg'
       className={className}
     >

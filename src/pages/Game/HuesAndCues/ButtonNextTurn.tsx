@@ -1,47 +1,44 @@
-import type { Room, RoomPlayer } from './type'
+import type { RoomPlayer } from './type'
 
 import { useState } from 'react'
 
-import { Button } from 'components/Button'
-import { IconAngleRight } from 'components/Icons'
+import { useRecoilState } from 'recoil'
 
+import { IconAngleRight } from 'components/Icons'
+import {
+  huesAndCuesMeAtom,
+  huesAndCuesRoomAtom,
+  huesAndCuesRoomPlayersAtom,
+} from 'recoils/huesAndCues'
+
+import { Button } from './common'
 import { setRoomPlayer } from './services'
 
-type Prop = {
-  room: Room
-  roomPlayers: RoomPlayer[]
-  currRoomPlayer: RoomPlayer
-  updateCurrRoomPlayer: (payload: RoomPlayer) => void
-}
-
 // * This button will clickable when the player need to submit the result
-export const ButtonNextTurn: React.FC<Prop> = ({
-  room,
-  roomPlayers,
-  currRoomPlayer,
-  updateCurrRoomPlayer,
-}) => {
-  const [isTurn, setIsTurn] = useState(currRoomPlayer.isTurn)
-  const [is2Turn, setIs2Turn] = useState(currRoomPlayer.totalTurn === 2)
+export const ButtonNextTurn = () => {
+  const [room] = useRecoilState(huesAndCuesRoomAtom)
+  const [roomPlayers] = useRecoilState(huesAndCuesRoomPlayersAtom)
+  const [me] = useRecoilState(huesAndCuesMeAtom)
+  const [isTurn, setIsTurn] = useState(me.isTurn)
+  const [is2Turn, setIs2Turn] = useState(me.totalTurn === 2)
 
   const getNextPlayerTurnBySequence = (seq: number) => {
     return roomPlayers.find((player) => player.seq === seq)
   }
 
   const handleClickNextTurn = async () => {
-    const totalTurn = currRoomPlayer.totalTurn + 1
+    const totalTurn = me.totalTurn + 1
     const currentPlayerPayload = {
-      ...currRoomPlayer,
+      ...me,
       isTurn: false,
       totalTurn,
     }
 
     setIsTurn(false)
     setIs2Turn(totalTurn === 2)
-    updateCurrRoomPlayer(currentPlayerPayload)
     await setRoomPlayer(room.id, currentPlayerPayload)
 
-    let seqNextTurn = currRoomPlayer.seq + 1
+    let seqNextTurn = me.seq + 1
     let nextPlayerTurn = getNextPlayerTurnBySequence(seqNextTurn)
 
     // * If the next player turn is not found, then the next player turn is the first player

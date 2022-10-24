@@ -6,11 +6,16 @@ import { useRecoilState } from 'recoil'
 import tw from 'twin.macro'
 
 import { useSessionStorage } from 'hooks'
-import { huesAndCuesRoomAtom, huesAndCuesRoomPlayersAtom } from 'recoils/huesAndCues'
+import {
+  huesAndCuesMeAtom,
+  huesAndCuesRoomAtom,
+  huesAndCuesRoomPlayersAtom,
+} from 'recoils/huesAndCues'
 
 import { BoardGame } from './BoardGame'
 import { ProfileController } from './ProfileController'
 import { ScoreBoard } from './ScoreBoard'
+import { ScoreBoardWithAllProfile } from './ScoreBoardWithAllProfile'
 import { subscribeRoom } from './services/subscribeRoom'
 import { subscribeRoomPlayer } from './services/subscribeRoomPlayer'
 
@@ -19,9 +24,11 @@ const WrapInfo = tw.div`col-span-2 row-span-1 grid grid-rows-1 grid-cols-4 gap-6
 
 export const HuesAndCues = () => {
   const [roomId] = useSessionStorage('roomId')
+  const [meId] = useSessionStorage('meId')
 
   const [, setRoom] = useRecoilState(huesAndCuesRoomAtom)
   const [, setRoomPlayers] = useRecoilState(huesAndCuesRoomPlayersAtom)
+  const [, setMe] = useRecoilState(huesAndCuesMeAtom)
 
   let unsubscribeRoom = () => {
     return
@@ -53,6 +60,12 @@ export const HuesAndCues = () => {
   const fetchSubscribeRoomPlayers = (_roomId: string) => {
     const callback = (_roomPlayers: RoomPlayer[]) => {
       setRoomPlayers(_roomPlayers)
+
+      const me = _roomPlayers.find((rp) => rp.player.id === meId)
+
+      if (me) {
+        setMe(me)
+      }
     }
 
     unsubscribeRoomPlayers = subscribeRoomPlayer(_roomId, callback)
@@ -62,7 +75,8 @@ export const HuesAndCues = () => {
     <Container>
       <WrapInfo>
         <ProfileController />
-        <ScoreBoard />
+        {/* <ScoreBoard /> */}
+        <ScoreBoardWithAllProfile />
       </WrapInfo>
 
       <BoardGame />

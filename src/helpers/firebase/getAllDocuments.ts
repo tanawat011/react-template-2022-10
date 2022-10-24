@@ -1,18 +1,8 @@
-import type { FirebaseOperator } from 'types/firebase'
+import type { QueryOption } from 'types/firebase'
 
 import { getFirestore, limit, orderBy, query, where, collection, getDocs } from 'firebase/firestore'
 
-type Option = {
-  limit?: number
-  orderBy?: string
-  where?: {
-    field: string
-    operator: FirebaseOperator
-    value: string | number | boolean
-  }
-}
-
-export const getAllDocuments = async (collectionPath: string, option?: Option) => {
+export const getAllDocuments = async (collectionPath: string, option?: QueryOption) => {
   const db = getFirestore()
   const collectionRef = collection(db, collectionPath)
 

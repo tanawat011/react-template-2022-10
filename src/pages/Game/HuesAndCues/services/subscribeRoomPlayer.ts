@@ -26,5 +26,5 @@ export const subscribeRoomPlayer = (roomId: string, callback: (data: RoomPlayer[
     callback(roomPlayers)
   }
 
-  return subscribeCollection(path, subscribeCallback)
+  return subscribeCollection(path, subscribeCallback, { orderBy: 'seq' })
 }

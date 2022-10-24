@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   mode: 'jit',
@@ -56,6 +57,7 @@ module.exports = {
         '32': 'repeat(32, minmax(0, 1fr))',
       },
       gridTemplateRows: {
+        '7': 'repeat(7, minmax(0, 1fr))',
         '16': 'repeat(16, minmax(0, 1fr))',
         '18': 'repeat(18, minmax(0, 1fr))',
       },
@@ -72,10 +74,12 @@ module.exports = {
         '32': '32',
       },
       gridRowStart: {
+        '7': '7',
         '16': '16',
         '18': '18',
       },
       gridRowEnd: {
+        '7': '7',
         '16': '16',
         '18': '18',
       },
@@ -99,5 +103,20 @@ module.exports = {
     'active',
     'disabled',
   ],
-  plugins: [],
+  plugins: [
+    plugin(({ addComponents }) => {
+      addComponents({
+        '.grid-self-center': {
+          'align-self': 'center',
+          'justify-self': 'center',
+        },
+        '.absolute-center': {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        },
+      })
+    })
+  ],
 }

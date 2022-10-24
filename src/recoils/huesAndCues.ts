@@ -19,3 +19,21 @@ export const huesAndCuesRoomPlayersAtom = atom({
   key: 'huesAndCuesRoomPlayersState',
   default: [] as RoomPlayer[],
 })
+
+export const huesAndCuesMeAtom = atom({
+  key: 'huesAndCuesMeState',
+  default: {
+    allSelected: [],
+    color: '',
+    isHinter: false,
+    isOwner: false,
+    isTurn: false,
+    player: {
+      id: '',
+      name: '',
+    },
+    score: 0,
+    seq: 0,
+    totalTurn: 0,
+  } as RoomPlayer,
+})

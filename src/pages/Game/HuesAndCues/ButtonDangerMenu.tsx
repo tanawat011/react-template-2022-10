@@ -1,27 +1,30 @@
-import type { Room, RoomPlayer } from './type'
-
 import { useState, useRef } from 'react'
 
+import { useRecoilState } from 'recoil'
+
 import { Button } from 'components/Button'
-import { IconEllipsis } from 'components/Icons'
+import { IconBoxArrow, IconEllipsis } from 'components/Icons'
 import { useOutsideClicks } from 'hooks'
+import {
+  huesAndCuesMeAtom,
+  huesAndCuesRoomAtom,
+  huesAndCuesRoomPlayersAtom,
+} from 'recoils/huesAndCues'
 
 import { ButtonCloseGame } from './ButtonCloseGame'
 import { ButtonLeaveGame } from './ButtonLeaveGame'
 import { ButtonRestartGame } from './ButtonRestartGame'
 
-type Prop = {
-  room: Room
-  roomPlayers: RoomPlayer[]
-  currRoomPlayer: RoomPlayer
-}
+export const ButtonDangerMenu = () => {
+  const [room] = useRecoilState(huesAndCuesRoomAtom)
+  const [roomPlayers] = useRecoilState(huesAndCuesRoomPlayersAtom)
+  const [me] = useRecoilState(huesAndCuesMeAtom)
 
-export const ButtonDangerMenu: React.FC<Prop> = ({ room, roomPlayers, currRoomPlayer }) => {
   const wrapperRef = useRef(null)
   const [isOpenDangerMenu, setIsOpenDangerMenu] = useState(false)
 
   useOutsideClicks(wrapperRef, () => {
-    setIsOpenDangerMenu(false)
+    // setIsOpenDangerMenu(false)
   })
 
   const handleClickOpenDangerMenu = () => {
@@ -29,35 +32,31 @@ export const ButtonDangerMenu: React.FC<Prop> = ({ room, roomPlayers, currRoomPl
   }
 
   return (
-    <div ref={wrapperRef}>
-      <Button onClick={handleClickOpenDangerMenu}>
+    <div ref={wrapperRef} className='relative'>
+      <button
+        className='w-7 h-7 rounded flex items-center justify-center bg-black hover:bg-slate-700'
+        onClick={handleClickOpenDangerMenu}
+      >
         <IconEllipsis />
-      </Button>
+      </button>
 
       {isOpenDangerMenu && (
-        <div>
-          {!currRoomPlayer.isOwner && (
-            <ButtonLeaveGame room={room} currRoomPlayer={currRoomPlayer} />
-          )}
+        <>
+          <IconBoxArrow width={20} height={16} className='absolute left-2 fill-slate-700' />
+          <div className='absolute p-1 mt-2  left-0.5 rounded-lg bg-slate-700'>
+            {!me.isOwner && <ButtonLeaveGame room={room} currRoomPlayer={me} />}
 
-          {currRoomPlayer.isOwner && (
-            <>
-              <ButtonRestartGame
-                room={room}
-                roomPlayers={roomPlayers}
-                currRoomPlayer={currRoomPlayer}
-              />
+            {me.isOwner && (
+              <>
+                <ButtonRestartGame room={room} roomPlayers={roomPlayers} currRoomPlayer={me} />
 
-              <ButtonLeaveGame room={room} currRoomPlayer={currRoomPlayer} />
+                <ButtonLeaveGame room={room} currRoomPlayer={me} />
 
-              <ButtonCloseGame
-                room={room}
-                roomPlayers={roomPlayers}
-                currRoomPlayer={currRoomPlayer}
-              />
-            </>
-          )}
-        </div>
+                <ButtonCloseGame room={room} roomPlayers={roomPlayers} currRoomPlayer={me} />
+              </>
+            )}
+          </div>
+        </>
       )}
     </div>
   )

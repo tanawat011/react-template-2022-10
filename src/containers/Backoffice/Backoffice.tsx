@@ -8,9 +8,9 @@ import { Button } from 'components/Button'
 import { TwCol, TwRow } from 'components/Common'
 
 const TwContainer = tw(TwRow)`w-full h-screen bg-slate-200`
-const TwSidebar = tw(TwCol)`min-w-[240px] bg-slate-300`
-const TwSidebarHeader = tw(TwRow)`min-h-[64px] bg-slate-400`
-const TwSidebarMenu = tw(TwCol)`h-full bg-slate-500`
+// const TwSidebar = tw(TwCol)`min-w-[240px] bg-slate-300`
+// const TwSidebarHeader = tw(TwRow)`min-h-[64px] bg-slate-400`
+// const TwSidebarMenu = tw(TwCol)`h-full bg-slate-500`
 const TwFeature = tw(TwCol)`w-full overflow-auto bg-slate-600`
 const TwFeatureHeader = tw(TwRow)`justify-between min-h-[64px] bg-slate-700`
 const TwFeatureContainer = tw(TwRow)`h-full overflow-x-auto bg-slate-800 relative`
@@ -19,11 +19,14 @@ export const BackofficeContainer: React.FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const { auth, backoffice, error } = allRoutes
-  const { e401, e403, e404, e500, e502, e503, e504 } = error.children
-  const { about, game, home, todo } = backoffice.children
-  const { huesAndCues } = game.children
-  const { create: huesAndCuesCreate } = huesAndCues.children
+  const { auth, backoffice } = allRoutes
+  const { home } = backoffice.children
+
+  // const { auth, backoffice, error } = allRoutes
+  // const { e401, e403, e404, e500, e502, e503, e504 } = error.children
+  // const { about, game, home, todo } = backoffice.children
+  // const { huesAndCues } = game.children
+  // const { create: huesAndCuesCreate } = huesAndCues.children
 
   useEffect(() => {
     handleRedirectToHome()

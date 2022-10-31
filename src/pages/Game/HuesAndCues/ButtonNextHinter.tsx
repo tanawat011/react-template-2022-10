@@ -15,7 +15,7 @@ import { setRoom, updateRoomPlayer } from './services'
 export const ButtonNextHinter = () => {
   const [room] = useRecoilState(huesAndCuesRoomAtom)
   const [players] = useRecoilState(huesAndCuesRoomPlayersAtom)
-  const [me, setMe] = useRecoilState(huesAndCuesMeAtom)
+  const [me] = useRecoilState(huesAndCuesMeAtom)
 
   const handleClickNextHinter = async () => {
     await setRoom({

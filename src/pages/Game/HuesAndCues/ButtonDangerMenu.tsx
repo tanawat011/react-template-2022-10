@@ -43,15 +43,15 @@ export const ButtonDangerMenu = () => {
         <>
           <IconBoxArrow width={20} height={16} className='absolute left-2 fill-slate-700' />
           <div className='absolute p-1 mt-2  left-0.5 rounded-lg bg-slate-700'>
-            {!me.isOwner && <ButtonLeaveGame room={room} currRoomPlayer={me} />}
+            {!me.isOwner && <ButtonLeaveGame />}
 
             {me.isOwner && (
               <>
                 <ButtonRestartGame room={room} roomPlayers={roomPlayers} currRoomPlayer={me} />
 
-                <ButtonLeaveGame room={room} currRoomPlayer={me} />
+                <ButtonLeaveGame />
 
-                <ButtonCloseGame room={room} roomPlayers={roomPlayers} currRoomPlayer={me} />
+                <ButtonCloseGame />
               </>
             )}
           </div>

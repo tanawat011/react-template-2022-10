@@ -1,18 +1,56 @@
-import type { Room, RoomPlayer } from './type'
+import type { RoomPlayer } from './type'
+
+import { useRecoilState } from 'recoil'
 
 import { Button } from 'components/Button'
+import { useSessionStorage } from 'hooks'
+import {
+  huesAndCuesMeAtom,
+  huesAndCuesRoomAtom,
+  huesAndCuesRoomPlayersAtom,
+} from 'recoils/huesAndCues'
 
-import { deletePlayer, deleteRoomPlayer } from './services'
+import { deletePlayer, deleteRoomPlayer, updateRoomPlayer } from './services'
 
-type Prop = {
-  room: Room
-  currRoomPlayer: RoomPlayer
-}
+export const ButtonLeaveGame: React.FC = () => {
+  const [, , deleteRoomId] = useSessionStorage('roomId')
+  const [, , deleteMeId] = useSessionStorage('meId')
 
-export const ButtonLeaveGame: React.FC<Prop> = ({ room, currRoomPlayer }) => {
+  const [room] = useRecoilState(huesAndCuesRoomAtom)
+  const [players] = useRecoilState(huesAndCuesRoomPlayersAtom)
+  const [me] = useRecoilState(huesAndCuesMeAtom)
+
   const handleClickLeaveGame = async () => {
-    await deleteRoomPlayer(room.id, currRoomPlayer.player.id)
-    await deletePlayer(currRoomPlayer.player.id)
+    if (me.isOwner) {
+      let nextOwner = players.find((player) => player.seq === me.seq + 1)
+
+      if (!nextOwner) {
+        nextOwner = players.find((player) => player.seq === 1) as RoomPlayer
+      }
+
+      await updateRoomPlayer(room.id, {
+        ...nextOwner,
+        isOwner: true,
+        isHinter: me.isHinter,
+        isTurn: me.isTurn,
+        seq: me.seq,
+      })
+    }
+
+    await deleteRoomPlayer(room.id, me.player.id)
+    await deletePlayer(me.player.id)
+
+    deleteRoomId()
+    deleteMeId()
+
+    players
+      .filter((p) => p.player.id !== me.player.id)
+      .map((p, index) => {
+        updateRoomPlayer(room.id, {
+          ...p,
+          seq: index + 1,
+        })
+      })
   }
 
   return <Button onClick={handleClickLeaveGame}>Leave Game</Button>

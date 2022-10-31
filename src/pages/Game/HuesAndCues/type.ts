@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import type { DocumentData, QueryDocumentSnapshot } from 'firebase/firestore'
+import type { DocumentData, FieldValue, QueryDocumentSnapshot } from 'firebase/firestore'
 
 export type Player = {
   id: string

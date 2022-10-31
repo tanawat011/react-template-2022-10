@@ -1,30 +1,25 @@
-import type { Room, RoomPlayer } from './type'
+import { useRecoilState } from 'recoil'
 
 import { Button } from 'components/Button'
+import { useSessionStorage } from 'hooks'
+import { huesAndCuesRoomAtom, huesAndCuesRoomPlayersAtom } from 'recoils/huesAndCues'
 
 import { deleteAllGlobalPlayers, deleteRoom } from './services'
 
-type Prop = {
-  room: Room
-  roomPlayers: RoomPlayer[]
-  currRoomPlayer: RoomPlayer
-}
+export const ButtonCloseGame: React.FC = () => {
+  const [, , deleteRoomId] = useSessionStorage('roomId')
+  const [, , deleteMeId] = useSessionStorage('meId')
 
-// * This button will clickable when the player is a `owner`, So in this button will call the current player is a `owner`
-export const ButtonCloseGame: React.FC<Prop> = ({ room, roomPlayers, currRoomPlayer }) => {
+  const [room] = useRecoilState(huesAndCuesRoomAtom)
+  const [players] = useRecoilState(huesAndCuesRoomPlayersAtom)
+
   const handleClickCloseGame = async () => {
     await deleteRoom(room.id)
-    await deleteAllGlobalPlayers(roomPlayers)
+    await deleteAllGlobalPlayers(players)
+
+    deleteRoomId()
+    deleteMeId()
   }
 
-  const isOwner = currRoomPlayer.isOwner
-
-  // * Disabled when started game or you are not a `owner`
-  const isDisabled = [!isOwner].includes(true)
-
-  return (
-    <Button disabled={isDisabled} onClick={handleClickCloseGame}>
-      Close Game
-    </Button>
-  )
+  return <Button onClick={handleClickCloseGame}>Close Game</Button>
 }

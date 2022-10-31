@@ -15,6 +15,7 @@ export const getMockRoom = (option?: Partial<Room>): Room => {
     password: '',
     hintChoice: [],
     hintSelected: '',
+    hintWords: [],
     isStarted: false,
     isSubmitResult: false,
     totalRound: 0,

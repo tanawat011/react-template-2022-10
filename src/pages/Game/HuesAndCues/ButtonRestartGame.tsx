@@ -2,7 +2,7 @@ import type { Room, RoomPlayer } from './type'
 
 import { Button } from 'components/Button'
 
-import { setRoom, setRoomPlayer } from './services'
+import { setRoom, updateRoomPlayer } from './services'
 
 type Prop = {
   room: Room
@@ -10,7 +10,6 @@ type Prop = {
   currRoomPlayer: RoomPlayer
 }
 
-// * This button will clickable when the player is a `owner`, So in this button will call the current player is a `owner`
 export const ButtonRestartGame: React.FC<Prop> = ({ room, roomPlayers, currRoomPlayer }) => {
   const handleClickRestartGame = async () => {
     await setRoom({
@@ -20,11 +19,12 @@ export const ButtonRestartGame: React.FC<Prop> = ({ room, roomPlayers, currRoomP
       hintSelected: '',
       isSubmitResult: false,
       totalRound: 0,
+      hintWords: [],
     })
 
     const owner = currRoomPlayer
 
-    await setRoomPlayer(room.id, {
+    await updateRoomPlayer(room.id, {
       ...owner,
       allSelected: [],
       isHinter: true,
@@ -38,7 +38,7 @@ export const ButtonRestartGame: React.FC<Prop> = ({ room, roomPlayers, currRoomP
         .filter((p) => !p.isOwner)
         .map(
           async (player) =>
-            await setRoomPlayer(room.id, {
+            await updateRoomPlayer(room.id, {
               ...player,
               allSelected: [],
               isHinter: false,
@@ -50,14 +50,5 @@ export const ButtonRestartGame: React.FC<Prop> = ({ room, roomPlayers, currRoomP
     )
   }
 
-  const isOwner = currRoomPlayer.isOwner
-
-  // * Disabled when started game or you are not a `owner`
-  const isDisabled = [!isOwner].includes(true)
-
-  return (
-    <Button disabled={isDisabled} onClick={handleClickRestartGame}>
-      Restart Game
-    </Button>
-  )
+  return <Button onClick={handleClickRestartGame}>Restart Game</Button>
 }

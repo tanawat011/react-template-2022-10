@@ -11,6 +11,7 @@ export type Room = {
   password: string
   hintChoice: string[]
   hintSelected: string
+  hintWords: string[]
   isStarted: boolean
   isSubmitResult: boolean
   totalRound: number

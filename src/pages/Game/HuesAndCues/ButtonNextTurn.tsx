@@ -1,60 +1,63 @@
 import type { RoomPlayer } from './type'
-
-import { useState } from 'react'
+import type { HuesAndCues } from 'data/HuesAndCues'
 
 import { useRecoilState } from 'recoil'
 
 import { IconAngleRight } from 'components/Icons'
+import { huesAndCues } from 'data/HuesAndCues'
 import {
   huesAndCuesMeAtom,
+  huesAndCuesModalChoiceAtom,
   huesAndCuesRoomAtom,
   huesAndCuesRoomPlayersAtom,
 } from 'recoils/huesAndCues'
 
 import { Button } from './common'
-import { setRoomPlayer } from './services'
+import { updateRoomPlayer } from './services'
 
-// * This button will clickable when the player need to submit the result
 export const ButtonNextTurn = () => {
   const [room] = useRecoilState(huesAndCuesRoomAtom)
-  const [roomPlayers] = useRecoilState(huesAndCuesRoomPlayersAtom)
   const [me] = useRecoilState(huesAndCuesMeAtom)
-  const [isTurn, setIsTurn] = useState(me.isTurn)
-  const [is2Turn, setIs2Turn] = useState(me.totalTurn === 2)
-
-  const getNextPlayerTurnBySequence = (seq: number) => {
-    return roomPlayers.find((player) => player.seq === seq)
-  }
+  const [players] = useRecoilState(huesAndCuesRoomPlayersAtom)
+  const [, setModalChoice] = useRecoilState(huesAndCuesModalChoiceAtom)
 
   const handleClickNextTurn = async () => {
-    const totalTurn = me.totalTurn + 1
-    const currentPlayerPayload = {
-      ...me,
-      isTurn: false,
-      totalTurn,
+    if (me.isHinter) {
+      const data = huesAndCues.flat().find((c) => c.id === room.hintSelected) as HuesAndCues
+
+      setModalChoice({
+        isOpen: true,
+        colorId: room.hintSelected,
+        colorBg: data.color,
+        isFromClickNextTurn: true,
+      })
+
+      return
     }
 
-    setIsTurn(false)
-    setIs2Turn(totalTurn === 2)
-    await setRoomPlayer(room.id, currentPlayerPayload)
+    let nextPlayer = players.find((p) => p.seq === me.seq + 1)
 
-    let seqNextTurn = me.seq + 1
-    let nextPlayerTurn = getNextPlayerTurnBySequence(seqNextTurn)
-
-    // * If the next player turn is not found, then the next player turn is the first player
-    if (!nextPlayerTurn) {
-      seqNextTurn = 1
-      nextPlayerTurn = getNextPlayerTurnBySequence(seqNextTurn) as RoomPlayer
+    if (!nextPlayer) {
+      nextPlayer = players.find((p) => p.seq === 1) as RoomPlayer
     }
 
-    await setRoomPlayer(room.id, { ...nextPlayerTurn, isTurn: true })
+    updateRoomPlayer(room.id, { ...nextPlayer, isTurn: true })
+    updateRoomPlayer(room.id, { ...me, isTurn: false, totalTurn: me.totalTurn + 1 })
   }
 
-  const isSubmitResult = room.isSubmitResult
-  const isStarted = room.isStarted
+  let isDisabled = false
 
-  // * Disabled when still not start game or room submitted result or not the turn of the player or the player already submit 2 times
-  const isDisabled = [!isStarted, isSubmitResult, !isTurn, is2Turn].includes(true)
+  if (me.isHinter) {
+    if (me.totalTurn === 0 || !me.isTurn) isDisabled = true
+
+    if (me.totalTurn === 2) isDisabled = true
+  } else {
+    if (!me.isTurn) isDisabled = true
+
+    if (me.totalTurn === 0 && !me.allSelected.length) isDisabled = true
+
+    if (me.totalTurn === 1 && me.allSelected.length < 2) isDisabled = true
+  }
 
   return (
     <Button disabled={isDisabled} onClick={handleClickNextTurn}>

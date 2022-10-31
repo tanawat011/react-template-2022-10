@@ -3,9 +3,15 @@ import tw from 'twin.macro'
 
 import { TwCard } from 'components/Common'
 import { getColTitles, getRowTitles, huesAndCues } from 'data/HuesAndCues'
-import { huesAndCuesRoomAtom, huesAndCuesRoomPlayersAtom } from 'recoils/huesAndCues'
+import {
+  huesAndCuesMeAtom,
+  huesAndCuesRoomAtom,
+  huesAndCuesRoomPlayersAtom,
+} from 'recoils/huesAndCues'
 
-const BoardGameCard = tw(TwCard)`col-span-2 row-span-3 grid gap-2`
+import { updateRoomPlayer } from './services'
+
+const BoardGameCard = tw(TwCard)`col-span-2 row-span-3 grid gap-2 text-center`
 const BoardGameWrap = tw.div`m-auto grid gap-2`
 const BoardGameMiddleSection = tw.div`grid grid-flow-col gap-2`
 const BoardGameContent = tw.div`grid gap-2`
@@ -37,10 +43,38 @@ const RowTitles = () => (
 
 export const BoardGame = () => {
   const [room] = useRecoilState(huesAndCuesRoomAtom)
-  const [roomPlayers] = useRecoilState(huesAndCuesRoomPlayersAtom)
+  const [me] = useRecoilState(huesAndCuesMeAtom)
+  const [players] = useRecoilState(huesAndCuesRoomPlayersAtom)
+
+  const handleClickCell = (itemId: string) => {
+    const isDuplicate = players
+      .filter((p) => !p.isTurn)
+      .map((p) => p.allSelected)
+      .flat()
+      .includes(itemId)
+
+    if ([me.isHinter, !me.isHinter && !me.isTurn].includes(true) || isDuplicate) {
+      return
+    }
+
+    const totalTurn = me.totalTurn
+
+    if (totalTurn === 0) {
+      updateRoomPlayer(room.id, { ...me, allSelected: [itemId] })
+    } else {
+      if (me.allSelected[0] === itemId) {
+        return
+      }
+
+      updateRoomPlayer(room.id, { ...me, allSelected: [me.allSelected[0], itemId] })
+    }
+  }
 
   return (
     <BoardGameCard>
+      <span className='text-white font-bold'>
+        Hint ➔<span className='text-red-600'> {room.hintWords.join(', ') || '...?'}</span>
+      </span>
       <BoardGameWrap>
         <ColTitles />
 
@@ -55,21 +89,22 @@ export const BoardGame = () => {
                     const itemId = item.id
                     const itemColor = item.color
 
-                    const roomPlayerSelected = roomPlayers.find((rp) =>
-                      rp.allSelected.includes(itemId),
-                    )
+                    const roomPlayerSelected = players.find((rp) => rp.allSelected.includes(itemId))
 
                     const isRoomResult = room.hintSelected === itemId
+                    const isHinter = me.isHinter
+                    const isShowRoomResult =
+                      (isHinter && isRoomResult) || (!isHinter && room.isSubmitResult)
 
                     return (
                       <CellBG key={`${itemColor}-${itemId}`}>
-                        <Cell className={itemColor}>
+                        <Cell className={itemColor} onClick={() => handleClickCell(itemId)}>
                           {roomPlayerSelected && (
                             <SelectorToken className={roomPlayerSelected.color} />
                           )}
                         </Cell>
 
-                        {isRoomResult && <HintResult />}
+                        {isShowRoomResult && <HintResult />}
                       </CellBG>
                     )
                   })}

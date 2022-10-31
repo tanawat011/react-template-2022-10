@@ -94,7 +94,8 @@ export const BoardGame = () => {
                     const isRoomResult = room.hintSelected === itemId
                     const isHinter = me.isHinter
                     const isShowRoomResult =
-                      (isHinter && isRoomResult) || (!isHinter && room.isSubmitResult)
+                      (isHinter && isRoomResult) ||
+                      (!isHinter && room.isSubmitResult && isRoomResult)
 
                     return (
                       <CellBG key={`${itemColor}-${itemId}`}>

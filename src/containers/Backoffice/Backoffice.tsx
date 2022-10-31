@@ -39,7 +39,7 @@ export const BackofficeContainer: React.FC = () => {
 
   return (
     <TwContainer>
-      <TwSidebar>
+      {/* <TwSidebar>
         <TwSidebarHeader>Sidebar Header</TwSidebarHeader>
 
         <TwSidebarMenu>
@@ -80,7 +80,7 @@ export const BackofficeContainer: React.FC = () => {
             Error 504
           </Button>
         </TwSidebarMenu>
-      </TwSidebar>
+      </TwSidebar> */}
 
       <TwFeature>
         <TwFeatureHeader>

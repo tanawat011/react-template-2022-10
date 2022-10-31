@@ -1,8 +1,6 @@
 import type { Room, RoomPlayer } from 'pages/Game/HuesAndCues/type'
 
-import { atom, selector } from 'recoil'
-
-import { setRoom, updateRoomPlayer } from 'pages/Game/HuesAndCues/services'
+import { atom } from 'recoil'
 
 const defaultRoom = {
   hintChoice: [],

@@ -1,7 +1,5 @@
 import type { RoomPlayer } from './type'
 
-import { useState } from 'react'
-
 import { useRecoilState } from 'recoil'
 
 import { IconAngleDoubleRight } from 'components/Icons'
@@ -12,51 +10,57 @@ import {
 } from 'recoils/huesAndCues'
 
 import { Button } from './common'
-import { setRoom, setRoomPlayer } from './services'
+import { setRoom, updateRoomPlayer } from './services'
 
-// * This button will clickable when the player is a `hinter`, So in this button will call the current player is a `hinter`
 export const ButtonNextHinter = () => {
   const [room] = useRecoilState(huesAndCuesRoomAtom)
-  const [roomPlayers] = useRecoilState(huesAndCuesRoomPlayersAtom)
-  const [me] = useRecoilState(huesAndCuesMeAtom)
-  const [isTurn, setIsTurn] = useState(me.isTurn)
-
-  const getNextHinterBySequence = (seq: number) => {
-    return roomPlayers.find((player) => player.seq === seq)
-  }
+  const [players] = useRecoilState(huesAndCuesRoomPlayersAtom)
+  const [me, setMe] = useRecoilState(huesAndCuesMeAtom)
 
   const handleClickNextHinter = async () => {
-    setIsTurn(false)
-    await setRoom({ ...room, totalRound: room.totalRound + 1, isSubmitResult: false })
+    await setRoom({
+      ...room,
+      hintChoice: [],
+      hintSelected: '',
+      hintWords: [],
+      isStarted: false,
+      isSubmitResult: false,
+      totalRound: room.totalRound + 1,
+    })
+    await updateRoomPlayer(room.id, {
+      ...me,
+      isHinter: false,
+      isTurn: false,
+    })
 
-    const hinter = me
-    const hinterPayload = { ...hinter, isHinter: false, isTurn: false }
-
-    await setRoomPlayer(room.id, hinterPayload)
-
-    let seqNextHinter = hinter.seq + 1
-    let nextHinter = getNextHinterBySequence(seqNextHinter)
+    let nextHinter = players.find((player) => player.seq === me.seq + 1)
 
     if (!nextHinter) {
-      seqNextHinter = 1
-      nextHinter = getNextHinterBySequence(seqNextHinter) as RoomPlayer
+      nextHinter = players.find((player) => player.seq === 1) as RoomPlayer
     }
 
-    await setRoomPlayer(room.id, { ...nextHinter, isHinter: true, isTurn: true })
+    await updateRoomPlayer(room.id, {
+      ...nextHinter,
+      isHinter: true,
+      isTurn: true,
+      allSelected: [],
+      totalTurn: 0,
+    })
+
+    await Promise.all(
+      players
+        .filter((p) => ![me.player.id, nextHinter?.player.id].includes(p.player.id))
+        .map(async (p) => {
+          await updateRoomPlayer(room.id, {
+            ...p,
+            allSelected: [],
+            totalTurn: 0,
+          })
+        }),
+    )
   }
 
-  const isHinter = me.isHinter
-  const isSubmitResult = room.isSubmitResult
-  const isStarted = room.isStarted
-
-  /** Disabled when
-   * * you're not hinter
-   * * turn of the hinter
-   * * still not start game
-   * * room still not submit result
-   */
-
-  const isDisabled = [!isTurn, !isHinter, !isStarted, !isSubmitResult].includes(true)
+  const isDisabled = [me.isHinter && !room.isSubmitResult, !me.isHinter].includes(true)
 
   return (
     <Button disabled={isDisabled} onClick={handleClickNextHinter}>

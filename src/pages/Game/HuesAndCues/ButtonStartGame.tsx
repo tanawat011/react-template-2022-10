@@ -15,7 +15,7 @@ import { setRoom, updateRoomPlayer } from './services'
 // * This button will clickable when the player is a `owner`, So in this button will call the current player is a `owner`
 export const ButtonStartGame = () => {
   const [room] = useRecoilState(huesAndCuesRoomAtom)
-  const [me, setMe] = useRecoilState(huesAndCuesMeAtom)
+  const [me] = useRecoilState(huesAndCuesMeAtom)
   const [players] = useRecoilState(huesAndCuesRoomPlayersAtom)
 
   const handleClickStartGame = async () => {

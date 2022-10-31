@@ -10,9 +10,8 @@ import {
 } from 'recoils/huesAndCues'
 
 import { Button } from './common'
-import { setRoom, setRoomPlayer } from './services'
+import { setRoom, updateRoomPlayer } from './services'
 
-// * This button will clickable when the player is a `hinter`, So in this button will call the current player is a `hinter`
 export const ButtonSubmitResult = () => {
   const [room] = useRecoilState(huesAndCuesRoomAtom)
   const [roomPlayers] = useRecoilState(huesAndCuesRoomPlayersAtom)
@@ -107,13 +106,13 @@ export const ButtonSubmitResult = () => {
             }
           })
 
-          await setRoomPlayer(room.id, { ...p, score, isTurn: false, totalTurn: 0 })
+          await updateRoomPlayer(room.id, { ...p, score, isTurn: false, totalTurn: 0 })
         }),
     )
 
     const payload = { ...hinter, score: hinterScore, totalTurn: 0 }
 
-    await setRoomPlayer(room.id, payload)
+    await updateRoomPlayer(room.id, payload)
   }
 
   const isHinter = me.isHinter
@@ -122,7 +121,6 @@ export const ButtonSubmitResult = () => {
     .filter((rp) => !rp.isHinter)
     .every((rp) => rp.totalTurn === 2)
 
-  // * Disabled when you're not hinter or still not start game or submitted result or all players are not completed
   const isDisabled = [!isHinter, !isStarted, isSubmitResult, !isAllPlayersCompleted].includes(true)
 
   return (

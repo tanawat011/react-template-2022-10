@@ -84,6 +84,8 @@ export const HuesAndCues = () => {
   const handleSubmitModalChoice = () => {
     handleCancelModalChoice()
 
+    setHintWord('')
+
     svcSetRoom({
       ...room,
       hintSelected: modalChoice.colorId,

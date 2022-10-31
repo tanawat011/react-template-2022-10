@@ -41,8 +41,8 @@ export const ButtonNextTurn = () => {
       nextPlayer = players.find((p) => p.seq === 1) as RoomPlayer
     }
 
-    updateRoomPlayer(room.id, { ...nextPlayer, isTurn: true })
-    updateRoomPlayer(room.id, { ...me, isTurn: false, totalTurn: me.totalTurn + 1 })
+    await updateRoomPlayer(room.id, { ...nextPlayer, isTurn: true })
+    await updateRoomPlayer(room.id, { ...me, isTurn: false, totalTurn: me.totalTurn + 1 })
   }
 
   let isDisabled = false
